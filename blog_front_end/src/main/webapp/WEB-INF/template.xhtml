@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!--
+    
+      THIS IS THE OVERALL LAYOUT FOR THE SITE (not accessible from outside)
+    
+    -->
+    
+     
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="normalize.css"  />
+        <h:outputStylesheet library="css" name="layout.css"  />
+        <h:outputStylesheet library="css" name="style.css"  />
+        <title>Skrubbblogen</title>
+        
+    </h:head>
+
+    <h:body>
+        
+        <header>
+            <hgroup>
+                <h1>Skrubb</h1>
+                <h2>We blog better</h2>
+            </hgroup>
+        </header>
+        
+        <p:button outcome="login" value="Login">  
+            
+        </p:button>
+                
+        <div id="content" class="right_content">
+            <ui:insert name="content">Skrubbfest</ui:insert>
+        </div>
+        <footer>
+            <p>®2013 Skrubgruppen</p> 
+        </footer>
+    </h:body>
+
+</html>

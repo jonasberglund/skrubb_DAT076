@@ -15,6 +15,21 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
                 <div>Välkommen till Skrubb! Här är bloggen</div>
+                
+                <ui:repeat value="#{dummyDB.getpost()}" var="t">
+                    <ui:repeat value="#{t}" var="s">
+                       
+                       <h:panelGrid columns="2" cellpadding="10">  
+                        <p:graphicImage value="/images/godfather/godfather1.jpg" />  
+                        <h:outputText  
+                            value="#{s}"/>  
+                        </h:panelGrid>
+                        <br></br>
+                        <br></br>
+                        
+                    </ui:repeat>
+                 </ui:repeat>
+                
                 <p:button outcome="login" value="Login">  </p:button>
             </ui:define>
         </ui:composition>

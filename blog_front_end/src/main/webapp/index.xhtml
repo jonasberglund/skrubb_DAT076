@@ -14,23 +14,33 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
+                <p:button outcome="login" value="Login">  </p:button>
+                
                 <div>Välkommen till Skrubb! Här är bloggen</div>
                 
-                <ui:repeat value="#{dummyDB.getpost()}" var="t">
+                
+                <ui:repeat value="#{dummyDB.getposts()}" var="t">
                     <ui:repeat value="#{t}" var="s">
-                       
-                       <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/images/godfather/godfather1.jpg" />  
-                        <h:outputText  
-                            value="#{s}"/>  
-                        </h:panelGrid>
+                       <h:panelGrid columns="1" cellpadding="10">
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/resources/img/fisheye.jpg" />  
+                                <h:outputText value="#{s}"/>
+                             </h:panelGrid>
+                             <h:outputText value="Comments"/>
+                                <h:panelGrid columns="1" cellpadding="10">
+                                   <h:outputText value="Bla Bla Bla Bla....."/>
+                                </h:panelGrid>
+                                <h:panelGrid columns="1" cellpadding="10">
+                                    <h:outputText value="Bla Bla Bla Bla....."/>
+                                </h:panelGrid>
+                       </h:panelGrid>
                         <br></br>
                         <br></br>
                         
                     </ui:repeat>
                  </ui:repeat>
                 
-                <p:button outcome="login" value="Login">  </p:button>
+                
             </ui:define>
         </ui:composition>
      </h:body>

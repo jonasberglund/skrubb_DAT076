@@ -1,37 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"     
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    <head>
-        <title>Login</title>
-    </head>
-    <body>
+  
+    <h:head>
+        <title>Login form</title>
+    </h:head>
+    <h:body>
+        
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
                 
-                <h:form id="form">  
+                
+                    <h:form id="form">  
                     <p:panel header="Login">  
                         <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
 
                         <h:panelGrid columns="2" id="matchGrid">                     
                             <h:outputLabel for="usrn" value="Username: " />  
-                            <p:inputText id="username" value="#{passwordBean.username}" label="Username" required="true"/>  
+                            <p:inputText id="username" value="#{loginBean.username}" label="Username" required="true"/>  
 
                             <h:outputLabel for="pwd" value="Password:" />  
-                            <p:password id="password" value="#{passwordBean.password}" label="Password" required="true"/>  
+                            <p:password id="password" value="#{loginBean.password}" label="Password" required="true"/>  
                         </h:panelGrid>  
 
-                        <p:commandButton id="button" action="#{passwordBean.doLogin}" value="Login" />  
+                        <p:commandButton id="button" action="#{loginBean.doLogin}" value="Login" /> 
+                        
+                        <h:commandLink action="#{navigationBean.redirectToInfo}" value="Info page"/>
                     </p:panel>  
 
-                </h:form>  
+                </h:form>           
             </ui:define>
         </ui:composition>
-    </body>
+        
+        
+    </h:body>
 </html>

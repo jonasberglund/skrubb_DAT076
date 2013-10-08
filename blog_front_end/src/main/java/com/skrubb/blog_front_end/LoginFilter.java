@@ -15,7 +15,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
-import com.skrubb.blog_front_end.PasswordBean;
+import com.skrubb.blog_front_end.LoginBean;
  
 /**
  * Filter checks if LoginBean has loginIn property set to true.
@@ -31,13 +31,13 @@ public class LoginFilter implements Filter {
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // Get the loginBean from session attribute
-        PasswordBean loginBean = (PasswordBean)((HttpServletRequest)request).getSession().getAttribute("passwordBean");
+        LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
          
         // For the first application request there is no loginBean in the session so user needs to log in
         // For other requests loginBean is present but we need to check if user has logged in successfully
         if (loginBean == null || !loginBean.isLoggedIn()) {
             String contextPath = ((HttpServletRequest)request).getContextPath();
-            ((HttpServletResponse)response).sendRedirect(contextPath + "/login.xhtml");
+            ((HttpServletResponse)response).sendRedirect(contextPath + "/index.xhtml");
         }
          
         chain.doFilter(request, response);

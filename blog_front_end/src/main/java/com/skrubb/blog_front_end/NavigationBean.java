@@ -56,16 +56,16 @@ public class NavigationBean implements Serializable {
      * Redirect to welcome page.
      * @return Welcome page name.
      */
-    public String redirectToIndex() {
-        return "index.xhtml?faces-redirect=true";
+    public String redirectToWelcome() {
+        return "/secured/welcome.xhtml?faces-redirect=true";
     }
      
     /**
      * Go to welcome page.
      * @return Welcome page name.
      */
-    public String toIndex() {
-        return "index.xhtml";
+    public String toWelcome() {
+        return "/secured/welcome.xhtml";
     }
      
 }

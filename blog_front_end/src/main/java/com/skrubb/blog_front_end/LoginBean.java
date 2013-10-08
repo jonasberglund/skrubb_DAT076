@@ -1,43 +1,41 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.skrubb.blog_front_end;
 
 import java.io.Serializable;
-import javax.enterprise.context.RequestScoped;
+ 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
+ 
+ 
 /**
+ * Simple login bean.
  *
- * @author jonasberglund
+ * @author itcuties
  */
-
 @ManagedBean
-@SessionScoped 
-public class PasswordBean implements Serializable {  
-  
-    private static final long serialVersionUID = 8728917348917382189L;
-    
-    private static final String[] users = {"jonas:qwerty","anders:123456"};
-            
-    
+@SessionScoped
+public class LoginBean implements Serializable {
+ 
+    private static final long serialVersionUID = 7765876811740798583L;
+ 
+    // Simple user database :)
+    private static final String[] users = {"anna:qazwsx","kate:123456"};
+     
     private String username;
-    private String password; 
-    
+    private String password;
+     
     private boolean loggedIn;
-    
-     @ManagedProperty(value="#{navigationBean}")
+ 
+    @ManagedProperty(value="#{navigationBean}")
     private NavigationBean navigationBean;
-    
-     /**
+     
+    /**
      * Login operation.
      * @return
      */
@@ -50,7 +48,7 @@ public class PasswordBean implements Serializable {
             // Successful login
             if (dbUsername.equals(username) && dbPassword.equals(password)) {
                 loggedIn = true;
-                return navigationBean.redirectToIndex();
+                return navigationBean.redirectToWelcome();
             }
         }
          

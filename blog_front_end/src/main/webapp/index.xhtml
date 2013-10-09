@@ -14,8 +14,8 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                 <ui:repeat value="#{dummyDB.getposts()}" var="t">
-                                <article class="topcontent">	
+                 <ui:repeat value="#{dummyDB.getPost()}" var="t">
+                    
 					<header>
 						<h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Skrubb post</a></h2>
 					</header>					
@@ -27,7 +27,7 @@ and open the template in the editor.
                                             <ui:repeat value="#{t}" var="s">
                                                  <h:panelGrid columns="1" cellpadding="10">
                                                          <p:graphicImage value="/resources/img/fisheye.jpg" />
-                                                         <h:outputText value="#{s}"/>                         
+                                                         <h:outputText value="#{s.text}"/>
                                                  </h:panelGrid>
                                                  <br></br>
                                                  <br></br>

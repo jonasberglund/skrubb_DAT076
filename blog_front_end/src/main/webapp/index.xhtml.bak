@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>Skrubb</title>
+    </head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+<<<<<<< HEAD
+<<<<<<< HEAD
+               
+
+                <div class="mainContent">
+		<div class="content">	
+				<article class="topcontent">	
+					<header>
+						<h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Second article</a></h2>
+					</header>
+					
+					<footer>
+						<p class="post-info">This was posted on the 2nd of March 2013 by Christian Vasile</p>
+					</footer>
+					
+					<content>
+                        <ui:repeat value="#{dummyDB.getposts()}" var="t">
+                            <ui:repeat value="#{t}" var="s">
+=======
+                <p:button outcome="login" value="Login">  </p:button>
+                
+                <div>Välkommen till Skrubb! Här är bloggen</div>
+                
+                
+                <ui:repeat value="#{dummyDB.getPost()}" var="t">
+                    <ui:repeat value="#{t}" var="s">
+                       <h:panelGrid columns="1" cellpadding="10">
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/resources/img/fisheye.jpg" />  
+                                <h:outputText value="#{s.text}"/>
+                             </h:panelGrid>
+                             <h:outputText value="Comments"/>
+>>>>>>> now using files from back_end + new DummyDB
+                                <h:panelGrid columns="1" cellpadding="10">
+                                    <h:panelGrid columns="2" cellpadding="10">
+                                        <p:graphicImage value="/resources/img/fisheye.jpg" />
+                                        <h:outputText value="#{s}"/>
+                                    </h:panelGrid>
+                                    <h:outputText value="Comments"/>
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                                <br></br>
+                                <br></br>
+                                
+                            </ui:repeat>
+                        </ui:repeat>
+					</content>
+					
+				</article>
+
+				<article class="bottomcontent">	
+					<header>
+						<h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">First post</a></h2>
+					</header>
+
+					<footer>
+						<p class="post-info">This was posted on the 5th of March 2013 by Christian Vasile</p>
+					</footer>
+					
+					<content>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+					</content>
+				
+				</article>
+                            </div>
+
+                                            <aside class="top-sidebar">
+                                                    <article>
+                                                    <h2>Top Sidebar</h2>
+                                                    <p>Discover how to use new techniques to achieve an outstanding, cross-browser HTML5.</p>
+                                                </article>
+                                            </aside>
+
+                                            <aside class="middle-sidebar">
+                                                    <article>
+                                                    <h2>Middle Sidebar</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                                </article>
+                                            </aside>				
+
+                                            <aside class="bottom-sidebar">
+                                                    <article>
+                                                    <h2>Bottom Sidebar</h2>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod expedita distinctio.</p>
+                                                </article>
+                                            </aside>	
+                    </div>
+            </ui:define>
+        </ui:composition>
+     </h:body>
+</html>

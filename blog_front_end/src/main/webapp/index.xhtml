@@ -19,12 +19,12 @@ and open the template in the editor.
                 <div>Välkommen till Skrubb! Här är bloggen</div>
                 
                 
-                <ui:repeat value="#{dummyDB.getposts()}" var="t">
+                <ui:repeat value="#{dummyDB.getPost()}" var="t">
                     <ui:repeat value="#{t}" var="s">
                        <h:panelGrid columns="1" cellpadding="10">
                             <h:panelGrid columns="2" cellpadding="10">  
                                 <p:graphicImage value="/resources/img/fisheye.jpg" />  
-                                <h:outputText value="#{s}"/>
+                                <h:outputText value="#{s.text}"/>
                              </h:panelGrid>
                              <h:outputText value="Comments"/>
                                 <h:panelGrid columns="1" cellpadding="10">

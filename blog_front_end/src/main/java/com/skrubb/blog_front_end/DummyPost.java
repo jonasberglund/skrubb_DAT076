@@ -24,6 +24,7 @@ public class DummyPost {
         this.title = title;
         //this.commentArchive = new CommentArchive();
         //this.tags = tags;
+       
     }
        
        

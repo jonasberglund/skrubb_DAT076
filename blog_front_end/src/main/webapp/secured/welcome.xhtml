@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"     
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
   
     <h:head>
         <title>Admin page</title>
@@ -16,6 +17,43 @@
                     <h3>Welcome #{loginBean.username}</h3>
                     <br/>
                     <h:outputText value="This is a secured welcome page!"/>
+                    
+                                        
+                                        <ui:repeat value="#{dummyDB.getPost()}" var="t">
+                                        <article class="topcontent">
+                                                <header>
+                                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Skrubb post</a></h2>
+                                                </header>					
+                                                <footer>
+                                                        <p class="post-info">This is a post made by skrubb</p>
+                                                </footer>
+
+                                                <content>
+                                                    <ui:repeat value="#{t}" var="s">
+                                                         <h:panelGrid columns="1" cellpadding="10">
+                                                                <p:graphicImage value="/resources/img/fisheye.jpg" /> 
+                                                               <!--  <h:outputText value="#{s.text}"/>  -->
+                                                         </h:panelGrid>
+                                                         <br></br>
+                                                         <br></br>
+                                                     </ui:repeat>
+                                                </content>
+                                        </article>
+                                            <article class="topcontent">
+                                            <header>
+                                                    <h2><a href="#" rel="bookmark" title="comments">Comments</a></h2>
+                                            </header>
+                                                    <h:panelGrid columns="1" cellpadding="10">
+                                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                                    </h:panelGrid>
+                                                    <h:panelGrid columns="1" cellpadding="10">
+                                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                                    </h:panelGrid>                   
+                                        </article>
+                                    </ui:repeat>
+                      
+                    
+                    
                     <br/>
                     <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
                 </h:form>    

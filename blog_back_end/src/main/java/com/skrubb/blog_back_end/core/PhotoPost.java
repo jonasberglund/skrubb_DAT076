@@ -4,19 +4,33 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import java.util.Date;
+import com.skrubb.blog_back_end.utils.AbstractEntity;
+import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author robin
  * @author ollesvensson
  */
-public class PhotoPost extends Post {
+@Entity
+@Table(name = "PHOTO_POST")
+public class PhotoPost extends AbstractPost implements Serializable {
+    
+    @Column(name = "PHOTO_URL")
     private String photoUrl;
     
-    public PhotoPost(Author author, Date date, String title, Set<Tag> tags, String photoUrl){
-        super(author, date, title, tags);
+    protected PhotoPost() {
+        
+    }
+    
+    public PhotoPost(Author author, String title, Set<Tag> tags, String photoUrl){
+        super(author,title,tags);
         this.photoUrl = photoUrl;
     }
     

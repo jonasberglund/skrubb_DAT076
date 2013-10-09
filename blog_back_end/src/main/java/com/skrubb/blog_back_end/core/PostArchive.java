@@ -12,17 +12,18 @@ import java.util.List;
  * @author robin
  * @author ollesvensson
  */
-public class PostArchive extends AbstractContentHandler<Long, Post> {
+public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
+    
     
     public PostArchive(String puName){
-        super(Post.class, puName);
+        super(AbstractPost.class, puName);
     }
     
-    public List<Post> getByAuthor(Author author) {
+    public List<AbstractPost> getByAuthor(Author author) {
         return null;
     }
     
-    public List<Post> getByTag(Tag tag) {
+    public List<AbstractPost> getByTag(Tag tag) {
         return null;
     }
     

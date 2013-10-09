@@ -3,6 +3,11 @@
   <persistence-unit name="blog_test" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.skrubb.blog_back_end.core.Author</class>
+    <class>com.skrubb.blog_back_end.core.Comment</class>
+    <class>com.skrubb.blog_back_end.core.PhotoPost</class>
+    <class>com.skrubb.blog_back_end.core.TextPost</class>
+    <class>com.skrubb.blog_back_end.core.Tag</class>
+    <class>com.skrubb.blog_back_end.core.AbstractPost</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/blog"/>
       <property name="javax.persistence.jdbc.password" value="skrubb"/>

@@ -6,16 +6,25 @@ package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author ollesvensson
  * @author robintornquist
  */
+@Entity
 public class Comment extends AbstractEntity{
     
-    private Date date;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date date = new Date();
+    
+    @Column(name = "COMMENTER")
     private String commenter;
+    
+    @Column(name = "COMMENT")
     private String text;
     
     protected Comment(){

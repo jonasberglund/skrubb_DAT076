@@ -20,7 +20,7 @@ import javax.persistence.criteria.Root;
  * @author ollesvensson
  * @author robintornquist
  */
-public class AbstractContentHandler<K, T> implements IContentHandler<K, T>{
+public abstract class AbstractContentHandler<K, T> implements IContentHandler<K, T>{
     
     private EntityManagerFactory emf;
     private final Class<T> classType;
@@ -30,7 +30,7 @@ public class AbstractContentHandler<K, T> implements IContentHandler<K, T>{
         emf = Persistence.createEntityManagerFactory(puName);
     }
     
-        protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() {
         EntityManager em = emf.createEntityManager();
         Logger.getAnonymousLogger().log(Level.INFO, "Createing EM {0}", em);
         return em;

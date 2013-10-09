@@ -4,11 +4,20 @@
  */
 package com.skrubb.blog_back_end.core;
 
+import com.skrubb.blog_back_end.utils.AbstractEntity;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  *
  * @author robin
  */
-public class Tag {
+@Entity
+@Table(name="TAGS")
+public class Tag extends AbstractEntity{
+    
+    @Column(name = "TAG_VALUE")
     private String value;
     
     public Tag (String value) {

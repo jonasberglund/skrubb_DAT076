@@ -4,19 +4,33 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author robin
  * @author ollesvensson
  */
-public class TextPost extends Post {
+
+@Entity
+@Table(name = "TEXT_POST")
+public class TextPost extends AbstractPost implements Serializable {
+    
+    @Column(name = "TEXT")
     private String text;
     
-    public TextPost(Author author, Date date, String title, Set<Tag> tags, String text){
-        super(author, date, title, tags);
+    protected TextPost() {
+        
+    }
+    
+    public TextPost(Author author, String title, Set<Tag> tags, String text){
+        super(author, title, tags);
         this.text = text;
     }
     

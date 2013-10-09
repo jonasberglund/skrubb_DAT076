@@ -14,6 +14,7 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
+<<<<<<< HEAD
                
 
                 <div class="mainContent">
@@ -28,8 +29,26 @@ and open the template in the editor.
 					</footer>
 					
 					<content>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-						<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.</p>
+                        <ui:repeat value="#{dummyDB.getposts()}" var="t">
+                            <ui:repeat value="#{t}" var="s">
+                                <h:panelGrid columns="1" cellpadding="10">
+                                    <h:panelGrid columns="2" cellpadding="10">
+                                        <p:graphicImage value="/resources/img/fisheye.jpg" />
+                                        <h:outputText value="#{s}"/>
+                                    </h:panelGrid>
+                                    <h:outputText value="Comments"/>
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                    </h:panelGrid>
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <h:outputText value="Bla Bla Bla Bla....."/>
+                                    </h:panelGrid>
+                                </h:panelGrid>
+                                <br></br>
+                                <br></br>
+                                
+                            </ui:repeat>
+                        </ui:repeat>
 					</content>
 					
 				</article>
@@ -71,7 +90,6 @@ and open the template in the editor.
                                                 </article>
                                             </aside>	
                     </div>
-    
             </ui:define>
         </ui:composition>
      </h:body>

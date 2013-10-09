@@ -11,10 +11,10 @@ import com.skrubb.blog_back_end.utils.AbstractContentHandler;
  * @author ollesvensson
  * @author robintornquist
  */
-public class CommentArchive extends AbstractContentHandler<Long, Comment> {
+public class AuthorRegistry extends AbstractContentHandler<Long, Author> {
     
-    public CommentArchive(String puName){
-        super(Comment.class, puName);
+    public AuthorRegistry(String puName){
+        super(Author.class, puName);
     }
     
 }

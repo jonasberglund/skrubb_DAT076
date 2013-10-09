@@ -4,7 +4,16 @@
  */
 package com.skrubb.blog_back_end.utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -12,35 +21,130 @@ import java.util.List;
  * @author robintornquist
  */
 public class AbstractContentHandler<K, T> implements IContentHandler<K, T>{
+    
+    private EntityManagerFactory emf;
+    private final Class<T> classType;
+    
+    protected AbstractContentHandler(Class<T> classType, String puName){
+        this.classType = classType;
+        emf = Persistence.createEntityManagerFactory(puName);
+    }
+    
+        protected EntityManager getEntityManager() {
+        EntityManager em = emf.createEntityManager();
+        Logger.getAnonymousLogger().log(Level.INFO, "Createing EM {0}", em);
+        return em;
+    }
 
     @Override
     public void add(T t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            em.persist(t);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override
     public void remove(K k) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            T t = em.getReference(classType, k);
+            em.remove(t);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override
     public T update(T t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        T updated = null;
+        try {
+            em = getEntityManager();
+            em.getTransaction().begin();
+            updated = em.merge(t);
+            em.getTransaction().commit();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        return updated;
     }
 
     @Override
     public T find(K k) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = getEntityManager();
+        T t = em.find(classType, k);
+        return t;
     }
 
     @Override
     public int size() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        EntityManager em = null;
+        int count = -1;
+        
+        try {
+            em = getEntityManager();
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            Root<T> rt = cq.from(classType);
+            cq.select(em.getCriteriaBuilder().count(rt));
+            Query q = em.createQuery(cq);
+            count = ((Long)q.getSingleResult()).intValue();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        
+        return count;
     }
 
     @Override
     public List<T> getRange(int firstItem, int numOfItems) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        EntityManager em = null;
+        List<T> found = new ArrayList<T>();
+        
+        try {
+            em = getEntityManager();
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            cq.select(cq.from(classType));
+            Query q = em.createQuery(cq);
+            
+            q.setMaxResults(numOfItems);
+            q.setFirstResult(firstItem);
+            
+            found.addAll(q.getResultList());
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        
+        return found;
     }
     
 }

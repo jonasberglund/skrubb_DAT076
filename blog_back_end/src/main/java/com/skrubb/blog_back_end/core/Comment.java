@@ -4,7 +4,7 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import com.skrubb.blog_back_end.utils.Entity;
+import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.util.Date;
 
 /**
@@ -12,7 +12,7 @@ import java.util.Date;
  * @author ollesvensson
  * @author robintornquist
  */
-public class Comment extends Entity{
+public class Comment extends AbstractEntity{
     
     private Date date;
     private String commenter;

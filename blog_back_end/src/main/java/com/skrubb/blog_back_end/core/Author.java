@@ -4,17 +4,27 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import com.skrubb.blog_back_end.utils.Entity;
+import com.skrubb.blog_back_end.utils.AbstractEntity;
+import java.io.Serializable;
+import javax.persistence.Column;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author ollesvensson
  * @author robintornquist
  */
-public class Author extends Entity {
+@Entity
+@Table(name = "AUTHOR")
+public class Author extends AbstractEntity implements Serializable {
     
+    @Column(name = "NAME")
     private String name;
+    @Column(name = "PASSWORD")
     private String hashedPassword;
+    @Column(name = "ACCESS")
     private AccessLevel accessLevel;
     
     protected Author(){

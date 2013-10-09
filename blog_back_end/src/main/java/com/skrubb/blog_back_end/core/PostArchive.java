@@ -14,6 +14,10 @@ import java.util.List;
  */
 public class PostArchive extends AbstractContentHandler<Long, Post> {
     
+    public PostArchive(String puName){
+        super(Post.class, puName);
+    }
+    
     public List<Post> getByAuthor(Author author) {
         return null;
     }

@@ -5,22 +5,31 @@
 package com.skrubb.blog_back_end.utils;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author ollesvensson
  * @author robintornquist
  */
-public abstract class Entity {
+@MappedSuperclass
+public abstract class AbstractEntity {
     
     //Initialized by database
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
     private Long id;
     
-    protected Entity(){
+    protected AbstractEntity(){
     }
     
     
-    protected Entity(Long id){
+    protected AbstractEntity(Long id){
         this.id = id;
     }
     
@@ -46,7 +55,7 @@ public abstract class Entity {
             return true;
         }
         
-        if (obj instanceof Entity && this.id.equals(((Entity)obj).id)){
+        if (obj instanceof AbstractEntity && this.id.equals(((AbstractEntity)obj).id)){
             return true;
         }
         

@@ -4,7 +4,7 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import com.skrubb.blog_back_end.utils.Entity;
+import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +13,7 @@ import java.util.Set;
  * @author ollesvensson
  * @author robintornquist
  */
-public abstract class Post extends Entity {
+public abstract class Post extends AbstractEntity {
     
     private Author author; 
     private Date date;
@@ -25,7 +25,7 @@ public abstract class Post extends Entity {
         this.author = author;
         this.date = date;
         this.title = title;
-        this.commentArchive = new CommentArchive();
+        this.commentArchive = new CommentArchive("");
         this.tags = tags;
     }
     

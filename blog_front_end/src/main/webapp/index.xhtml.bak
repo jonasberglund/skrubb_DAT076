@@ -15,20 +15,6 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
 <<<<<<< HEAD
-                <p:button outcome="login" value="Login">  </p:button>
-                
-                <div>Välkommen till Skrubb! Här är bloggen</div>
-                
-                
-                <ui:repeat value="#{dummyDB.getPost()}" var="t">
-                    <ui:repeat value="#{t}" var="s">
-                       <h:panelGrid columns="1" cellpadding="10">
-                            <h:panelGrid columns="2" cellpadding="10">  
-                                <p:graphicImage value="/resources/img/fisheye.jpg" />  
-                                <h:outputText value="#{s.text}"/>
-                             </h:panelGrid>
-                             <h:outputText value="Comments"/>
-=======
 <<<<<<< HEAD
                
 
@@ -46,7 +32,21 @@ and open the template in the editor.
 					<content>
                         <ui:repeat value="#{dummyDB.getposts()}" var="t">
                             <ui:repeat value="#{t}" var="s">
->>>>>>> a6ef7187d76eb30b92773b6d73d37c7c78924b15
+=======
+                <p:button outcome="login" value="Login">  </p:button>
+                
+                <div>Välkommen till Skrubb! Här är bloggen</div>
+                
+                
+                <ui:repeat value="#{dummyDB.getPost()}" var="t">
+                    <ui:repeat value="#{t}" var="s">
+                       <h:panelGrid columns="1" cellpadding="10">
+                            <h:panelGrid columns="2" cellpadding="10">  
+                                <p:graphicImage value="/resources/img/fisheye.jpg" />  
+                                <h:outputText value="#{s.text}"/>
+                             </h:panelGrid>
+                             <h:outputText value="Comments"/>
+>>>>>>> now using files from back_end + new DummyDB
                                 <h:panelGrid columns="1" cellpadding="10">
                                     <h:panelGrid columns="2" cellpadding="10">
                                         <p:graphicImage value="/resources/img/fisheye.jpg" />

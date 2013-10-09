@@ -15,7 +15,7 @@ and open the template in the editor.
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
                  <ui:repeat value="#{dummyDB.getPost()}" var="t">
-                    
+                    <article class="topcontent">
 					<header>
 						<h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Skrubb post</a></h2>
 					</header>					
@@ -33,8 +33,7 @@ and open the template in the editor.
                                                  <br></br>
                                              </ui:repeat>
 					</content>
-				</article>
-                                <article class="topcontent">
+				</article>                               <article class="topcontent">
                                     <header>
                                             <h2><a href="#" rel="bookmark" title="comments">Comments</a></h2>
                                     </header>

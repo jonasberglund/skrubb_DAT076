@@ -19,11 +19,12 @@
                     <p:editor id="editor" value="#{editorBean.value}" width="600"/>  
 
                     <h:panelGrid columns="2" style="margin-top:10px">  
-                        <p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()"  
-                                        icon="ui-icon-disk" />  
+                       <p:commandButton value="Post" actionListener="#{editorBean.textPost()}" action="welcome.xhtml"/>                         
                         <p:commandButton id="clearButton" type="button" value="Clear" onclick="PF('editor').clear()"  
-                                        icon="ui-icon-close" />  
-                        <p:commandButton value="Post" actionListener="#{editorBean.textPost()}"/>
+                                        icon="ui-icon-close" />
+                        <!--<p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()"  
+                                        icon="ui-icon-disk" /> --> 
+                        
                     </h:panelGrid>  
 
                     <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">  

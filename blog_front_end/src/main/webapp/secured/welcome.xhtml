@@ -19,7 +19,7 @@
                     <h:outputText value="This is a secured welcome page!"/>
                     
                                         
-                                        <ui:repeat value="#{dummyDB.getPost()}" var="t">
+                                        <ui:repeat value="#{dummyDB.getArrayListOfPost()}" var="t">
                                         <article class="topcontent">
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Skrubb post</a></h2>
@@ -32,7 +32,7 @@
                                                     <ui:repeat value="#{t}" var="s">
                                                          <h:panelGrid columns="1" cellpadding="10">
                                                                 <p:graphicImage value="/resources/img/fisheye.jpg" /> 
-                                                               <!--  <h:outputText value="#{s.text}"/>  -->
+                                                                <h:outputText value="#{s.text}"/>  
                                                          </h:panelGrid>
                                                          <br></br>
                                                          <br></br>

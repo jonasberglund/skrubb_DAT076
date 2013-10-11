@@ -32,7 +32,7 @@ public abstract class AbstractContentHandler<K, T> implements IContentHandler<K,
     
     protected EntityManager getEntityManager() {
         EntityManager em = emf.createEntityManager();
-        Logger.getAnonymousLogger().log(Level.INFO, "Createing EM {0}", em);
+        Logger.getAnonymousLogger().log(Level.INFO, "Createing EntityManager {0}", em);
         return em;
     }
 

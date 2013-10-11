@@ -15,21 +15,25 @@
             <ui:define name="content"> 
                 
                 <h:form id="form">  
-  
+                    
+                        <h3>Titel</h3>  
+                        <p:inputTextarea rows="1" cols="50" value="#{editorBean.title}" />  
+
+                       
+                        <h:outputText id="counter" /> 
+                    
+                    
                     <p:editor id="editor" value="#{editorBean.value}" width="600"/>  
 
                     <h:panelGrid columns="2" style="margin-top:10px">  
                        <p:commandButton value="Post" actionListener="#{editorBean.textPost()}" action="welcome.xhtml"/>                         
-                        <p:commandButton id="clearButton" type="button" value="Clear" onclick="PF('editor').clear()"  
-                                        icon="ui-icon-close" />
+                       <p:commandButton value="Rensa" actionListener="#{editorBean.textClear()}"  
+                                        icon="ui-icon-close" action="text_post.xhtml" />
                         <!--<p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()"  
                                         icon="ui-icon-disk" /> --> 
                         
                     </h:panelGrid>  
 
-                    <p:dialog header="Content" widgetVar="dlg" showEffect="fade" hideEffect="fade" modal="true">  
-                        <h:outputText id="display" value="#{editorBean.value}" escape="false" />  
-                    </p:dialog>  
 
                 </h:form>  
                 

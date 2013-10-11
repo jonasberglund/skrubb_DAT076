@@ -11,6 +11,11 @@ nbproject/private/
 *.DS_Store
 *.swp
 *.out
+*.dat
+*.ctrl
+*.lck
+*.properties
+*.log
 
 # NetBeans specific #
 build/

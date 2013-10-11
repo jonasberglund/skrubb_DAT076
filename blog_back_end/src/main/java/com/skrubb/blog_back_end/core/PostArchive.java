@@ -6,6 +6,7 @@ package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 import java.util.List;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -20,11 +21,17 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
     }
     
     public List<AbstractPost> getByAuthor(Author author) {
-        return null;
+        EntityManager em = getEntityManager();
+        
+         return em.createQuery("select p from AbstractPost p where p.author = :author",
+                AbstractPost.class).setParameter("author", author).getResultList();
     }
     
     public List<AbstractPost> getByTag(Tag tag) {
-        return null;
+        EntityManager em = getEntityManager();
+        
+         return em.createQuery("select p from AbstractPost p where p.tags = :tag",
+                AbstractPost.class).setParameter("tag", tag).getResultList();
     }
     
 }

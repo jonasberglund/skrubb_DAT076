@@ -41,8 +41,7 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
     @Column(name = "TITLE")
     private String title;
     
-    //@ManyToMany ??
-    @OneToMany
+    @ManyToMany
     @JoinColumn(name = "TAGS")
     private Set<Tag> tags;
     

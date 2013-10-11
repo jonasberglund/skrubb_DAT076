@@ -16,4 +16,24 @@
       <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
+  
+  
+   <persistence-unit name="blog_test_embedded" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.skrubb.blog_back_end.core.Author</class>
+    <class>com.skrubb.blog_back_end.core.Comment</class>
+    <class>com.skrubb.blog_back_end.core.PhotoPost</class>
+    <class>com.skrubb.blog_back_end.core.TextPost</class>
+    <class>com.skrubb.blog_back_end.core.Tag</class>
+    <class>com.skrubb.blog_back_end.core.AbstractPost</class>
+    <properties>
+      <property name="eclipselink.target-database" value="derby"/>
+      <property name="eclipselink.logging.level" value="info"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby:tmp;create=true"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+      <property name="javax.persistence.jdbc.user" value=""/>
+      <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
+    </properties>
+  </persistence-unit>
 </persistence>

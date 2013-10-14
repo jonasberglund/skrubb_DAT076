@@ -5,6 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractEntity;
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +17,7 @@ import javax.persistence.Temporal;
  * @author robintornquist
  */
 @Entity
-public class Comment extends AbstractEntity{
+public class Comment extends AbstractEntity implements Serializable{
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date = new Date();

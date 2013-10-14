@@ -4,8 +4,11 @@
  */
 package com.skrubb.blog_back_end;
 
+import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.AuthorRegistry;
+import com.skrubb.blog_back_end.core.Comment;
+import com.skrubb.blog_back_end.core.CommentArchive;
 import com.skrubb.blog_back_end.core.PhotoPost;
 import com.skrubb.blog_back_end.core.PostArchive;
 import com.skrubb.blog_back_end.core.Tag;
@@ -29,15 +32,18 @@ public class PostArchiveTest {
     static PostArchive pa;
     static AuthorRegistry ar;
     static TagArchive ta;
+    static CommentArchive ca;
     
     @Before
     public void before() {
-        pa = new PostArchive(TEST_PU_EMBEDDED);
-        ar = new AuthorRegistry(TEST_PU_EMBEDDED);
-        ta = new TagArchive(TEST_PU_EMBEDDED);
+        
+        pa = new PostArchive(TEST_PU);
+        ar = new AuthorRegistry(TEST_PU);
+        ta = new TagArchive(TEST_PU);
+        ca = new CommentArchive(TEST_PU);
     }
     
-    @Test
+//    @Test
     public void addAndRemovePostTest() {
         
         Author a = new Author("name", "password", Author.AccessLevel.AUTHOR);
@@ -78,7 +84,7 @@ public class PostArchiveTest {
         assertTrue(ar.size() == 0);
     }
     
-    @Test
+//    @Test
     public void testGetByAuthor(){
     
         Author a1 = new Author("name1", "password", Author.AccessLevel.AUTHOR);
@@ -116,22 +122,28 @@ public class PostArchiveTest {
         TreeSet<Tag> textTags3 = new TreeSet<Tag>(comparator);
         
         Tag firstTag =  new Tag("first");
-        ta.add(firstTag);
+//        ta.add(firstTag);
         
         Tag lifeTag =  new Tag("life");
-        ta.add(lifeTag);
+//        ta.add(lifeTag);
         
         Tag deathTag =  new Tag("death");
-        ta.add(deathTag);
+//        ta.add(deathTag);
         
         Tag unknownTag =  new Tag("unknown");
-        ta.add(unknownTag);
+//        ta.add(unknownTag);
         
-        textTags1.add(ta.find(firstTag.getId()));
-        textTags1.add(ta.find(lifeTag.getId()));
+        textTags1.add(firstTag);
+        textTags1.add(lifeTag);
         
-        textTags2.add(ta.find(lifeTag.getId()));
-        textTags2.add(ta.find(deathTag.getId()));
+        textTags2.add(lifeTag);
+        textTags2.add(deathTag);
+        
+//        textTags1.add(ta.find(firstTag.getId()));
+//        textTags1.add(ta.find(lifeTag.getId()));
+        
+//        textTags2.add(ta.find(lifeTag.getId()));
+//        textTags2.add(ta.find(deathTag.getId()));
         
         TextPost tpost1 = new TextPost(ar.find(a1.getId()), "First post", textTags1, "Hello Olle! 1");
         TextPost tpost2 = new TextPost(ar.find(a1.getId()), "Second post", textTags2, "Hello Olle! 2");
@@ -146,5 +158,36 @@ public class PostArchiveTest {
         assertTrue(pa.getByTag(ta.find(lifeTag.getId())).size() == 2);
         assertTrue(pa.getByTag(ta.find(deathTag.getId())).size() == 1);
         assertTrue(pa.getByTag(ta.find(unknownTag.getId())).size() == 0);
+    }
+    
+    //@Test
+    public void addCommentTest() {
+        
+        Author a1 = new Author("Bill", "bull", Author.AccessLevel.AUTHOR);
+        ar.add(a1);
+        a1 = ar.find(a1.getId());
+        
+        PhotoPost photoPost = new PhotoPost(a1, "photo post", new TreeSet<Tag>(), "http://someurl.com/photo.jpg");
+        
+        pa.add(photoPost);
+        
+        TextPost textPost = new TextPost(a1, "Test text post", new TreeSet<Tag>(), "blablabla");
+        
+        pa.add(textPost);
+        
+        AbstractPost post = pa.find(photoPost.getId());
+        
+        Comment c = new Comment("Manne", "Vilken snygg bild!");
+        post.addComment(c);
+        c = new Comment("B-T", "Håller med Manne");
+        post.addComment(c);
+        
+        assertTrue(post.getComments().size() == 2);
+        
+        pa.update(post);
+        
+        pa.remove(post.getId());
+        
+        assertTrue(ca.size() == 0);
     }
 }

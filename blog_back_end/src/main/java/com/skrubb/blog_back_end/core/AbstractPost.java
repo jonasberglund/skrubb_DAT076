@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -45,8 +46,8 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
     @JoinColumn(name = "TAGS")
     private Set<Tag> tags;
     
-    @OneToMany
-    @JoinColumn(name = "COMMENTS")
+    @OneToMany( cascade = {CascadeType.PERSIST, CascadeType.REMOVE} )
+    @JoinColumn(name = "POST")
     private List<Comment> comments;
     
     public AbstractPost(Author author, String title, Set<Tag> tags) {

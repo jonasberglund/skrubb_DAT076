@@ -8,7 +8,7 @@ import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 
 /**
  *
- * @author root
+ * @author 
  */
 public class TagArchive extends AbstractContentHandler<Long, Tag> {
     

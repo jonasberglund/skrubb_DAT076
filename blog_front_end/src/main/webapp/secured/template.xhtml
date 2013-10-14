@@ -17,6 +17,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="style.css"  />
         <title>Skrubbblogen</title>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+         <h:outputScript target="head">
+            // Add the $() function
+            $ = jQuery;
+            // Now you can use it
+            $(function(){
+                $('#comments').click(function(){
+                   var commentSection =$(this).parent('article').find('#commentSection');
+                   if(commentSection.hasClass('hidden'))
+                       commentSection.removeClass('hidden');
+                   else
+                       commentSection.addClass('hidden');
+                });
+             }); 
+        </h:outputScript>
         <script language="javascript" type="text/javascript" src="../js/javascript.js"></script>
         
     </h:head>

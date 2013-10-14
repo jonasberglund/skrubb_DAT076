@@ -16,3 +16,14 @@
 		}
 	}
 }
+
+
+$(function(){
+   $('#comments').click(function(){
+      var commentSection =$(this).parent('article').find('#commentSection');
+      if(commentSection.hasClass('hidden'))
+          commentSection.removeClass('hidden');
+      else
+          commentSection.addClass('hidden');
+   });
+}); 

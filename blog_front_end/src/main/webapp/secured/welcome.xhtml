@@ -9,7 +9,7 @@
   
     <h:head>
         <title>Admin page</title>
-  
+        
     </h:head>
     <h:body>
         <ui:composition template="/secured/template.xhtml">
@@ -20,6 +20,8 @@
                     <h:outputText value="This is a secured welcome page!"/>
                         <ui:repeat value="#{dummyDB.getArrayListOfPost()}" var="t">
                                 <article class="topcontent">
+                                        
+                                    
                                         <ui:repeat value="#{t}" var="s">
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
@@ -37,29 +39,28 @@
                                                     </h:panelGrid>
                                                  
                                                  </content>
+                                                 
+                                            
+                                            <!-- Comments-->
+                                                 <header>
+                                                    <a href="#" id="comments">Comments</a>
+                                                </header>
+                                                <content>
+                                                    <p>...This is all visible content... 
+                                                    <a href="#" id="example-show" class="showLink" 
+                                                    onclick="showHide('example');return false;">See more.</a>
+                                                    </p>
+
+                                                    <div id="example" class="more">
+                                                            <p>...This content is hidden by default...</p>
+                                                            <p><a href="#" id="example-hide" class="hideLink" 
+                                                            onclick="showHide('example');return false;">Hide this content.</a></p>
+                                                    </div>
+                                               </content>
                                         </ui:repeat>     
                                     </article>
                                             
-                                <!-- comments -->
-                                <article class="topcontent">
-                                        <header>
-                                                <h2><a href="#" rel="bookmark" title="comments">Comments</a></h2>
-                                        </header>
-                                        <content>
-
-                                            <p>...This is all visible content... 
-                                            <a href="#" id="example-show" class="showLink" 
-                                            onclick="showHide('example');return false;">See more.</a>
-                                            </p>
-                                            <div id="example" class="more">
-                                                    <p>...This content is hidden by default...</p>
-                                                    <p><a href="#" id="example-hide" class="hideLink" 
-                                                    onclick="showHide('example');return false;">Hide this content.</a></p>
-                                            </div>
-
-
-                                       </content>
-                                </article>             
+           
                         </ui:repeat>
                     <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
                 </h:form>    

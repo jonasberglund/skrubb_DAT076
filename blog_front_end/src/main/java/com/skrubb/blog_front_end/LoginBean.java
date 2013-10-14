@@ -75,7 +75,7 @@ public class LoginBean implements Serializable {
         msg.setSeverity(FacesMessage.SEVERITY_INFO);
         FacesContext.getCurrentInstance().addMessage(null, msg);
          
-        return navigationBean.toLogin();
+        return navigationBean.redirectToWelcome();
     }
  
     // ------------------------------

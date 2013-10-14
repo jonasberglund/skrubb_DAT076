@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"     
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+        <title>Manage author page</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/secured/template.xhtml">
+            <ui:define name="content"> 
+                
+                <h:form>  
+                    <div>
+                        <h:commandButton actionListener="#{products.prev}" value="Prev" class="small-button"/>
+                        <h:commandButton actionListener="#{products.next}" value="Next" class="small-button"/>
+                        <h:button outcome="add_author" value="Add Author" class="small-button"/>
+                        <h:commandButton action="#{auth.logout}" value="Logout" class="small-button"/>
+                        <h:outputText value="Logged in as #{request.remoteUser}" />                       
+                        <br/>
+                    </div>
+                    <div class="product-table">
+                        <h:dataTable var="p" value="#{dummyDB.authors}">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="Id"/>
+                                </f:facet>
+                                <h:outputText value="#{p.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="Name"/> 
+                                </f:facet>
+                                <h:outputText value="#{p.name}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="Password"/>
+                                </f:facet>
+                                <h:outputText value="#{p.hashedPassword}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="AccessLevel"/>
+                                </f:facet>
+                                <h:outputText value="#{p.accessLevel}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText  value="Action"/>
+                                </f:facet>
+                                <h:commandButton actionListener="#{editAuthor.setSelected(p.id)}" 
+                                                 action="edit_author" value="Edit"/>
+                                 <h:button outcome="edit_author" value="Edit Author" class="small-button"/>
+                                <h:commandButton actionListener="#{delProduct.setSelected(p.id)}"      
+                                                 action="#{products.navigate('delProduct')}" value="Delete" />
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </h:form>    
+                
+                
+            </ui:define>
+        </ui:composition>
+        
+        
+         
+    </h:body>
+</html>

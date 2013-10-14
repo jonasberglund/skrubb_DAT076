@@ -5,7 +5,6 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.TextPost;
-import static com.skrubb.blog_front_end.DummyDB.a1;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 

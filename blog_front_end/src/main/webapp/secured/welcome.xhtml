@@ -20,9 +20,10 @@
                     <h:outputText value="This is a secured welcome page!"/>
                         <ui:repeat value="#{dummyDB.getArrayListOfPost()}" var="t">
                                 <article class="topcontent">
-                                        
+                                    
                                     
                                         <ui:repeat value="#{t}" var="s">
+                                                <div><h:commandLink action="#{dummyDB.delPost(s)}" value="Delete post"/></div>
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
                                                 </header>
@@ -40,7 +41,6 @@
                                                  
                                                  </content>
                                                  
-                                            
                                             <!-- Comments-->
                                                  <header>
                                                     <a href="#" id="comments">Comments</a>

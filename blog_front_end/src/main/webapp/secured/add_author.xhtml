@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"     
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+        <title>Manage author page</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/secured/template.xhtml">
+            <ui:define name="content"> 
+                <h:form>
+                   <h:panelGrid columns="3">
+                        <h:outputText value="Name" />
+                        <h:inputText id="name" value="#{addAuthor.name}"/>
+                        <h:message for="name" />
+                        <h:outputText value="Password" />
+                        <h:inputText id="password" value="#{addAuthor.password}"/>
+                        <h:message for="password" />
+                        <h:outputText value="Access Level" />
+                        <h:inputText id="al" value="#{addAuthor.AL}"/>
+                        <h:message for="al" />
+                    </h:panelGrid>
+                    <h:button outcome="manage_authors" value="Cancel"/>                   
+                    <h:commandButton action="#{addAuthor.save}" value="Save" />
+                </h:form>                
+            </ui:define>
+        </ui:composition>
+        
+        
+         
+    </h:body>
+</html>

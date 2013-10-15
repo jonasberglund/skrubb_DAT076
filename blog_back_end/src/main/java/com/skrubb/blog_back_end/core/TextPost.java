@@ -5,11 +5,8 @@
 package com.skrubb.blog_back_end.core;
 
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,8 +26,8 @@ public class TextPost extends AbstractPost implements Serializable {
         
     }
     
-    public TextPost(Author author, String title, Set<Tag> tags, String text){
-        super(author, title, tags);
+    public TextPost(Author author, String title, String text){
+        super(author, title);
         this.text = text;
     }
     

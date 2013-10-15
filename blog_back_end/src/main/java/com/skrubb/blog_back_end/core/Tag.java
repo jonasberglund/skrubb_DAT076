@@ -5,8 +5,10 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractEntity;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -15,8 +17,10 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="TAGS")
-public class Tag extends AbstractEntity{
-    
+//public class Tag extends AbstractEntity{
+public class Tag implements Serializable {  
+
+    @Id
     @Column(name = "TAG_VALUE")
     private String value;
     
@@ -26,6 +30,10 @@ public class Tag extends AbstractEntity{
     
     protected Tag() {
         
+    }
+    
+    public String getId() {
+        return getValue();
     }
     
     public String getValue() {

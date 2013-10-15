@@ -37,13 +37,13 @@ public class PostArchiveTest {
     @Before
     public void before() {
         
-        pa = new PostArchive(TEST_PU);
-        ar = new AuthorRegistry(TEST_PU);
-        ta = new TagArchive(TEST_PU);
-        ca = new CommentArchive(TEST_PU);
+        pa = new PostArchive(TEST_PU_EMBEDDED);
+        ar = new AuthorRegistry(TEST_PU_EMBEDDED);
+        ta = new TagArchive(TEST_PU_EMBEDDED);
+        ca = new CommentArchive(TEST_PU_EMBEDDED);
     }
     
-//    @Test
+    @Test
     public void addAndRemovePostTest() {
         
         Author a = new Author("name", "password", Author.AccessLevel.AUTHOR);
@@ -65,8 +65,8 @@ public class PostArchiveTest {
         textTags.add(ta.find(lifeTag.getId()));
         photoTags.add(ta.find(lifeTag.getId()));
         
-        TextPost tpost = new TextPost(a, "First post", textTags, "Hello Olle!");
-        PhotoPost ppost = new PhotoPost(a, "First photo post", photoTags, "http://someurl.com/pic.jpg");
+        TextPost tpost = new TextPost(a, "First post", "Hello Olle!");
+        PhotoPost ppost = new PhotoPost(a, "First photo post", "http://someurl.com/pic.jpg");
         
         pa.add(tpost);
         assertTrue(pa.size() == 1);
@@ -93,9 +93,9 @@ public class PostArchiveTest {
         ar.add(a1);
         ar.add(a2);
         
-        TextPost tpost1 = new TextPost(ar.find(a1.getId()), "First post", new TreeSet<Tag>(), "Hello Olle! 1");
-        TextPost tpost2 = new TextPost(ar.find(a1.getId()), "Second post", new TreeSet<Tag>(), "Hello Olle! 2");
-        TextPost tpost3 = new TextPost(ar.find(a2.getId()), "Third post", new TreeSet<Tag>(), "Hello Olle! 3");
+        TextPost tpost1 = new TextPost(ar.find(a1.getId()), "First post", "Hello Olle! 1");
+        TextPost tpost2 = new TextPost(ar.find(a1.getId()), "Second post", "Hello Olle! 2");
+        TextPost tpost3 = new TextPost(ar.find(a2.getId()), "Third post", "Hello Olle! 3");
         
         pa.add(tpost1);
         pa.add(tpost2);
@@ -106,7 +106,7 @@ public class PostArchiveTest {
         
     }
     
-    @Test
+//    @Test
     public void testGetByTag(){
     
         Author a1 = new Author("name1", "password", Author.AccessLevel.AUTHOR);
@@ -115,79 +115,87 @@ public class PostArchiveTest {
         ar.add(a1);
         ar.add(a2);
         
-        TagComparator comparator = new TagComparator();
-        
-        TreeSet<Tag> textTags1 = new TreeSet<Tag>(comparator);
-        TreeSet<Tag> textTags2 = new TreeSet<Tag>(comparator);
-        TreeSet<Tag> textTags3 = new TreeSet<Tag>(comparator);
-        
-        Tag firstTag =  new Tag("first");
-//        ta.add(firstTag);
-        
-        Tag lifeTag =  new Tag("life");
-//        ta.add(lifeTag);
-        
-        Tag deathTag =  new Tag("death");
-//        ta.add(deathTag);
-        
-        Tag unknownTag =  new Tag("unknown");
-//        ta.add(unknownTag);
-        
-        textTags1.add(firstTag);
-        textTags1.add(lifeTag);
-        
-        textTags2.add(lifeTag);
-        textTags2.add(deathTag);
-        
-//        textTags1.add(ta.find(firstTag.getId()));
-//        textTags1.add(ta.find(lifeTag.getId()));
-        
-//        textTags2.add(ta.find(lifeTag.getId()));
-//        textTags2.add(ta.find(deathTag.getId()));
-        
-        TextPost tpost1 = new TextPost(ar.find(a1.getId()), "First post", textTags1, "Hello Olle! 1");
-        TextPost tpost2 = new TextPost(ar.find(a1.getId()), "Second post", textTags2, "Hello Olle! 2");
-        TextPost tpost3 = new TextPost(ar.find(a2.getId()), "Third post", textTags3, "Hello Olle! 3");
+        TextPost tpost1 = new TextPost(ar.find(a1.getId()), "First post", "Hello Olle! 1");
+        TextPost tpost2 = new TextPost(ar.find(a1.getId()), "Second post", "Hello Olle! 2");
+        TextPost tpost3 = new TextPost(ar.find(a2.getId()), "Third post", "Hello Olle! 3");
         
         pa.add(tpost1);
         pa.add(tpost2);
         pa.add(tpost3);
         
-        assertTrue(pa.getByTag(ta.find(firstTag.getId())).size() == 1);
-        assertTrue(pa.getByTag(ta.find(firstTag.getId())).get(0).getTitle().equals("First post"));
-        assertTrue(pa.getByTag(ta.find(lifeTag.getId())).size() == 2);
-        assertTrue(pa.getByTag(ta.find(deathTag.getId())).size() == 1);
-        assertTrue(pa.getByTag(ta.find(unknownTag.getId())).size() == 0);
+        tpost1 = (TextPost)pa.find(tpost1.getId());
+        tpost2 = (TextPost)pa.find(tpost2.getId());
+        
+        pa.addTag(tpost1, new Tag("first"));
+        pa.addTag(tpost1, new Tag("life"));
+        
+        pa.addTag(tpost2, new Tag("life"));
+        pa.addTag(tpost2, new Tag("death"));
+        
+        assertTrue(pa.getByTag(ta.find("first")).size() == 1);
+        assertTrue(pa.getByTag(ta.find("first")).get(0).getTitle().equals("First post"));
+        assertTrue(pa.getByTag(ta.find("life")).size() == 2);
+        assertTrue(pa.getByTag(ta.find("death")).size() == 1);
+        assertTrue(pa.getByTag(ta.find("unknown")).size() == 0);
     }
     
-    //@Test
+//    @Test
     public void addCommentTest() {
         
         Author a1 = new Author("Bill", "bull", Author.AccessLevel.AUTHOR);
         ar.add(a1);
         a1 = ar.find(a1.getId());
         
-        PhotoPost photoPost = new PhotoPost(a1, "photo post", new TreeSet<Tag>(), "http://someurl.com/photo.jpg");
+        PhotoPost photoPost = new PhotoPost(a1, "photo post", "http://someurl.com/photo.jpg");
         
         pa.add(photoPost);
         
-        TextPost textPost = new TextPost(a1, "Test text post", new TreeSet<Tag>(), "blablabla");
+        TextPost textPost = new TextPost(a1, "Test text post", "blablabla");
         
         pa.add(textPost);
         
         AbstractPost post = pa.find(photoPost.getId());
         
         Comment c = new Comment("Manne", "Vilken snygg bild!");
-        post.addComment(c);
+        pa.addComment(post, c);
         c = new Comment("B-T", "Håller med Manne");
-        post.addComment(c);
+        pa.addComment(post, c);
         
         assertTrue(post.getComments().size() == 2);
-        
-        pa.update(post);
         
         pa.remove(post.getId());
         
         assertTrue(ca.size() == 0);
+    }
+    
+//    @Test
+    public void postUpdateTest() {
+        Author olleTheAuthor = new Author("Olle", "mittlösenord", Author.AccessLevel.AUTHOR);
+        
+        ar.add(olleTheAuthor);
+        olleTheAuthor =  ar.find(olleTheAuthor.getId());
+        
+        PhotoPost post = new PhotoPost(olleTheAuthor, "Olles FotoPost", "http://www.test.se/img.jpeg");
+        
+        pa.add(post);
+        
+        post = (PhotoPost)pa.find(post.getId());
+        pa.addComment(post, new Comment("B-T", "Underbart fartyg, snyggt fotat Olle!"));
+        pa.addComment(post, new Comment("Uno", "Många fina styralgoritmer där!"));
+        assertTrue(ca.size() == 2);
+        
+        PhotoPost updatedPost = new PhotoPost(post, "http://www.newURL.com/bild.png");
+        pa.update(updatedPost);
+        assertTrue(ca.size() == 2);
+        
+        post = (PhotoPost)pa.find(post.getId());
+        pa.addComment(post, new Comment("B-T", "hejsan hoppas!"));
+        assertTrue(ca.size() == 3);
+        
+        assertTrue(post.getComments().size() == 3);
+        
+        pa.remove(updatedPost.getId());
+        assertTrue(ca.size() == 0);
+        
     }
 }

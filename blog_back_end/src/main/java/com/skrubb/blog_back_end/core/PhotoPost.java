@@ -4,13 +4,9 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.io.Serializable;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,8 +25,8 @@ public class PhotoPost extends AbstractPost implements Serializable {
         
     }
     
-    public PhotoPost(Author author, String title, Set<Tag> tags, String photoUrl){
-        super(author,title,tags);
+    public PhotoPost(Author author, String title, String photoUrl){
+        super(author,title);
         this.photoUrl = photoUrl;
     }
     

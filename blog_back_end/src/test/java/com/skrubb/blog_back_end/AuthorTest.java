@@ -21,11 +21,12 @@ import static org.junit.Assert.*;
 public class AuthorTest {
     
     static final String TEST_PU = "blog_test";
+    static final String TEST_PU_EMBEDDED = "blog_test_embedded";
     static AuthorRegistry ar;
     
     @Before
     public void before() {
-        ar = new AuthorRegistry(TEST_PU);
+        ar = new AuthorRegistry(TEST_PU_EMBEDDED);
     }
     
     @Test

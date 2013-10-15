@@ -10,10 +10,9 @@ import com.skrubb.blog_back_end.utils.AbstractContentHandler;
  *
  * @author 
  */
-public class TagArchive extends AbstractContentHandler<Long, Tag> {
+public class TagArchive extends AbstractContentHandler<String, Tag> {
     
     public TagArchive(String puName) {
         super(Tag.class, puName);
     }
-    
 }

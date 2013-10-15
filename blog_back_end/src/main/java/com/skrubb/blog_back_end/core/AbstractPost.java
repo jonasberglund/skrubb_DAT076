@@ -5,11 +5,13 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractEntity;
+import com.skrubb.blog_back_end.utils.TagComparator;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,15 +48,15 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
     @JoinColumn(name = "TAGS")
     private Set<Tag> tags;
     
-    @OneToMany( cascade = {CascadeType.PERSIST, CascadeType.REMOVE} )
+    @OneToMany( cascade = CascadeType.REMOVE )
     @JoinColumn(name = "POST")
     private List<Comment> comments;
     
-    public AbstractPost(Author author, String title, Set<Tag> tags) {
+    public AbstractPost(Author author, String title) {
         this.author = author;
         this.title = title;
         this.comments =  new ArrayList<Comment>();
-        this.tags = tags;
+        this.tags = new TreeSet<Tag>(new TagComparator());
     }
 
     public AbstractPost(Long id, Author author, String title, List<Comment> comments) {
@@ -104,4 +106,7 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
         comments.add(c);
     }
     
+    public void addTag(Tag tag) {
+        tags.add(tag);
+    }
 }

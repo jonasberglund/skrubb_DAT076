@@ -5,6 +5,7 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
+import java.util.Iterator;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.inject.Named;
@@ -15,17 +16,31 @@ import javax.validation.constraints.Size;
  *
  * @author jonasberglund
  */
-//@Named("editAuthor")
-//@ConversationScoped
-@ManagedBean(name="editAuthor") 
+@Named("editAuthor")
+@ConversationScoped
+//@ManagedBean(name="editAuthor") 
 public class EditAuthorBB extends ConversationalBase{
-     
+
+    public EditAuthorBB()
+    {
+    
+    }
+    
     
     @Override
     protected void execute() {
-        //DummyDB.authors.remove(this);
-        Author a = new Author(Long.getLong("4"),getName(), getPassword(), getAL());
-        DummyDB.authors.add(a);
+        
+        Long idtoEdit=getId();
+        Iterator<Author> it=DummyDB.authors.iterator();
+        while(it.hasNext())
+        {
+        if(it.next().getId()==idtoEdit)
+            it.remove();
+        }
+        
+            
+        Author autherUpdated = new Author(getId(),getName(), getPassword(), getAL());
+        DummyDB.authors.add(autherUpdated);
     }
     
 }

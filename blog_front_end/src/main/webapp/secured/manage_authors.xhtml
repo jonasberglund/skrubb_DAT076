@@ -53,12 +53,12 @@
                                 <f:facet name="header">
                                     <h:outputText  value="Action"/>
                                 </f:facet>
-                                <h:commandButton actionListener="#{editAuthor.setSelected(p.id)}" 
-                                                 action="edit_author" value="Edit"/>
-                                 <h:button outcome="edit_author" value="Edit Author" class="small-button"/>
+                                <h:commandButton  actionListener="#{editAuthor.setSelected(p.id)}"
+                                                  action="edit_author" value="Edit"/>
+                                 
                                  <h:commandButton actionListener="#{delAuthor.setSelected(p.id)}"      
                                                  action="delete_author" value="Delete" />
-                                 <h:button outcome="edit_author" value="Delete Author" class="small-button"/>
+                                 
                             </p:column>
                         </p:dataTable>
                     </div>

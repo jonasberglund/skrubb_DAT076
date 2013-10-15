@@ -39,10 +39,10 @@ public abstract class ConversationalBase implements Serializable {
     }
         
     public void setSelected(Long id) {
-//        Logger.getAnonymousLogger().log(Level.INFO, "setSelected id={0}", id);
-//        if (conversation.isTransient()) {
-//            conversation.begin();
-//        }
+        Logger.getAnonymousLogger().log(Level.INFO, "setSelected id={0}", id);
+        if (conversation.isTransient()) {
+            conversation.begin();
+        }
         
         Author author = new Author(null,null,null);
         ArrayList<Author> authorList =  DummyDB.authors;

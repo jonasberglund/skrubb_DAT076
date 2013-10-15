@@ -29,7 +29,7 @@
                         <h:message for="al" />
                     </h:panelGrid>
                     <h:button outcome="manage_authors" value="Cancel"/>                   
-                    <h:commandButton action="#{addAuthor.save}" value="Save" />
+                    <h:commandButton action="#{addAuthor.actOnSelected()}" value="Save" />
                 </h:form>                
             </ui:define>
         </ui:composition>

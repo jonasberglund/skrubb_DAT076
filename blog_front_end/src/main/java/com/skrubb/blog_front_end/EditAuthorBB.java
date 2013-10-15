@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
  */
 @Named("editAuthor")
 @ConversationScoped
-//@ManagedBean(name="editAuthor") 
 public class EditAuthorBB extends ConversationalBase{
 
     public EditAuthorBB()

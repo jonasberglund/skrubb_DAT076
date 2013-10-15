@@ -5,8 +5,10 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.TextPost;
+import javax.enterprise.context.ConversationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
 
 /**
  *
@@ -14,6 +16,8 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name="editorBean")
 @SessionScoped
+//@Named("delProduct")
+//@ConversationScoped
 public class EditorBean {
     
     private String value;

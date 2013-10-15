@@ -17,14 +17,19 @@
                  <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
-                        <h:inputText id="id" value="#{editProduct.id}" disabled="true"/>
+                        <h:inputText id="id" value="#{editAuthor.id}" disabled="true"/>
                         <h:message for="id" />
                         <h:outputText value="Name" />
-                        <h:inputText id="name" value="#{editProduct.name}"/>
+                        <h:inputText id="name" value="#{editAuthor.name}"/>
                         <h:message for="name" />
-                        <h:outputText value="Price" />
-                        <h:inputText id="price" value="#{editProduct.price}"/>
-                        <h:message for="price" />
+                        <h:outputText value="Password" />
+                        <h:inputText id="password" value="#{editAuthor.password}"/>
+                        <h:message for="password" />
+                        <h:outputText value="Access level" />
+                        <h:selectOneMenu id="al" value="#{editAuthor.AL}">
+                            <f:selectItem itemValue="ADMIN" itemLabel="Admin" />
+                            <f:selectItem itemValue="AUTHOR" itemLabel="Author" />
+                        </h:selectOneMenu>
                     </h:panelGrid>
                     <h:button outcome="manage_authors" value="Cancel"/>                   
                     <h:commandButton action="#{editAuthor.actOnSelected()}"  value="Save" />

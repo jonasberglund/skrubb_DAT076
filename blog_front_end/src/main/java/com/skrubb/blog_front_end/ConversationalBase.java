@@ -52,7 +52,7 @@ public abstract class ConversationalBase implements Serializable {
             }
         }
                 
-        //his.id = author.getId();
+        this.id = author.getId();
         this.name = author.getName();
         this.password = author.getHashedPassword();
         this.al = author.getAccessLevel();
@@ -76,6 +76,15 @@ public abstract class ConversationalBase implements Serializable {
     // Implemented by subclasses
     protected abstract void execute();
 
+     public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    
      public String getName() {
         return name;
     }

@@ -19,51 +19,50 @@
                         <h:commandButton actionListener="#{products.prev}" value="Prev" class="small-button"/>
                         <h:commandButton actionListener="#{products.next}" value="Next" class="small-button"/>
                         <h:button outcome="add_author" value="Add Author" class="small-button"/>
-                        <h:commandButton action="#{auth.logout}" value="Logout" class="small-button"/>
-                        <h:outputText value="Logged in as #{request.remoteUser}" />                       
+                        <h:commandButton action="#{loginBean.doLogout}" value="Logout" class="small-button"/>
+                        <h:outputText value="Logged in as #{loginBean.username}" />                       
                         <br/>
                     </div>
                     <div class="product-table">
-                        <h:dataTable var="p" value="#{dummyDB.authors}">
-                            <h:column>
+                        <p:dataTable var="p" value="#{dummyDB.authors}">
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText  value="Id"/>
                                 </f:facet>
                                 <h:outputText value="#{p.id}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText  value="Name"/> 
                                 </f:facet>
                                 <h:outputText value="#{p.name}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText  value="Password"/>
                                 </f:facet>
                                 <h:outputText value="#{p.hashedPassword}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText  value="AccessLevel"/>
                                 </f:facet>
                                 <h:outputText value="#{p.accessLevel}"/>
-                            </h:column>
-                            <h:column>
+                            </p:column>
+                            <p:column>
                                 <f:facet name="header">
                                     <h:outputText  value="Action"/>
                                 </f:facet>
                                 <h:commandButton actionListener="#{editAuthor.setSelected(p.id)}" 
                                                  action="edit_author" value="Edit"/>
                                  <h:button outcome="edit_author" value="Edit Author" class="small-button"/>
-                                <h:commandButton actionListener="#{delProduct.setSelected(p.id)}"      
-                                                 action="#{products.navigate('delProduct')}" value="Delete" />
-                            </h:column>
-                        </h:dataTable>
+                                 <h:commandButton actionListener="#{delAuthor.setSelected(p.id)}"      
+                                                 action="delete_author" value="Delete" />
+                                 <h:button outcome="edit_author" value="Delete Author" class="small-button"/>
+                            </p:column>
+                        </p:dataTable>
                     </div>
                 </h:form>    
-                
-                
             </ui:define>
         </ui:composition>
         

@@ -101,12 +101,12 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
         comments.add(c);
     }
     
-    public void addComment(String commenter, String text) {
-        Comment c = new Comment(commenter, text);
-        comments.add(c);
-    }
-    
     public void addTag(Tag tag) {
         tags.add(tag);
     }
+    
+    public void removeComment(Comment c) {
+        comments.remove(c);
+    }
+    
 }

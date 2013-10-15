@@ -5,10 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
-import com.skrubb.blog_back_end.utils.TagComparator;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 import javax.persistence.EntityManager;
 
 /**
@@ -57,6 +54,12 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         post.addComment(comment);
         
         super.update(post);
+    }
+    
+    public void removeComment(Long postId, Long commentId) {
+        AbstractPost post = find(postId);
+        post.removeComment(commentArchive.find(commentId));
+        commentArchive.remove(commentId);
     }
     
 }

@@ -18,12 +18,12 @@
                     <h3>Welcome #{loginBean.username}</h3>
                     <br/>
                     <h:outputText value="This is a secured welcome page!"/>
-                        <ui:repeat value="#{dummyDB.getArrayListOfPost()}" var="t">
+                        <ui:repeat value="#{blog.getArrayListOfPost()}" var="t">
                                 <article class="topcontent">
                                     
                                     
                                         <ui:repeat value="#{t}" var="s">
-                                                <div><h:commandLink action="#{dummyDB.delPost(s)}" value="Delete post"/></div>
+                                                <div><h:commandLink action="#{blog.delPost(s)}" value="Delete post"/></div>
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
                                                 </header>

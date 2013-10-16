@@ -29,17 +29,11 @@ public class EditAuthorBB extends ConversationalBase{
     @Override
     protected void execute() {
         
-        Long idtoEdit=getId();
-        Iterator<Author> it=DummyDB.authors.iterator();
-        while(it.hasNext())
-        {
-        if(it.next().getId()==idtoEdit)
-            it.remove();
-        }
+       
         
             
-        Author autherUpdated = new Author(getId(),getName(), getPassword(), getAL());
-        DummyDB.authors.add(autherUpdated);
+       // Author autherUpdated = new Author(getId(),getName(), getPassword(), getAL());
+       // Blog.authors.add(autherUpdated);
     }
     
 }

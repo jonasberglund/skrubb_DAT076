@@ -27,14 +27,6 @@ public class DeleteAuthorBB extends ConversationalBase{
     @Override
     protected void execute() {
         
-        Long idtoRemove=getId();
-        Iterator<Author> it=DummyDB.authors.iterator();
-        while(it.hasNext())
-        {
-        if(it.next().getId()==idtoRemove)
-            it.remove();
-        }
-        
     }
     
 }

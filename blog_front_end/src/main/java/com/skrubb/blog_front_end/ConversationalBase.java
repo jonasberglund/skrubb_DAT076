@@ -30,6 +30,13 @@ public abstract class ConversationalBase implements Serializable {
     @NotNull(message="{common.notEmpty}")
     private Author.AccessLevel al;
     
+    protected Blog blog;
+    
+    @Inject
+    public void Blog(Blog blog)
+    {
+        this.blog=blog;
+    }
     
     @Inject
     private Conversation conversation;
@@ -44,18 +51,9 @@ public abstract class ConversationalBase implements Serializable {
             conversation.begin();
         }
         
-        Author author = new Author(null,null,null);
-        ArrayList<Author> authorList =  DummyDB.authors;
-        for(Author a : authorList){
-            if(a.getId().equals(id)){
-                author = a;
-            }
-        }
+       
                 
-        this.id = author.getId();
-        this.name = author.getName();
-        this.password = author.getHashedPassword();
-        this.al = author.getAccessLevel();
+       
     }
 
     @PreDestroy  // Must have for back button etc.

@@ -24,17 +24,20 @@ import javax.validation.constraints.Size;
 @ConversationScoped
 public class AddAuthorBB extends ConversationalBase {
     
+    
+    
     public AddAuthorBB(){
     
     }
 
-    
+        
     @Override
     protected void execute() {
         
         
-        Author autherUpdated = new Author(Long.valueOf("5"),getName(), getPassword(), getAL());
-        DummyDB.authors.add(autherUpdated);
+        Author autherUpdated = new Author(getName(), getPassword(), getAL());
+        blog.getAuthorRegistry().add(autherUpdated);
+        
         
     }
     

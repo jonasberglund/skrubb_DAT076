@@ -37,7 +37,7 @@ public class Author extends AbstractEntity implements Serializable {
     
     public Author(String name, String password, AccessLevel accessLevel){
         this.name = name;
-        this.hashedPassword = generateHashedPassword(hashedPassword);
+        this.hashedPassword = generateHashedPassword(password);
         this.accessLevel = accessLevel;
     }
     

@@ -13,7 +13,7 @@
     <h:body>
         <ui:composition template="/secured/template.xhtml">
             <ui:define name="content"> 
-                <h2>Delete author page</h2>
+                <h2>Edit author page</h2>
                  <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
@@ -34,13 +34,7 @@
                     <h:button outcome="manage_authors" value="Cancel"/>                   
                     <h:commandButton action="#{editAuthor.actOnSelected()}"  value="Save" />
                 </h:form>
-
-                
-                
             </ui:define>
         </ui:composition>
-        
-        
-         
     </h:body>
 </html>

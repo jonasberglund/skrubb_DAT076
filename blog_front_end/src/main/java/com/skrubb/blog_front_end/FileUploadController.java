@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.security.Timestamp;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -34,10 +35,10 @@ public class FileUploadController {
 
     public void copyFile(String fileName, InputStream in) {
            try {
-             
-             
+                
+                
                 // write the inputStream to a FileOutputStream
-                OutputStream out = new FileOutputStream(new File(destination + fileName));
+                OutputStream out = new FileOutputStream(new File(destination + System.currentTimeMillis() + fileName));
              
                 int read = 0;
                 byte[] bytes = new byte[1024];

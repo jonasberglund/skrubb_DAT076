@@ -20,15 +20,17 @@
                         <h:inputText id="id" value="#{delAuthor.id}" disabled="true"/>
                         <h:message for="id" />
                         <h:outputText value="Name" />
-                        <h:outputText id="name" value="#{delAuthor.name}"/>
+                        <h:inputText id="name" value="#{delAuthor.name}" disabled="true"/>
                         <h:message for="name" />
                         <h:outputText value="Password" />
-                        <h:outputText id="price" value="#{delAuthor.password}"/>
-                        <h:message for="Access level" />
-                        <h:selectOneMenu id="al" value="#{delAuthor.AL}">
+                        <h:inputText id="password" value="#{delAuthor.password}" disabled="true"/>
+                        <h:message for="password" />
+                        <h:outputText value="Access level" />
+                        <h:selectOneMenu id="al" value="#{editAuthor.AL}" disabled="true">
                             <f:selectItem itemValue="ADMIN" itemLabel="Admin" />
                             <f:selectItem itemValue="AUTHOR" itemLabel="Author" />
                         </h:selectOneMenu>
+                         <h:message for="al" />
                     </h:panelGrid>
                     <h:button outcome="manage_authors" value="Cancel"/>                   
                     <h:commandButton action="#{delAuthor.actOnSelected()}"  value="Delete" />

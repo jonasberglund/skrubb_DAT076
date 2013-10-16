@@ -20,11 +20,11 @@ public abstract class ConversationalBase implements Serializable {
     private Long id;
     
     @NotNull(message="{common.notEmpty}")
-    @Size(min=4, max=20, message="{author.name}")
+    @Size(min=4, max=20, message="{user.name}")
     private String name;
     
     @NotNull(message="{common.notEmpty}")
-    @Size(min=4, max=20, message="{author.name}")
+    @Size(min=4, max=20, message="{user.password}")
     private String password;
     
     @NotNull(message="{common.notEmpty}")

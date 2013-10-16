@@ -55,10 +55,6 @@ public class CommentTest {
         
         assertTrue(ca.size() == 0);
         assertTrue(pa.find(tp.getId()).getComments().size() == 0);
-
-        //COMMENT UPDATE? UPPDATERA POSTEN?
-   
-        
         
     }
 }

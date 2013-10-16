@@ -15,4 +15,9 @@ public class TagArchive extends AbstractContentHandler<String, Tag> {
     public TagArchive(String puName) {
         super(Tag.class, puName);
     }
+    
+    @Override
+    public Tag find(String key) {
+        return super.find(key.toUpperCase().trim());
+    }
 }

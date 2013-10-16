@@ -32,7 +32,7 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
     }
    
     public void addTag(AbstractPost post, Tag tag ) {
-        tagArchive.add(tag);
+        tagArchive.update(tag);
         tag = tagArchive.find(tag.getId());
         
         post.addTag(tag);
@@ -60,6 +60,7 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         AbstractPost post = find(postId);
         post.removeComment(commentArchive.find(commentId));
         commentArchive.remove(commentId);
+        super.update(post);
     }
     
 }

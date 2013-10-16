@@ -37,33 +37,18 @@ public class PostArchiveTest {
     @Before
     public void before() {
         
-        pa = new PostArchive(TEST_PU_EMBEDDED);
-        ar = new AuthorRegistry(TEST_PU_EMBEDDED);
-        ta = new TagArchive(TEST_PU_EMBEDDED);
-        ca = new CommentArchive(TEST_PU_EMBEDDED);
+        pa = new PostArchive(TEST_PU);
+        ar = new AuthorRegistry(TEST_PU);
+        ta = new TagArchive(TEST_PU);
+        ca = new CommentArchive(TEST_PU);
     }
     
-    @Test
+//    @Test
     public void addAndRemovePostTest() {
         
         Author a = new Author("name", "password", Author.AccessLevel.AUTHOR);
         ar.add(a);
         a = ar.find(a.getId());
-        
-        TagComparator comparator = new TagComparator();
-        
-        TreeSet<Tag> textTags = new TreeSet<Tag>(comparator);
-        TreeSet<Tag> photoTags = new TreeSet<Tag>(comparator);
-        
-        Tag firstTag =  new Tag("first");
-        ta.add(firstTag);
-        
-        Tag lifeTag =  new Tag("life");
-        ta.add(lifeTag);
-        
-        textTags.add(ta.find(firstTag.getId()));
-        textTags.add(ta.find(lifeTag.getId()));
-        photoTags.add(ta.find(lifeTag.getId()));
         
         TextPost tpost = new TextPost(a, "First post", "Hello Olle!");
         PhotoPost ppost = new PhotoPost(a, "First photo post", "http://someurl.com/pic.jpg");
@@ -106,7 +91,7 @@ public class PostArchiveTest {
         
     }
     
-//    @Test
+    @Test
     public void testGetByTag(){
     
         Author a1 = new Author("name1", "password", Author.AccessLevel.AUTHOR);
@@ -132,10 +117,10 @@ public class PostArchiveTest {
         pa.addTag(tpost2, new Tag("life"));
         pa.addTag(tpost2, new Tag("death"));
         
-        assertTrue(pa.getByTag(ta.find("first")).size() == 1);
-        assertTrue(pa.getByTag(ta.find("first")).get(0).getTitle().equals("First post"));
+        assertTrue(pa.getByTag(ta.find("FIRSt ")).size() == 1);
+        assertTrue(pa.getByTag(ta.find("FIRST")).get(0).getTitle().equals("First post"));
         assertTrue(pa.getByTag(ta.find("life")).size() == 2);
-        assertTrue(pa.getByTag(ta.find("death")).size() == 1);
+        assertTrue(pa.getByTag(ta.find("deaTh")).size() == 1);
         assertTrue(pa.getByTag(ta.find("unknown")).size() == 0);
     }
     

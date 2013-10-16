@@ -6,6 +6,10 @@ package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -31,9 +35,9 @@ public class Author extends AbstractEntity implements Serializable {
         
     }
     
-    public Author(String name, String hashedPassword, AccessLevel accessLevel){
+    public Author(String name, String password, AccessLevel accessLevel){
         this.name = name;
-        this.hashedPassword = hashedPassword;
+        this.hashedPassword = generateHashedPassword(hashedPassword);
         this.accessLevel = accessLevel;
     }
     
@@ -57,6 +61,32 @@ public class Author extends AbstractEntity implements Serializable {
         return accessLevel;
     }
     
+    public static String generateHashedPassword(String password) {
+        
+        String salt = "Skrubb159Salt+=@$skrubb";
+        
+        return md5(password + salt);
+    }
+    
+    private static String md5(String s) {
+        
+        String md5 = null;
+        
+        if (s == null) {
+            return null;
+        }
+        
+        try {
+            MessageDigest digest = MessageDigest.getInstance("md5");
+            digest.update(s.getBytes(), 0, s.length());
+            md5 = new BigInteger(1, digest.digest()).toString(16);
+            
+        } catch (Exception e) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "Hashing password failed");
+        }
+        
+        return md5;
+    }
     
     public enum AccessLevel {  
         ADMIN,

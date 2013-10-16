@@ -4,7 +4,6 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,7 +16,6 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="TAGS")
-//public class Tag extends AbstractEntity{
 public class Tag implements Serializable {  
 
     @Id
@@ -25,7 +23,7 @@ public class Tag implements Serializable {
     private String value;
     
     public Tag (String value) {
-        this.value = value;
+        this.value = formTag(value);
     }
     
     protected Tag() {
@@ -38,5 +36,9 @@ public class Tag implements Serializable {
     
     public String getValue() {
         return value;
+    }
+    
+    private String formTag(String unformedTag) {
+        return unformedTag.toUpperCase().trim();
     }
 }

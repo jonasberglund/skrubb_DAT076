@@ -4,8 +4,6 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import java.util.Set;
-
 /**
  *
  * @author robin
@@ -14,31 +12,19 @@ import java.util.Set;
 public class Blog {
     
     private PostArchive postArchive;
-    private String title;
-    private String headerUrl;
-    private Set<Author> authors;
+    private AuthorRegistry authorRegistry;
     
-    public Blog(PostArchive postArchive, String title, String headerUrl, Set<Author> authors) {
-        this.authors = authors;
-        this.headerUrl = headerUrl;
-        this.title = title;
-        this.postArchive = postArchive;
+    public Blog(String puName) {
+        postArchive = new PostArchive(puName);
+        authorRegistry = new AuthorRegistry(puName);
     }
     
     public PostArchive getPostArchive() {
         return postArchive;
     }
     
-    public String getTitle() {
-        return title;
-    }
-    
-    public String getHeaderUrl() {
-        return headerUrl;
-    }
-    
-    public Set<Author> getAuthors() {
-        return authors;
+    public AuthorRegistry getAuthorRegistry() {
+        return authorRegistry;
     }
     
 }

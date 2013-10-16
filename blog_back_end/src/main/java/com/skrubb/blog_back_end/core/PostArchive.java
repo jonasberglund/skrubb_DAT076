@@ -31,9 +31,11 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
                 AbstractPost.class).setParameter("author", author).getResultList();
     }
    
-    public void addTag(AbstractPost post, Tag tag ) {
+    public void addTag(Long postId, Tag tag ) {
         tagArchive.update(tag);
         tag = tagArchive.find(tag.getId());
+        
+        AbstractPost post = this.find(postId);
         
         post.addTag(tag);
         
@@ -47,9 +49,11 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
                 AbstractPost.class).setParameter("tag", tag).getResultList();
     }
     
-    public void addComment(AbstractPost post, Comment comment) {
+    public void addComment(Long postId, Comment comment) {
         commentArchive.add(comment);
         comment = commentArchive.find(comment.getId());
+        
+        AbstractPost post = this.find(postId);
         
         post.addComment(comment);
         

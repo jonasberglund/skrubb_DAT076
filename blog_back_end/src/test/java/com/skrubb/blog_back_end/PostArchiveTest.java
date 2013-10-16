@@ -108,14 +108,14 @@ public class PostArchiveTest {
         pa.add(tpost2);
         pa.add(tpost3);
         
-        tpost1 = (TextPost)pa.find(tpost1.getId());
-        tpost2 = (TextPost)pa.find(tpost2.getId());
+        //tpost1 = (TextPost)pa.find(tpost1.getId());
+        //tpost2 = (TextPost)pa.find(tpost2.getId());
         
-        pa.addTag(tpost1, new Tag("first"));
-        pa.addTag(tpost1, new Tag("life"));
+        pa.addTag(tpost1.getId(), new Tag("first"));
+        pa.addTag(tpost1.getId(), new Tag("life"));
         
-        pa.addTag(tpost2, new Tag("life"));
-        pa.addTag(tpost2, new Tag("death"));
+        pa.addTag(tpost2.getId(), new Tag("life"));
+        pa.addTag(tpost2.getId(), new Tag("death"));
         
         assertTrue(pa.getByTag(ta.find("FIRSt ")).size() == 1);
         assertTrue(pa.getByTag(ta.find("FIRST")).get(0).getTitle().equals("First post"));
@@ -142,9 +142,9 @@ public class PostArchiveTest {
         AbstractPost post = pa.find(photoPost.getId());
         
         Comment c = new Comment("Manne", "Vilken snygg bild!");
-        pa.addComment(post, c);
+        pa.addComment(post.getId(), c);
         c = new Comment("B-T", "Håller med Manne");
-        pa.addComment(post, c);
+        pa.addComment(post.getId(), c);
         
         assertTrue(post.getComments().size() == 2);
         
@@ -165,8 +165,8 @@ public class PostArchiveTest {
         pa.add(post);
         
         post = (PhotoPost)pa.find(post.getId());
-        pa.addComment(post, new Comment("B-T", "Underbart fartyg, snyggt fotat Olle!"));
-        pa.addComment(post, new Comment("Uno", "Många fina styralgoritmer där!"));
+        pa.addComment(post.getId(), new Comment("B-T", "Underbart fartyg, snyggt fotat Olle!"));
+        pa.addComment(post.getId(), new Comment("Uno", "Många fina styralgoritmer där!"));
         assertTrue(ca.size() == 2);
         
         PhotoPost updatedPost = new PhotoPost(post, "http://www.newURL.com/bild.png");
@@ -174,7 +174,7 @@ public class PostArchiveTest {
         assertTrue(ca.size() == 2);
         
         post = (PhotoPost)pa.find(post.getId());
-        pa.addComment(post, new Comment("B-T", "hejsan hoppas!"));
+        pa.addComment(post.getId(), new Comment("B-T", "hejsan hoppas!"));
         assertTrue(ca.size() == 3);
         
         assertTrue(post.getComments().size() == 3);

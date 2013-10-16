@@ -44,9 +44,10 @@ public class CommentTest {
         
         Comment c = new Comment("Olly", "Nedrans vad ballt!");
         pa.add(tp);
+        
         tp = (TextPost) pa.find(tp.getId());
         
-        pa.addComment(tp, c);
+        pa.addComment(tp.getId(), c);
         
         assertTrue(ca.size() == 1);
         assertTrue(tp.getComments().size() == 1);

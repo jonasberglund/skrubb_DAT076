@@ -8,14 +8,19 @@ and open the template in the editor.
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    <head>
+    <h:head>
         <title>Skrubb</title>
-    </head>
+        
+    </h:head>
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                 <ui:repeat value="#{posts.range}" var="t">
-                                <article class="topcontent">
+                 
+                
+                
+                <ui:repeat value="#{posts.range}" var="t">
+                      <h:form>           
+                        <article class="topcontent">
                                     
                                     
                                         <ui:repeat value="#{t}" var="s">
@@ -24,13 +29,13 @@ and open the template in the editor.
                                                 </header>
 
                                                 <footer>
-                                                    <h4><h:outputText value="Posted by #{s.author.name}"></h:outputText></h4>
+                                                    <h:outputText value="Posted by #{s.author.name}"></h:outputText>
                                                 </footer>
 
                                                 <content>
 
                                                     <h:panelGrid columns="1" cellpadding="10">
-                                                           <p:graphicImage value="/resources/img/fisheye.jpg" /> 
+                                                           <!--<p:graphicImage value="/resources/img/fisheye.jpg" />--> 
                                                            <h:outputText value="#{s.text}"/>  
                                                     </h:panelGrid>
                                                  
@@ -55,7 +60,7 @@ and open the template in the editor.
                                         </ui:repeat>     
                                     </article>
                                             
-           
+                            </h:form>
                         </ui:repeat>
                </ui:define>
         </ui:composition>

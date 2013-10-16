@@ -19,16 +19,16 @@
                         <h3>Titel</h3>  
                         <!--<p:inputTextarea title="Title" rows="1" cols="50" value="#{editorBean.title}" />-->
                         <h:outputText value="Title: " />
-                        <p:inputText required="" value="#{editorBean.title}"></p:inputText>
+                        <p:inputText required="" value="#{addPost.title}"></p:inputText>
 
   
                     
-                    <p:editor id="editor" value="#{editorBean.value}" width="600"/>  
+                    <p:editor id="editor" value="#{addPost.value}" width="600"/>  
 
                     <h:panelGrid columns="2" style="margin-top:10px">  
-                       <p:commandButton value="Post" actionListener="#{editorBean.textPost()}" action="welcome.xhtml"/>                         
-                       <p:commandButton value="Rensa" actionListener="#{editorBean.textClear()}"  
-                                        icon="ui-icon-close" action="text_post.xhtml" />
+                       <p:commandButton value="Post" action="#{addPost.actOnSelected()}"/>                         
+<!--                       <p:commandButton value="Rensa" actionListener="#{editorBean.textClear()}"  
+                                        icon="ui-icon-close" action="text_post.xhtml" />-->
                         <!--<p:commandButton id="submitButton" value="Submit" update="display" oncomplete="PF('dlg').show()"  
                                         icon="ui-icon-disk" /> --> 
                         

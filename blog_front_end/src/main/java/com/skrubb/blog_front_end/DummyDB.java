@@ -9,6 +9,7 @@ import com.skrubb.blog_back_end.core.Post;
 import com.skrubb.blog_back_end.core.TextPost;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
@@ -76,7 +77,15 @@ public class DummyDB {
     }
     
     public void delPost(Post post){
-        listOfPost.remove(post);
+        
+        Iterator<Post> it=DummyDB.listOfPost.iterator();
+        while(it.hasNext())
+        {
+        if(it.next().getId()==post.getId())
+            it.remove();
+        }
+        
+        
     }
     
     public ArrayList<Author> getAuthors(){

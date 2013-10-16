@@ -31,13 +31,6 @@ public class AddPost extends ConversationalPost {
        
         
         DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));
-        //DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));
-        /*TextPost tp=new TextPost(null,DummyDB.a1, null, getTitle(), null, getValue());
-        Long i=Long.valueOf("1");
-        tp.id=i;
-        DummyDB.listOfPost.add(tp );
-        */
-        
-       
+      
     }
 }

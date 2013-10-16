@@ -5,6 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -15,6 +16,17 @@ public class AuthorRegistry extends AbstractContentHandler<Long, Author> {
     
     public AuthorRegistry(String puName){
         super(Author.class, puName);
+    }
+    
+    public Author getAuthorByLogin(String name, String hashedPassword){
+        EntityManager em = getEntityManager();
+        
+        try{
+            return em.createQuery("select a from Author a where a.name = :name AND a.hashedPassword = :hashedPassword",
+                Author.class).setParameter("name", name).setParameter("hashedPassword", hashedPassword).getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
     }
     
 }

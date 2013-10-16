@@ -18,7 +18,7 @@
                     <h3>Welcome #{loginBean.username}</h3>
                     <br/>
                     <h:outputText value="This is a secured welcome page!"/>
-                        <ui:repeat value="#{blog.getArrayListOfPost()}" var="t">
+                    <ui:repeat value="#{posts.range}" var="t">
                                 <article class="topcontent">
                                     
                                     

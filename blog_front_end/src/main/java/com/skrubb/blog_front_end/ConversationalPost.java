@@ -18,7 +18,7 @@ import javax.inject.Inject;
  *
  * @author Anders
  */
-public abstract class ConversationalPost implements Serializable{
+public abstract class ConversationalPost extends ConversationalBase implements Serializable{
     
     private Long id;
     
@@ -27,9 +27,6 @@ public abstract class ConversationalPost implements Serializable{
     private String title;
     private String value;
     
-    
-    @Inject
-    private Conversation conversation;
     
     public ConversationalPost(){
     
@@ -60,8 +57,6 @@ public abstract class ConversationalPost implements Serializable{
         return "welcome";
     }
 
-    // Implemented by subclasses
-    protected abstract void execute();
 
      public Long getId() {
         return id;
@@ -84,5 +79,13 @@ public abstract class ConversationalPost implements Serializable{
     }
     public String getValue(){
         return value;
+    }
+    
+    public void setAuthor(Author author){
+        this.author = author;
+    }
+    
+    public Author getAuthor(){
+        return author;
     }
 }

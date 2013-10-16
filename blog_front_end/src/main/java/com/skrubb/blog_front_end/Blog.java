@@ -33,6 +33,7 @@ public class Blog implements Serializable{
     public Blog(){
     
        blog= BlogFactory.getBlog(pu_name);
+       //createAdmin();
     }
     
     public PostArchive getPostArchive(){
@@ -45,25 +46,8 @@ public class Blog implements Serializable{
         return blog.getAuthorRegistry();
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    public static ArrayList<AbstractPost> listOfPost =new ArrayList<AbstractPost>();
-    
-    public ArrayList<AbstractPost> getArrayListOfPost(){
-    
-        return listOfPost;
-    }
-    
-    
-    
-    
-    
-    
-    
+    private void createAdmin(){
+        Author admin = new Author("admin","password",Author.AccessLevel.ADMIN);
+        getAuthorRegistry().add(admin);
+    }    
 }

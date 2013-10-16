@@ -11,6 +11,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
@@ -28,7 +29,19 @@ public class AddPost extends ConversationalPost {
     
     @Override
     protected void execute() {
+        
+       Author a1= blog.getAuthorRegistry().getAuthorByLogin("olle", Author.generateHashedPassword("kissekatt"));
        
+       TextPost tp = new TextPost(a1, getTitle(), getValue());
+       
+       blog.getPostArchive().add(tp);
+       
+       
+       //Get author
+       //Author a = getAuthor();
+        
+       //blog.getPostArchive().add(null);
+        
         
        // Blog.listOfPost.add(new TextPost(Blog.a1, getTitle(), getValue()));
         //DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));

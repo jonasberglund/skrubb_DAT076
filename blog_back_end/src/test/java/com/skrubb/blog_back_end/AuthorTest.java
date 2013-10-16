@@ -29,7 +29,7 @@ public class AuthorTest {
         ar = new AuthorRegistry(TEST_PU_EMBEDDED);
     }
     
-//    @Test
+    //@Test
     public void testAddAndFindAndRemove() {
         
         //Create author
@@ -96,5 +96,17 @@ public class AuthorTest {
         }
         
         assertTrue(ar.size() == 0);
+    }
+    
+    @Test
+    public void testGetByLogin() {
+        
+        Author a = new Author("olle", "bulan", Author.AccessLevel.AUTHOR);
+        ar.add(a);
+        a = ar.find(a.getId());
+        
+        Author b = ar.getAuthorByLogin("olle", Author.generateHashedPassword("bulan"));
+        
+        assertTrue(a.equals(b));
     }
 }

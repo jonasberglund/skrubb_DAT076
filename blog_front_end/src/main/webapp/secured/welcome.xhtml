@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"     
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+  
+    <h:head>
+        <title>Admin page</title>
+        
+    </h:head>
+    <h:body>
+        <ui:composition template="/secured/template.xhtml">
+            <ui:define name="content"> 
+                <h:form>
+                    <h3>Welcome #{loginBean.username}</h3>
+                    <br/>
+                    <h:outputText value="This is a secured welcome page!"/>
+                        <ui:repeat value="#{dummyDB.getArrayListOfPost()}" var="t">
+                                <article class="topcontent">
+                                    
+                                    
+                                        <ui:repeat value="#{t}" var="s">
+                                                <div><h:commandLink action="#{dummyDB.delPost(s)}" value="Delete post"/></div>
+                                                <header>
+                                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
+                                                </header>
+
+                                                <footer>
+
+                                                </footer>
+
+                                                <content>
+
+                                                    <h:panelGrid columns="1" cellpadding="10">
+                                                           <p:graphicImage value="/resources/img/fisheye.jpg" /> 
+                                                           <h:outputText value="#{s.text}"/>  
+                                                    </h:panelGrid>
+                                                 
+                                                 </content>
+                                                 
+                                            <!-- Comments-->
+                                                 <header>
+                                                    <a href="#" id="comments">Comments</a>
+                                                </header>
+                                                <content>
+                                                    <p>...This is all visible content... 
+                                                    <a href="#" id="example-show" class="showLink" 
+                                                    onclick="showHide('example');return false;">See more.</a>
+                                                    </p>
+
+                                                    <div id="example" class="more">
+                                                            <p>...This content is hidden by default...</p>
+                                                            <p><a href="#" id="example-hide" class="hideLink" 
+                                                            onclick="showHide('example');return false;">Hide this content.</a></p>
+                                                    </div>
+                                               </content>
+                                        </ui:repeat>     
+                                    </article>
+                                            
+           
+                        </ui:repeat>
+                    <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>

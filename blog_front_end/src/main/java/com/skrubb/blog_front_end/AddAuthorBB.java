@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
  */
 @Named("addAuthor")
 @ConversationScoped
-public class AddAuthorBB extends ConversationalBase {
+public class AddAuthorBB extends ConversationalAuthor {
     
     
     

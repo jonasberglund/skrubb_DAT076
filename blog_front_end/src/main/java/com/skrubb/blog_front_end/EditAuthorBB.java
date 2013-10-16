@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
  */
 @Named("editAuthor")
 @ConversationScoped
-public class EditAuthorBB extends ConversationalBase{
+public class EditAuthorBB extends ConversationalAuthor{
 
     public EditAuthorBB()
     {
@@ -28,12 +28,8 @@ public class EditAuthorBB extends ConversationalBase{
     
     @Override
     protected void execute() {
-        
-       
-        
-            
-       // Author autherUpdated = new Author(getId(),getName(), getPassword(), getAL());
-       // Blog.authors.add(autherUpdated);
+       Author authorUpdated = new Author(getId(),getName(), getPassword(), getAL());
+       blog.getAuthorRegistry().update(authorUpdated);
     }
     
 }

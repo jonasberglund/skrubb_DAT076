@@ -14,37 +14,49 @@ and open the template in the editor.
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                 <ui:repeat value="#{blog.getArrayListOfPost()}" var="t">
-                    <article class="topcontent">
-					<header>
-						<h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Skrubb post</a></h2>
-					</header>					
-					<footer>
-						<p class="post-info">This is a post made by skrubb</p>
-					</footer>
-					
-					<content>
-                                            <ui:repeat value="#{t}" var="s">
-                                                 <h:panelGrid columns="1" cellpadding="10">
-                                                         <p:graphicImage value="/resources/img/fisheye.jpg" />
-                                                         <h:outputText value="#{s.text}"/>
-                                                 </h:panelGrid>
-                                                 <br></br>
-                                                 <br></br>
-                                             </ui:repeat>
-					</content>
-				</article>                               <article class="topcontent">
-                                    <header>
-                                            <h2><a href="#" rel="bookmark" title="comments">Comments</a></h2>
-                                    </header>
-                                            <h:panelGrid columns="1" cellpadding="10">
-                                                <h:outputText value="Bla Bla Bla Bla....."/>
-                                            </h:panelGrid>
-                                            <h:panelGrid columns="1" cellpadding="10">
-                                                <h:outputText value="Bla Bla Bla Bla....."/>
-                                            </h:panelGrid>                   
-                                </article>
-                            </ui:repeat>
+                 <ui:repeat value="#{posts.range}" var="t">
+                                <article class="topcontent">
+                                    
+                                    
+                                        <ui:repeat value="#{t}" var="s">
+                                                <header>
+                                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
+                                                </header>
+
+                                                <footer>
+                                                    <h4><h:outputText value="Posted by #{s.author.name}"></h:outputText></h4>
+                                                </footer>
+
+                                                <content>
+
+                                                    <h:panelGrid columns="1" cellpadding="10">
+                                                           <p:graphicImage value="/resources/img/fisheye.jpg" /> 
+                                                           <h:outputText value="#{s.text}"/>  
+                                                    </h:panelGrid>
+                                                 
+                                                 </content>
+                                                 
+                                            <!-- Comments-->
+                                                 <header>
+                                                    <a href="#" id="comments">Comments</a>
+                                                </header>
+                                                <content>
+                                                    <p>...This is all visible content... 
+                                                    <a href="#" id="#{s.id}-show" class="showLink" 
+                                                    onclick="showHide(#{s.id});return false;">See more.</a>
+                                                    </p>
+
+                                                    <div id="#{s.id}" class="more">
+                                                            <p>...This content is hidden by default...</p>
+                                                            <p><a href="#" id="#{s.id}-hide" class="hideLink" 
+                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
+                                                    </div>
+                                               </content>
+                                        </ui:repeat>     
+                                    </article>
+                                            
+           
+                        </ui:repeat>
                </ui:define>
         </ui:composition>
      </h:body>

@@ -17,6 +17,21 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="style.css"  />
         <title>Skrubbblogen</title>
+        <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+         <h:outputScript target="head">
+            // Add the $() function
+            $ = jQuery;
+            // Now you can use it
+            $(function(){
+                $('#comments').click(function(){
+                   var commentSection =$(this).parent('article').find('#commentSection');
+                   if(commentSection.hasClass('hidden'))
+                       commentSection.removeClass('hidden');
+                   else
+                       commentSection.addClass('hidden');
+                });
+             }); 
+        </h:outputScript>
         
     </h:head>
 
@@ -24,12 +39,6 @@
 	
 	<header class="mainHeader">
             <img src="resources/img/logo.png"></img>
-		<nav><ul>
-			<li class="active"><a href="index.xhtml">Home</a></li>
-			<li><a href="#">Portfolio</a></li>
-			<li><a href="#">Blog</a></li>
-                        <li><a href="login.xhtml">Login</a></li>
-		</ul></nav>
 	</header>
         
         <div id="maincontent" class="mainContent">
@@ -78,7 +87,7 @@
             </div>
 		
 	<footer class="mainFooter">
-		<p>Copyright &copy; 2013 <a href="http://skrubbgruppen.se">Skrubbgruppen</a></p>
+		<p>Copyright &copy; 2013 <a href="http://skrubbgruppen.se">Skrubbgruppen</a>  <a href="login.xhtml">Login</a></p>
 	</footer>
     
     </body>   

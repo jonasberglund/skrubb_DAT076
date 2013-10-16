@@ -8,6 +8,7 @@
     <class>com.skrubb.blog_back_end.core.Tag</class>
     <class>com.skrubb.blog_back_end.core.TextPost</class>
     <class>com.skrubb.blog_back_end.core.AbstractPost</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/blog"/>
       <property name="javax.persistence.jdbc.password" value="skrubb"/>

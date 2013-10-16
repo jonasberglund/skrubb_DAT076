@@ -18,7 +18,7 @@ import javax.validation.constraints.Size;
  */
 @Named("delAuthor")
 @ConversationScoped
-public class DeleteAuthorBB extends ConversationalBase{
+public class DeleteAuthorBB extends ConversationalAuthor{
    
     public DeleteAuthorBB(){
     
@@ -26,7 +26,7 @@ public class DeleteAuthorBB extends ConversationalBase{
     
     @Override
     protected void execute() {
-        
+        blog.getAuthorRegistry().remove(getId());
     }
     
 }

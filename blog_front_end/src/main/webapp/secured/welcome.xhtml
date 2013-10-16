@@ -23,13 +23,13 @@
                                     
                                     
                                         <ui:repeat value="#{t}" var="s">
-                                                <div><h:commandLink action="#{blog.delPost(s)}" value="Delete post"/></div>
+                                            <div><h:commandLink action="#{posts.deletePost(s.id)}" value="Delete post"/></div>
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
                                                 </header>
 
                                                 <footer>
-
+                                                    <h4><h:outputText value="Posted by #{s.author.name}"></h:outputText></h4>
                                                 </footer>
 
                                                 <content>
@@ -47,14 +47,14 @@
                                                 </header>
                                                 <content>
                                                     <p>...This is all visible content... 
-                                                    <a href="#" id="example-show" class="showLink" 
-                                                    onclick="showHide('example');return false;">See more.</a>
+                                                    <a href="#" id="#{s.id}-show" class="showLink" 
+                                                    onclick="showHide(#{s.id});return false;">See more.</a>
                                                     </p>
 
-                                                    <div id="example" class="more">
+                                                    <div id="#{s.id}" class="more">
                                                             <p>...This content is hidden by default...</p>
-                                                            <p><a href="#" id="example-hide" class="hideLink" 
-                                                            onclick="showHide('example');return false;">Hide this content.</a></p>
+                                                            <p><a href="#" id="#{s.id}-hide" class="hideLink" 
+                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
                                                     </div>
                                                </content>
                                         </ui:repeat>     
@@ -62,7 +62,7 @@
                                             
            
                         </ui:repeat>
-                    <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
+                    
                 </h:form>    
             </ui:define>
         </ui:composition>

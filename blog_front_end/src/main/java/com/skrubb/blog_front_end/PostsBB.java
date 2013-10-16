@@ -29,4 +29,8 @@ public class PostsBB {
     public List<AbstractPost> getRange(){
         return blog.getPostArchive().getRange(0, blog.getPostArchive().size());
     }
+    
+    public void deletePost(Long id){
+        blog.getPostArchive().remove(id);
+    }
 }

@@ -30,7 +30,7 @@ public class AddPost extends ConversationalPost {
     protected void execute() {
        
         
-        DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));
+        DummyDB.listOfPost.add(new TextPost(DummyDB.a1, getTitle(), getValue()));
         //DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));
         /*TextPost tp=new TextPost(null,DummyDB.a1, null, getTitle(), null, getValue());
         Long i=Long.valueOf("1");

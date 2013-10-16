@@ -29,7 +29,7 @@ public class AuthorTest {
         ar = new AuthorRegistry(TEST_PU_EMBEDDED);
     }
     
-    @Test
+//    @Test
     public void testAddAndFindAndRemove() {
         
         //Create author
@@ -55,7 +55,7 @@ public class AuthorTest {
         assertTrue(a == null);
     }
     
-    @Test
+//    @Test
     public void testUpdate() {
         Author a = new Author("olle", "trobbe", AccessLevel.ADMIN);
         
@@ -74,7 +74,7 @@ public class AuthorTest {
         assertTrue(ar.size() == 0);
     }
     
-    @Test
+//    @Test
     public void testGetRange() {
         
         for (int i = 0; i < 5; i++) {

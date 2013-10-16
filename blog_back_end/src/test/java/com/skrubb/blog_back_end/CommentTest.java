@@ -28,9 +28,9 @@ public class CommentTest {
     
     @Before
     public void before() {
-        pa = new PostArchive(TEST_PU);
-        ar = new AuthorRegistry(TEST_PU);
-        ca = new CommentArchive(TEST_PU);
+        pa = new PostArchive(TEST_PU_EMBEDDED);
+        ar = new AuthorRegistry(TEST_PU_EMBEDDED);
+        ca = new CommentArchive(TEST_PU_EMBEDDED);
         
     }
     

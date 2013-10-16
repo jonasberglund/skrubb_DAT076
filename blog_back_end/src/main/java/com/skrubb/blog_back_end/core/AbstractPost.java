@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -48,8 +50,11 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
     @JoinColumn(name = "TAGS")
     private Set<Tag> tags;
     
-    @OneToMany( cascade = CascadeType.REMOVE )
-    @JoinColumn(name = "POST")
+    @ElementCollection
+    @CollectionTable(
+        name="COMMENT"//,
+        //joinColumns=@JoinColumn(name="POST_ID")
+    )
     private List<Comment> comments;
     
     public AbstractPost(Author author, String title) {

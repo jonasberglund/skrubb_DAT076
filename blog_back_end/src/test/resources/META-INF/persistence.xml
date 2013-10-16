@@ -3,7 +3,6 @@
   <persistence-unit name="blog_test" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.skrubb.blog_back_end.core.Author</class>
-    <class>com.skrubb.blog_back_end.core.Comment</class>
     <class>com.skrubb.blog_back_end.core.PhotoPost</class>
     <class>com.skrubb.blog_back_end.core.TextPost</class>
     <class>com.skrubb.blog_back_end.core.Tag</class>
@@ -16,9 +15,7 @@
       <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
-  
-  
-   <persistence-unit name="blog_test_embedded" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="blog_test_embedded" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.skrubb.blog_back_end.core.Author</class>
     <class>com.skrubb.blog_back_end.core.Comment</class>

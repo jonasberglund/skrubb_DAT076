@@ -26,4 +26,19 @@ $(function(){
       else
           commentSection.addClass('hidden');
    });
-}); 
+});
+
+function setCommenter(id) {
+    var field = document.getElementById('commenter'+id);
+    var hiddenField = document.getElementById('addCommentForm:commenter');
+    var postIdField = document.getElementById('addCommentForm:postId');
+    postIdField.value = id;
+    hiddenField.value = field.value;
+}
+function setCommentValue(id) {
+    var field = document.getElementById('value'+id);
+    var hiddenField = document.getElementById('addCommentForm:value');
+    var postIdField = document.getElementById('addCommentForm:postId');
+    postIdField.value = id;
+    hiddenField.value = field.value;
+}

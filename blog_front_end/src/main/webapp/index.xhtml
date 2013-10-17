@@ -7,82 +7,76 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Skrubb</title>
-        
+            
     </h:head>
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                 
+                <h:form id="addCommentForm">
+                    <h:inputHidden id="commenter" value="#{addComment.commenter}" />
+                    <h:inputHidden id="value" value="#{addComment.value}" />
+                    <h:inputHidden id="postId" value="#{addComment.id}" />
                 
-                
-                <ui:repeat value="#{posts.range}" var="t" varStatus="status">
-                      <h:form>           
+                    <ui:repeat value="#{posts.range}" var="t" varStatus="status">
+
                         <article class="topcontent">
-                                    
-                                    
+
+
                             <ui:repeat value="#{t}" var="s" >
-                                                <header>
-                                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
-                                                </header>
+                                <header>
+                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
+                                </header>
 
-                                                <footer>
-                                                    <h:outputText value="Posted by #{s.author.name}"></h:outputText>
-                                                </footer>
+                                <footer>
+                                    <h:outputText value="Posted by #{s.author.name}"></h:outputText>
+                                </footer>
 
-                                                <content>
+                                <content>
 
-                                                    <h:panelGrid columns="1" cellpadding="10">
-                                                           <!--<p:graphicImage value="/resources/img/fisheye.jpg" />--> 
-                                                           <h:outputText value="#{s.text}"/>  
-                                                    </h:panelGrid>
-                                                   
-                                                 </content>
-                                                 
-                                            <!-- Comments-->
-                                                 <header>
-                                       
-                                                </header>
-                                                <content>
-                                                     <p>
-<!--                                                        ...This is all visible content... -->
-                                                    <a href="#" id="#{s.id}-show" class="showLink" 
-                                                    onclick="showHide(#{s.id});return false;">Visa kommentarer</a>
-                                                    </p>
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <!--<p:graphicImage value="/resources/img/fisheye.jpg" />--> 
+                                        <h:outputText value="#{s.text}"/>  
+                                    </h:panelGrid>
 
-                                                    <div id="#{s.id}" class="more">
-<!--                                                            <p>...This content is hidden by default...</p>-->
-                                                            <ui:repeat value="#{s.comments}" var="c">
-                                                               <h:outputText value="Kommentar by: #{c.commenter}"/>
-                                                               <br></br>
-                                                               <h:outputText value="Says: #{c.text}"/> 
-                                                               <br></br>
-                                                            </ui:repeat>
-                                                            <p>add comment:</p>
-                                                            
-                                                            <h:outputText value="#{s.id}"></h:outputText>
-                                                            <br></br>
-                                                            <c:set var="index" value="#{status.index}"/>
-                                                            <h:inputText required="" value="#{addComment.comment[s.id]}"></h:inputText>
-                                                            <br></br>
-                                                            <!--<h:inputText required="" value="#{addComment.commenter[index]}"></h:inputText>-->
-<!--                                                            <h:commandButton value="Post" action="#{addComment.actOnSelected()}"/> -->
-                                                            <h:commandButton value="Post" action="#{addComment.execute(s.id,index)}"/>  
-                                                            <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                                            onclick="showHide(#{s.id});return false;">Göm kommentarer</a></p>
+                                </content>
 
-                                                    </div>
-                                               </content>
-                                            
-                                        </ui:repeat>     
-                                    </article>
-                                            
-                            </h:form>
-                        </ui:repeat>
-               </ui:define>
+                                <!-- Comments-->
+                                <header>
+
+                                </header>
+                                <content>
+                                    <p>
+                                        <a href="#" id="#{s.id}-show" class="showLink" 
+                                           onclick="showHide(#{s.id});return false;">Visa kommentarer</a>
+                                    </p>
+
+                                    <div id="#{s.id}" class="more">
+                                        
+                                        <ui:repeat value="#{s.comments}" var="c">
+                                            <h:outputText value="Kommentar by: #{c.commenter}"/>
+                                            <br></br>
+                                            <h:outputText value="Says: #{c.text}"/> 
+                                            <br></br>
+                                        </ui:repeat>
+                                        <p>Add comment:</p>
+                                        <input type="text" placeholder="Name" onchange="setCommenter('#{s.id}');" id="commenter#{s.id}" /><br />
+                                        <textArea type="text" placeholder="Comment" onchange="setCommentValue('#{s.id}');" id="value#{s.id}" ></textArea>
+                                        <br />
+                                        <h:commandButton value="Post" action="#{addComment.actOnSelected()}"/>  
+                                        
+                                        <p><a href="#" id="#{s.id}-hide" class="hideLink" 
+                                              onclick="showHide(#{s.id});return false;">Göm kommentarer</a></p>
+                                    </div>
+                                </content>
+
+                            </ui:repeat>     
+                        </article>
+                    </ui:repeat>
+                </h:form>
+            </ui:define>
         </ui:composition>
-     </h:body>
+    </h:body>
 </html>

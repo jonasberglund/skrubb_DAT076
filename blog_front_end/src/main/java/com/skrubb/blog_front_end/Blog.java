@@ -27,7 +27,7 @@ public class Blog implements Serializable{
     public Blog(){
     
        blog= BlogFactory.getBlog(pu_name);
-       //createAdmin();
+//       createAdmin();
     }
     
     public PostArchive getPostArchive(){

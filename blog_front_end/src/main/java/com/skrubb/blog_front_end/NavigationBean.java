@@ -5,17 +5,17 @@
 package com.skrubb.blog_front_end;
 
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
+
  
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
  
 /**
  * Simple navigation bean
  * @author itcuties
  *
  */
-@ManagedBean
-@SessionScoped
+@RequestScoped
 public class NavigationBean implements Serializable {
  
     private static final long serialVersionUID = 1520318172495977648L;

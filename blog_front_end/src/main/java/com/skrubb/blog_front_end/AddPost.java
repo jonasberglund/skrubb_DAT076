@@ -6,19 +6,13 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.TextPost;
-import java.util.Iterator;
 import javax.enterprise.context.ConversationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Named;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author Anders
  */
-//@ManagedBean(name="editorBean")
-//@SessionScoped
 @Named("addPost")
 @ConversationScoped
 public class AddPost extends ConversationalPost {
@@ -29,6 +23,7 @@ public class AddPost extends ConversationalPost {
     
     @Override
     protected void execute() {
+        
         
        Author a1= blog.getAuthorRegistry().getAuthorByLogin("olle", Author.generateHashedPassword("kissekatt"));
        

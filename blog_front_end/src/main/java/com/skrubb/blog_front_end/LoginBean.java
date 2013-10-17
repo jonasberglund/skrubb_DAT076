@@ -6,12 +6,8 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
- 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
+import javax.enterprise.context.SessionScoped;
+
 import javax.inject.Inject;
  
  
@@ -20,7 +16,6 @@ import javax.inject.Inject;
  *
  * @author itcuties
  */
-@ManagedBean
 @SessionScoped
 public class LoginBean implements Serializable {
  
@@ -37,7 +32,7 @@ public class LoginBean implements Serializable {
      
     private boolean loggedIn;
  
-    @ManagedProperty(value="#{navigationBean}")
+    @Inject
     private NavigationBean navigationBean;
     
     @Inject
@@ -60,9 +55,9 @@ public class LoginBean implements Serializable {
             }
         
         // Set login ERROR
-        FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
-        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        //FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
+        //msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
 
         return navigationBean.toLogin();
         
@@ -98,9 +93,9 @@ public class LoginBean implements Serializable {
         loggedIn = false;
          
         // Set logout message
-        FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
-        msg.setSeverity(FacesMessage.SEVERITY_INFO);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        //FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
+        //msg.setSeverity(FacesMessage.SEVERITY_INFO);
+        //FacesContext.getCurrentInstance().addMessage(null, msg);
          
         return navigationBean.redirectToWelcome();
     }

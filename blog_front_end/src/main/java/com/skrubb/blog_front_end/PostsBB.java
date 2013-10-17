@@ -9,7 +9,8 @@ import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.Comment;
 import com.skrubb.blog_back_end.core.Tag;
 import java.util.List;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,7 +19,7 @@ import javax.inject.Named;
  * @author jonasberglund
  */
 @Named("posts")
-@SessionScoped
+@RequestScoped
 public class PostsBB {
     private Blog blog;
     

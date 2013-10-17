@@ -6,13 +6,10 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
-import javax.enterprise.context.Conversation;
-import javax.inject.Inject;
 
 /**
  *

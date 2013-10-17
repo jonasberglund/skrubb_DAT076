@@ -6,6 +6,7 @@ package com.skrubb.blog_front_end;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
 
  
 
@@ -15,6 +16,7 @@ import javax.enterprise.context.RequestScoped;
  * @author itcuties
  *
  */
+@Named("navigation")
 @RequestScoped
 public class NavigationBean implements Serializable {
  
@@ -66,6 +68,13 @@ public class NavigationBean implements Serializable {
      */
     public String toWelcome() {
         return "/secured/welcome.xhtml";
+    }
+    /**
+     * Go to welcome page.
+     * @return Welcome page name.
+     */
+    public String toTag(String tag) {
+        return "/secured/tag/welcome.xhtml?tag=tag";
     }
      
 }

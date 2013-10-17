@@ -31,6 +31,7 @@ public class PostsBB {
     
     public List<AbstractPost> getRange(){
         return blog.getPostArchive().getRange(0, blog.getPostArchive().size());
+        
     }
     
     public void deletePost(Long id){
@@ -51,6 +52,10 @@ public class PostsBB {
     
     public List<AbstractPost> getPostsFromAuthor(Author author){
         return blog.getPostArchive().getByAuthor(author);
+    }
+    public List<AbstractPost> getByTag(String tag){
+    
+        return blog.getPostArchive().getByTag(blog.getPostArchive().findTag(tag));
     }
     
 }

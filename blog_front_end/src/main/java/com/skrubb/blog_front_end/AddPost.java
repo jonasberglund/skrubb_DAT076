@@ -5,7 +5,11 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
+import com.skrubb.blog_back_end.core.Tag;
 import com.skrubb.blog_back_end.core.TextPost;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
@@ -25,26 +29,19 @@ public class AddPost extends ConversationalPost {
     protected void execute() {
         
         
-       Author a1= blog.getAuthorRegistry().getAuthorByLogin("olle", Author.generateHashedPassword("kissekatt"));
+      
+       List<String> items = Arrays.asList(tags.split("\\s*,\\s*"));
        
-       TextPost tp = new TextPost(a1, getTitle(), getValue());
-       
+       TextPost tp = new TextPost(blog.getAuthorRegistry().find(loginbean.getAuthor().getId()), getTitle(), getValue());
        blog.getPostArchive().add(tp);
        
+       for(String s:items){
        
-       //Get author
-       //Author a = getAuthor();
-        
-       //blog.getPostArchive().add(null);
-        
-        
-       // Blog.listOfPost.add(new TextPost(Blog.a1, getTitle(), getValue()));
-        //DummyDB.listOfPost.add(new TextPost(DummyDB.a1, null, getTitle(), null, getValue()));
-        /*TextPost tp=new TextPost(null,DummyDB.a1, null, getTitle(), null, getValue());
-        Long i=Long.valueOf("1");
-        tp.id=i;
-        DummyDB.listOfPost.add(tp );
-        */
+           Tag tag=new Tag(s);
+           blog.getPostArchive().addTag(tp.getId(), tag);
+       }
+       
+       
         
        
     }

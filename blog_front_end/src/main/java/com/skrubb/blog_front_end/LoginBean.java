@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 
 import javax.inject.Inject;
+import javax.inject.Named;
  
  
 /**
@@ -16,13 +17,9 @@ import javax.inject.Inject;
  *
  * @author itcuties
  */
+@Named("loginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
- 
-    private static final long serialVersionUID = 7765876811740798583L;
- 
-    // Simple user database :)
-    //private static final String[] users = {"jonas:qwe","anders:123"};
     
     private Blog blog;
     private Author author;
@@ -54,33 +51,8 @@ public class LoginBean implements Serializable {
                 return navigationBean.redirectToWelcome();
             }
         
-        // Set login ERROR
-        //FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
-        //msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
-
         return navigationBean.toLogin();
         
-        /*
-        // Get every user from our sample database :)
-        for (String user: users) {
-            String dbUsername = user.split(":")[0];
-            String dbPassword = user.split(":")[1];
-             
-            // Successful login
-            if (dbUsername.equals(username) && dbPassword.equals(password)) {
-                loggedIn = true;
-                return navigationBean.redirectToWelcome();
-            }
-        }
-         
-        // Set login ERROR
-        FacesMessage msg = new FacesMessage("Login error!", "ERROR MSG");
-        msg.setSeverity(FacesMessage.SEVERITY_ERROR);
-        FacesContext.getCurrentInstance().addMessage(null, msg);
-         
-        // To to login page
-        return navigationBean.toLogin();*/
          
     }
      
@@ -91,11 +63,8 @@ public class LoginBean implements Serializable {
     public String doLogout() {
         // Set the paremeter indicating that user is logged in to false
         loggedIn = false;
+        author=null;
          
-        // Set logout message
-        //FacesMessage msg = new FacesMessage("Logout success!", "INFO MSG");
-        //msg.setSeverity(FacesMessage.SEVERITY_INFO);
-        //FacesContext.getCurrentInstance().addMessage(null, msg);
          
         return navigationBean.redirectToWelcome();
     }

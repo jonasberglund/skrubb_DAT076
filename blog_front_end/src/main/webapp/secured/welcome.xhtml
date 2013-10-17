@@ -42,6 +42,14 @@
                                                     </h:panelGrid>
                                                  
                                                  </content>
+                                            
+                                            <ui:repeat value="#{s.tags}" var="tag">
+                                                <h:commandLink action="#{navigation.toTag(tag.value)}" value="#{tag.value}">
+                                        	<f:param name="tag" value="#{tag.value}" />
+                                                </h:commandLink>
+                                                
+                                            
+                                            </ui:repeat>
                                                  
                                             <!-- Comments-->
                                                  <header>

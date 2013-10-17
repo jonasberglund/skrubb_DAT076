@@ -67,4 +67,8 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         super.update(post);
     }
     
+    public Tag findTag(String tag) {
+        return tagArchive.find(tag);
+    }
+    
 }

@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 
 /**
  *
@@ -23,6 +24,12 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     private Date date;
     private String title;
     private String value;
+    protected String tags;
+    
+    @Inject
+    protected LoginBean loginbean;
+    
+    
     
     
     public ConversationalPost(){
@@ -76,6 +83,13 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     }
     public String getValue(){
         return value;
+    }
+    public void setTags(String tags)
+    {
+        this.tags=tags;
+    }
+    public String getTags(){
+        return tags;
     }
     
     public void setAuthor(Author author){

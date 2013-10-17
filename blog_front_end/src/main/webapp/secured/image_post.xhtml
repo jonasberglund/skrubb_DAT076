@@ -14,20 +14,18 @@
         <ui:composition template="/secured/template.xhtml">
             <ui:define name="content"> 
                 
-                <h:form>  
+                <h:form enctype="multipart/form-data">
+                    
+                    <h3>Titel</h3>
+                    <p:inputText required="" value="#{addPhotoPost.title}"></p:inputText>
+                    <p:messages showDetail="true"/>  
+                    <h3>Bild</h3>
+                    <p:fileUpload value="#{addPhotoPost.file}" mode="simple" />  
+                    <p:commandButton value="Post" ajax="false" action="#{addPhotoPost.actOnSelected()}"/>  
   
-                    <p:fileUpload fileUploadListener="#{fileUploadController.upload}" mode="advanced" dragDropSupport="true"  
-                            update="messages" sizeLimit="1000000" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />  
-
-                    <p:growl id="messages" showDetail="true"/>  
-
-                </h:form>    
-                
-                
+                </h:form>
             </ui:define>
         </ui:composition>
         
-        
-         
     </h:body>
 </html>

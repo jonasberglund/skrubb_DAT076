@@ -4,17 +4,11 @@
  */
 package com.skrubb.blog_front_end;
 
-import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.AuthorRegistry;
 import com.skrubb.blog_back_end.core.BlogFactory;
 import com.skrubb.blog_back_end.core.PostArchive;
-import com.skrubb.blog_back_end.core.TextPost;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Singleton;
 
 /**
@@ -33,7 +27,7 @@ public class Blog implements Serializable{
     public Blog(){
     
        blog= BlogFactory.getBlog(pu_name);
-       //createAdmin();
+//       createAdmin();
     }
     
     public PostArchive getPostArchive(){

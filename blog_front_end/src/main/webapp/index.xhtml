@@ -10,7 +10,6 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Skrubb</title>
-        
     </h:head>
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
@@ -35,8 +34,8 @@ and open the template in the editor.
                                                 <content>
 
                                                     <h:panelGrid columns="1" cellpadding="10">
-                                                           <!--<p:graphicImage value="/resources/img/fisheye.jpg" />--> 
-                                                           <h:outputText value="#{s.text}"/>  
+                                                        <p:graphicImage rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{s.data}" />
+                                                        <h:outputText rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{s.data}" />
                                                     </h:panelGrid>
                                                  
                                                  </content>

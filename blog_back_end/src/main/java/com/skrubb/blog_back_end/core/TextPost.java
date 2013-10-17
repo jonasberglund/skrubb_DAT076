@@ -44,4 +44,9 @@ public class TextPost extends AbstractPost implements Serializable {
     public String getText() {
         return text;
     }
+
+    @Override
+    public String getData() {
+        return text;
+    }
 }

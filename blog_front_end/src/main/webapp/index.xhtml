@@ -7,7 +7,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
     <h:head>
         <title>Skrubb</title>
         
@@ -18,12 +19,12 @@ and open the template in the editor.
                  
                 
                 
-                <ui:repeat value="#{posts.range}" var="t">
+                <ui:repeat value="#{posts.range}" var="t" varStatus="status">
                       <h:form>           
                         <article class="topcontent">
                                     
                                     
-                                        <ui:repeat value="#{t}" var="s">
+                            <ui:repeat value="#{t}" var="s" >
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
                                                 </header>
@@ -38,25 +39,44 @@ and open the template in the editor.
                                                            <!--<p:graphicImage value="/resources/img/fisheye.jpg" />--> 
                                                            <h:outputText value="#{s.text}"/>  
                                                     </h:panelGrid>
-                                                 
+                                                   
                                                  </content>
                                                  
                                             <!-- Comments-->
                                                  <header>
-                                                    <a href="#" id="comments">Comments</a>
+                                       
                                                 </header>
                                                 <content>
-                                                    <p>...This is all visible content... 
+                                                     <p>
+<!--                                                        ...This is all visible content... -->
                                                     <a href="#" id="#{s.id}-show" class="showLink" 
-                                                    onclick="showHide(#{s.id});return false;">See more.</a>
+                                                    onclick="showHide(#{s.id});return false;">Visa kommentarer</a>
                                                     </p>
 
                                                     <div id="#{s.id}" class="more">
-                                                            <p>...This content is hidden by default...</p>
+<!--                                                            <p>...This content is hidden by default...</p>-->
+                                                            <ui:repeat value="#{s.comments}" var="c">
+                                                               <h:outputText value="Kommentar by: #{c.commenter}"/>
+                                                               <br></br>
+                                                               <h:outputText value="Says: #{c.text}"/> 
+                                                               <br></br>
+                                                            </ui:repeat>
+                                                            <p>add comment:</p>
+                                                            
+                                                            <h:outputText value="#{s.id}"></h:outputText>
+                                                            <br></br>
+                                                            <c:set var="index" value="#{status.index}"/>
+                                                            <h:inputText required="" value="#{addComment.comment[s.id]}"></h:inputText>
+                                                            <br></br>
+                                                            <!--<h:inputText required="" value="#{addComment.commenter[index]}"></h:inputText>-->
+<!--                                                            <h:commandButton value="Post" action="#{addComment.actOnSelected()}"/> -->
+                                                            <h:commandButton value="Post" action="#{addComment.execute(s.id,index)}"/>  
                                                             <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
+                                                            onclick="showHide(#{s.id});return false;">Göm kommentarer</a></p>
+
                                                     </div>
                                                </content>
+                                            
                                         </ui:repeat>     
                                     </article>
                                             

@@ -32,9 +32,7 @@
 
                                                 <footer>
                                                     <h4><h:outputText value="Posted by #{s.author.name}"></h:outputText></h4>
-                                                </footer>
-
-                                                <content>
+                                                </footer>                                                <content>
 
                                                     <h:panelGrid columns="1" cellpadding="10">
 <!--                                                           <p:graphicImage value="/resources/img/fisheye.jpg" /> -->
@@ -45,18 +43,25 @@
                                                  
                                             <!-- Comments-->
                                                  <header>
-                                                    <a href="#" id="comments">Comments</a>
+                           
                                                 </header>
                                                 <content>
-                                                    <p>...This is all visible content... 
+                                                    <p>
+<!--                                                        ...This is all visible content... -->
                                                     <a href="#" id="#{s.id}-show" class="showLink" 
-                                                    onclick="showHide(#{s.id});return false;">See more.</a>
+                                                    onclick="showHide(#{s.id});return false;">Visa kommentarer</a>
                                                     </p>
 
                                                     <div id="#{s.id}" class="more">
-                                                            <p>...This content is hidden by default...</p>
+<!--                                                            <p>...This content is hidden by default...</p>-->
+                                                            <ui:repeat value="#{s.comments}" var="c">
+                                                               <h:outputText value="Kommentar by: #{c.commenter}"/>
+                                                               <br></br>
+                                                               <h:outputText value="Says: #{c.text}"/> 
+                                                               <br></br>
+                                                            </ui:repeat>
                                                             <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
+                                                            onclick="showHide(#{s.id});return false;">Göm kommentarer</a></p>
                                                     </div>
                                                </content>
                                         </ui:repeat>     

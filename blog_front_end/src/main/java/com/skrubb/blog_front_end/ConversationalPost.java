@@ -4,10 +4,15 @@
  */
 package com.skrubb.blog_front_end;
 
+import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
+import com.skrubb.blog_back_end.core.Comment;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
@@ -26,9 +31,15 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     private Date date;
     private String title;
     private String value;
+    private Map<Long,String> comments;
+    private Integer numberOfcomments = 10;
+    private String[] commenter;
     
     
     public ConversationalPost(){
+        comments = new TreeMap<Long, String>();
+ 
+        commenter = new String[10];
     
     }
     
@@ -88,4 +99,25 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     public Author getAuthor(){
         return author;
     }
+    
+     public void setComment(Map<Long, String> comments){
+        this.comments = comments;
+    }
+    
+    public Map<Long, String> getComment(){
+            return comments;
+    }
+    
+     public void setCommenter(String[] commenter){
+        this.commenter = commenter;
+    }
+    
+    public String[] getCommenter(){
+            return commenter;
+    }
+    
+    public AbstractPost showSinglePost(Long id){
+        return blog.getPostArchive().find(id);
+    }
+
 }

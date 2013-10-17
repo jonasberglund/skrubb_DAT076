@@ -39,11 +39,7 @@ public class PostsBB {
     public AbstractPost showSinglePost(Long id){
         return blog.getPostArchive().find(id);
     }
-    
-    public void postComment(Long id, Comment comment){
-        blog.getPostArchive().addComment(id, comment);
-    }
-    
+        
     public List<AbstractPost> getPostsWithTag(Tag tag){
         return blog.getPostArchive().getByTag(tag);
     }

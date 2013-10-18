@@ -16,11 +16,12 @@
             <ui:define name="content"> 
                 <h:form>
                     <h3>Welcome #{loginBean.username}</h3>
+                        
                     
                     <h:outputText value="This is a secured welcome page!"/>
                     <br/>
                      <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
-                    <ui:repeat value="#{posts.range}" var="t">
+                     <ui:repeat value="#{tag_con.byTag}" var="t">
                                 <article class="topcontent">
                                     
                                     
@@ -44,14 +45,12 @@
                                                  </content>
                                             
                                             <ui:repeat value="#{s.tags}" var="tag">
-                                                <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
-                                                               action="tag">
-                                        	
+                                                <h:commandLink action="#{navigation.toTag(tag.value)}" value="#{tag.value}">
+                                        	<f:param name="tag" value="#{tag.value}" />
                                                 </h:commandLink>
                                                 
-                                                                                               
-                                                
-                                                </ui:repeat>
+                                            
+                                            </ui:repeat>
                                                  
                                             <!-- Comments-->
                                                  <header>

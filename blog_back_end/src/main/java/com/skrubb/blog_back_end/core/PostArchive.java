@@ -5,6 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
+import java.util.Collections;
 import java.util.List;
 import javax.persistence.EntityManager;
 
@@ -69,6 +70,13 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
     
     public Tag findTag(String tag) {
         return tagArchive.find(tag);
+    }
+    
+    @Override
+    public List<AbstractPost> getRange(int firstItem, int numOfItems){
+        List<AbstractPost> posts = super.getRange(firstItem, numOfItems);
+        Collections.reverse(posts);
+        return posts;
     }
     
 }

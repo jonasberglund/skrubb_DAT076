@@ -109,4 +109,5 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
         comments.remove(c);
     }
     
+    public abstract String getData();
 }

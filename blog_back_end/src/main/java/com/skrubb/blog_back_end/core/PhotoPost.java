@@ -43,4 +43,9 @@ public class PhotoPost extends AbstractPost implements Serializable {
     public String getPhotoUrl() {
         return photoUrl;
     }
+
+    @Override
+    public String getData() {
+        return photoUrl;
+    }
 }

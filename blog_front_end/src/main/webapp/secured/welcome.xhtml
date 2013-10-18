@@ -35,8 +35,8 @@
                                                 </footer>                                                <content>
 
                                                     <h:panelGrid columns="1" cellpadding="10">
-<!--                                                           <p:graphicImage value="/resources/img/fisheye.jpg" /> -->
-                                                           <h:outputText value="#{s.text}"/>  
+                                                        <p:graphicImage rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{s.data}" />
+                                                        <h:outputText rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{s.data}" />
                                                     </h:panelGrid>
                                                  
                                                  </content>

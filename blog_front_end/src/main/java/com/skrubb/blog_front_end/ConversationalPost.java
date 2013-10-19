@@ -7,9 +7,11 @@ package com.skrubb.blog_front_end;
 import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PreDestroy;
+import javax.inject.Inject;
 
 /**
  *
@@ -20,12 +22,20 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     private Long id;
     
     private Author author;
+    private Date date;
     private String title;
     private String value;
+    protected String tags;
     private String commenter;
+    
+    @Inject
+    protected LoginBean loginbean;
+    
+    
     
     
     public ConversationalPost(){
+    
     }
     
     public void setSelected(Long id) {
@@ -54,7 +64,7 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     }
 
 
-    public Long getId() {
+     public Long getId() {
         return id;
     }
 
@@ -75,6 +85,13 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     }
     public String getValue(){
         return value;
+    }
+    public void setTags(String tags)
+    {
+        this.tags=tags;
+    }
+    public String getTags(){
+        return tags;
     }
     
     public void setAuthor(Author author){

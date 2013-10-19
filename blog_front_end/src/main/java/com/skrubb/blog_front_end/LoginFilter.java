@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
  
 import com.skrubb.blog_front_end.LoginBean;
+import javax.inject.Inject;
+
  
 /**
  * Filter checks if LoginBean has loginIn property set to true.
@@ -24,15 +26,21 @@ import com.skrubb.blog_front_end.LoginBean;
  * @author itcuties
  *
  */
+
 public class LoginFilter implements Filter {
  
+    
+    @Inject
+    private LoginBean loginBean;
+    
     /**
      * Checks if user is logged in. If not it redirects to the login.xhtml page.
      */
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         // Get the loginBean from session attribute
-        LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("loginBean");
-         
+        //LoginBean loginBean = (LoginBean)((HttpServletRequest)request).getSession().getAttribute("LoginBean");
+        
+                
         // For the first application request there is no loginBean in the session so user needs to log in
         // For other requests loginBean is present but we need to check if user has logged in successfully
         if (loginBean == null || !loginBean.isLoggedIn()) {

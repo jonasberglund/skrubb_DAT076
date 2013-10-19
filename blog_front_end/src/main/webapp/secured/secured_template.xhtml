@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+          
+    <!--
+        
+      THIS IS THE OVERALL LAYOUT FOR THE SITE (not accessible from outside)
+          
+    -->
+        
+    <ui:composition template="../WEB-INF/template.xhtml">
+        
+        <body class="body">
+            <ui:define name="mainHeader">
+                <header class="mainHeader">
+                    <nav><ul>
+                            <li class="active"><a href="welcome.xhtml">Home</a></li>
+                            <li><a href="text_post.xhtml">Textinlägg</a></li>
+                            <li><a href="image_post.xhtml">Bildinlägg</a></li>
+                            <li><a href="manage_authors.xhtml">Hantera användare</a></li>
+                            <h:form><li><h:commandLink value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
+                        </ul></nav>
+                </header>
+            </ui:define>
+        </body>   
+    </ui:composition>
+</html>

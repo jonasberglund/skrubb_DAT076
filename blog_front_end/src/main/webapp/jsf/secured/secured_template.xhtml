@@ -12,17 +12,17 @@
           
     -->
         
-    <ui:composition template="../WEB-INF/template.xhtml">
+    <ui:composition template="/WEB-INF/template.xhtml">
         
         <body class="body">
             <ui:define name="mainHeader">
                 <header class="mainHeader">
                     <nav><ul>
-                            <li class="active"><a href="welcome.xhtml">Home</a></li>
-                            <li><a href="text_post.xhtml">Textinlägg</a></li>
-                            <li><a href="image_post.xhtml">Bildinlägg</a></li>
-                            <li><a href="manage_authors.xhtml">Hantera användare</a></li>
-                            <h:form><li><h:commandLink value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
+                            <h:form><li><h:commandLink action="#{navigation.toWelcome}" value="Posts" /></li>
+                            <li><h:commandLink action="#{navigation.toTextPost}" value="Text Post" /></li>
+                            <li><h:commandLink action="#{navigation.toPhotoPost}" value="Photo Post" /></li>
+                            <li><h:commandLink action="#{navigation.toAuthors}" value="Manage authors" /></li>
+                            <li><h:commandLink value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
                         </ul></nav>
                 </header>
             </ui:define>

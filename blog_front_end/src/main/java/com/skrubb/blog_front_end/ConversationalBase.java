@@ -15,6 +15,8 @@ public abstract class ConversationalBase {
     
     protected Blog blog;
     
+    @Inject
+    protected NavigationBean navigationBean;
     
     @Inject
     protected Conversation conversation;

@@ -41,11 +41,15 @@ public class Author extends AbstractEntity implements Serializable {
         this.accessLevel = accessLevel;
     }
     
-    public Author(Long id, String name, String hashedPassword, AccessLevel accessLevel){
+    public Author(Long id, String name, String password, AccessLevel accessLevel, boolean notHashed){
         super(id);
         
         this.name = name;
-        this.hashedPassword = hashedPassword;
+        if (notHashed) {
+            this.hashedPassword = generateHashedPassword(password);
+        } else {
+            this.hashedPassword = password;
+        }
         this.accessLevel = accessLevel;
     }
     

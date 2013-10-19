@@ -14,6 +14,7 @@
         <ui:composition template="/secured/template.xhtml">
             <ui:define name="content"> 
                 <h2>Edit author page</h2>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                  <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
@@ -22,8 +23,11 @@
                         <h:outputText value="Name" />
                         <h:inputText id="name" value="#{editAuthor.name}"/>
                         <h:message for="name" />
-                        <h:outputText value="Password" />
-                        <h:inputText id="password" value="#{editAuthor.password}"/>
+                        <h:outputText value="Old password" />
+                        <h:inputText id="oldPassword" value="#{editAuthor.oldPassword}"/>
+                        <br />
+                        <h:outputText value="New Password" />
+                        <h:inputText id="newPassword" value="#{editAuthor.newPassword}"/>
                         <h:message for="password" />
                         <h:outputText value="Access level" />
                         <h:selectOneMenu id="al" value="#{editAuthor.AL}">
@@ -32,7 +36,7 @@
                         </h:selectOneMenu>
                     </h:panelGrid>
                     <h:button outcome="manage_authors" value="Cancel"/>                   
-                    <h:commandButton action="#{editAuthor.actOnSelected()}"  value="Save" />
+                    <h:commandButton action="#{editAuthor.updateAuthor()}"  value="Save" />
                 </h:form>
             </ui:define>
         </ui:composition>

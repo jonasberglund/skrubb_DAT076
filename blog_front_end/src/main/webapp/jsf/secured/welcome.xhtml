@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"     
+<html xmlns="http://www.w3.org/1999/xhtml"    
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
@@ -12,7 +11,7 @@
         
     </h:head>
     <h:body>
-        <ui:composition template="/secured/template.xhtml">
+        <ui:composition template="/jsf/secured/secured_template.xhtml">
             <ui:define name="content"> 
                 <h:form>
                     <h3>Welcome #{loginBean.username}</h3>
@@ -22,8 +21,6 @@
                      <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
                     <ui:repeat value="#{posts.range}" var="t">
                                 <article class="topcontent">
-                                    
-                                    
                                         <ui:repeat value="#{t}" var="s">
                                             <div><h:commandLink action="#{posts.deletePost(s.id)}" value="Delete post"/></div>
                                                 <header>
@@ -43,7 +40,7 @@
                                             
                                             <ui:repeat value="#{s.tags}" var="tag">
                                                 <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
-                                                               action="tag">
+                                                               action="#{navigation.toTag()}">
                                         	
                                                 </h:commandLink>
                                                 

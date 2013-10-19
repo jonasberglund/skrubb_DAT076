@@ -47,9 +47,9 @@ public class LoginBean implements Serializable {
         author = blog.getAuthorRegistry().getAuthorByLogin(username, Author.generateHashedPassword(password));
         
         if (author != null) {
-                loggedIn = true;
-                return navigationBean.redirectToWelcome();
-            }
+            loggedIn = true;
+            return navigationBean.toWelcome();
+        }
         
         return navigationBean.toLogin();
         
@@ -66,7 +66,7 @@ public class LoginBean implements Serializable {
         author=null;
          
          
-        return navigationBean.redirectToWelcome();
+        return navigationBean.toWelcome();
     }
  
     // ------------------------------

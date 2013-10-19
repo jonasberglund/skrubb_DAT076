@@ -8,40 +8,37 @@
       xmlns:p="http://primefaces.org/ui">
   
     <h:head>
-        <title>Delete author page</title>
+        <title>Edit author page</title>
     </h:head>
     <h:body>
-        <ui:composition template="/secured/template.xhtml">
+        <ui:composition template="../secured_template.xhtml">
             <ui:define name="content"> 
-                <h2>Delete author page</h2>
+                <h2>Edit author page</h2>
+                <p:messages id="messages" showDetail="true" autoUpdate="true" closable="true" />
                  <h:form>
                     <h:panelGrid columns="3">
                         <h:outputText value="Id" />
-                        <h:inputText id="id" value="#{delAuthor.id}" disabled="true"/>
+                        <h:inputText id="id" value="#{editAuthor.id}" disabled="true"/>
                         <h:message for="id" />
                         <h:outputText value="Name" />
-                        <h:inputText id="name" value="#{delAuthor.name}" disabled="true"/>
+                        <h:inputText id="name" value="#{editAuthor.name}"/>
                         <h:message for="name" />
-                        <h:outputText value="Password" />
-                        <h:inputText id="password" value="#{delAuthor.password}" disabled="true"/>
+                        <h:outputText value="Old password" />
+                        <h:inputText id="oldPassword" value="#{editAuthor.oldPassword}"/>
+                        <br />
+                        <h:outputText value="New Password" />
+                        <h:inputText id="newPassword" value="#{editAuthor.newPassword}"/>
                         <h:message for="password" />
                         <h:outputText value="Access level" />
-                        <h:selectOneMenu id="al" value="#{editAuthor.AL}" disabled="true">
+                        <h:selectOneMenu id="al" value="#{editAuthor.AL}">
                             <f:selectItem itemValue="ADMIN" itemLabel="Admin" />
                             <f:selectItem itemValue="AUTHOR" itemLabel="Author" />
                         </h:selectOneMenu>
-                         <h:message for="al" />
                     </h:panelGrid>
                     <h:button outcome="manage_authors" value="Cancel"/>                   
-                    <h:commandButton action="#{delAuthor.actOnSelected()}"  value="Delete" />
+                    <h:commandButton action="#{editAuthor.updateAuthor()}"  value="Save" />
                 </h:form>
-
-                
-                
             </ui:define>
         </ui:composition>
-        
-        
-         
     </h:body>
 </html>

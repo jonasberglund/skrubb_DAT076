@@ -31,6 +31,9 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     @Inject
     protected LoginBean loginbean;
     
+    @Inject
+    protected NavigationBean navigationBean;
+    
     
     
     
@@ -60,7 +63,7 @@ public abstract class ConversationalPost extends ConversationalBase implements S
             conversation.end();
         }
         execute();
-        return "welcome";
+        return navigationBean.toWelcome();
     }
 
 

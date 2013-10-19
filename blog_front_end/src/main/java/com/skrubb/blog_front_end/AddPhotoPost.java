@@ -6,11 +6,15 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.PhotoPost;
+import com.skrubb.blog_back_end.core.Tag;
+import com.skrubb.blog_back_end.core.TextPost;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.List;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
@@ -39,9 +43,19 @@ public class AddPhotoPost extends ConversationalPost {
                 String newFileName = copyFile(file.getFileName(), file.getInputstream());
                 
                 if (!newFileName.isEmpty()) {
+                    
                     Author a1= blog.getAuthorRegistry().find(loginbean.getAuthor().getId());
                     PhotoPost pp = new PhotoPost(a1, getTitle(), newFileName);        
+                    
                     blog.getPostArchive().add(pp);
+                    
+                    List<String> items = Arrays.asList(tags.split("\\s*,\\s*"));
+                    
+                    for(String s : items) {
+                        Tag tag = new Tag(s);
+                        blog.getPostArchive().addTag(pp.getId(), tag);
+                    }
+                    
                 }
                 
             } catch (Exception e) {

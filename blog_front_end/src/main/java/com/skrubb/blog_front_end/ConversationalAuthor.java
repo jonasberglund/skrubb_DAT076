@@ -26,8 +26,6 @@ public abstract class ConversationalAuthor extends ConversationalBase implements
     
     @NotNull(message="{common.notEmpty}")
     private Author.AccessLevel al;
-    
-
 
     public ConversationalAuthor(){
     
@@ -59,7 +57,7 @@ public abstract class ConversationalAuthor extends ConversationalBase implements
             conversation.end();
         }
         execute();
-        return "manage_authors";
+        return navigationBean.toAuthors();
     }
 
 

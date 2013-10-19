@@ -52,4 +52,8 @@ public class PostsBB {
         return blog.getPostArchive().getByTag(blog.getPostArchive().findTag(tag));
     }
     
+    public List<Tag> getAllTags(){
+        return blog.getPostArchive().getAllTags();
+    }
+    
 }

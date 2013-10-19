@@ -20,6 +20,11 @@ and open the template in the editor.
                     <h:inputHidden id="value" value="#{addComment.value}" />
                     <h:inputHidden id="postId" value="#{addComment.id}" />
                         
+                        
+                    <p:commandButton actionListener="#{posts.prev()}" 
+                                     action="#{navigation.toIndex()}" value="Previous" />
+                    <p:commandButton actionListener="#{posts.next()}" 
+                                     action="#{navigation.toIndex()}" value="Next" />
                     <ui:repeat value="#{posts.range}" var="t" varStatus="status">
                         
                         <article class="topcontent">
@@ -43,10 +48,13 @@ and open the template in the editor.
                                         
                                 </content>
                                     
-                                <!-- Comments-->
-                                <header>
+                                <ui:repeat value="#{s.tags}" var="tag">
+                                    <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
+                                                   action="#{navigation.toTag()}">   
+                                    </h:commandLink>         
+                                </ui:repeat>
                                     
-                                </header>
+                                <!-- Comments-->
                                 <content>
                                     <p>
                                         <a href="#" id="#{s.id}-show" class="showLink" 
@@ -75,6 +83,12 @@ and open the template in the editor.
                             </ui:repeat>     
                         </article>
                     </ui:repeat>
+                        
+                    <p:commandButton actionListener="#{posts.prev()}" 
+                                     action="#{navigation.toIndex()}" value="Previous" />
+                    <p:commandButton actionListener="#{posts.next()}" 
+                                     action="#{navigation.toIndex()}" value="Next" />
+                                         
                 </h:form>
                </ui:define>
         </ui:composition>

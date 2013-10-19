@@ -5,9 +5,15 @@
 package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -73,10 +79,35 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
     }
     
     @Override
-    public List<AbstractPost> getRange(int firstItem, int numOfItems){
-        List<AbstractPost> posts = super.getRange(firstItem, numOfItems);
-        Collections.reverse(posts);
-        return posts;
+    public List<AbstractPost> getRange(int firstItem, int numOfItems) {
+        
+        EntityManager em = null;
+        List<AbstractPost> found = new ArrayList<AbstractPost>();
+        
+        try {
+            em = getEntityManager();
+            CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
+            
+            
+            Root<AbstractPost> root = cq.from(AbstractPost.class);
+            cq.select(root);
+            cq.orderBy(em.getCriteriaBuilder().desc(root.get("id")));
+            Query q = em.createQuery(cq);
+            
+            q.setMaxResults(numOfItems);
+            q.setFirstResult(firstItem);
+            
+            found.addAll(q.getResultList());
+            
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.SEVERE, "{0}", ex.toString());
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+        
+        return found;
     }
     
 }

@@ -22,7 +22,10 @@
                     <ui:repeat value="#{posts.range}" var="t">
                                 <article class="topcontent">
                                         <ui:repeat value="#{t}" var="s">
-                                            <div><h:commandLink action="#{posts.deletePost(s.id)}" value="Delete post"/></div>
+                                            <div><h:commandLink action="#{posts.deletePost(s.id)}" value="Delete post"/><br />
+                                            
+                                            <h:commandButton  actionListener="#{editPost.setSelected(s.id)}"
+                                                  action="edit-post" value="Edit"/></div>
                                                 <header>
                                                         <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
                                                 </header>

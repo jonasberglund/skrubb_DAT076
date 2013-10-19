@@ -47,7 +47,12 @@ public abstract class ConversationalPost extends ConversationalBase implements S
             conversation.begin();
         }
         
+        AbstractPost p = blog.getPostArchive().find(id);
         this.id=id;
+        this.title = p.getTitle();
+        this.value = p.getData();
+        this.date = p.getDate();
+        this.author = p.getAuthor();
         
     }
 

@@ -34,6 +34,12 @@
         </navigation-case>
         
         <navigation-case>
+            <from-outcome>edit-post</from-outcome>
+            <to-view-id>/jsf/secured/post/edit_post.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
             <from-outcome>authors</from-outcome>
             <to-view-id>/jsf/secured/author/manage_authors.xhtml</to-view-id>
             <redirect />

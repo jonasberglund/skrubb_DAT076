@@ -16,11 +16,13 @@
                 
                 <h:form enctype="multipart/form-data">
                     
-                    <h3>Titel</h3>
+                    <h3>Title</h3>
                     <p:inputText required="" value="#{addPhotoPost.title}"></p:inputText>
                     <p:messages showDetail="true"/>  
-                    <h3>Bild</h3>
-                    <p:fileUpload value="#{addPhotoPost.file}" mode="simple" />  
+                    <h3>Picture</h3>
+                    <p:fileUpload value="#{addPhotoPost.file}" mode="simple" />
+                    <h3>Tags</h3>
+                    <p:inputText required="" value="#{addPhotoPost.tags}"></p:inputText><br />
                     <p:commandButton value="Post" ajax="false" action="#{addPhotoPost.actOnSelected()}"/>  
   
                 </h:form>

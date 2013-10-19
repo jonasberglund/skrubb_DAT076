@@ -29,6 +29,9 @@ public class NavigationBean implements Serializable {
     public String redirectToLogin() {
         return "/login.xhtml?faces-redirect=true";
     }
+    public String redirectToAuthorChat(){
+        return "/secured/chat.xhtml?faces-redirect=true";
+    }
      
     /**
      * Go to login page.

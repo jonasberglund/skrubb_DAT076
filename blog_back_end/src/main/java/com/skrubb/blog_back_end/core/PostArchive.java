@@ -16,8 +16,8 @@ import javax.persistence.EntityManager;
  */
 public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
     
-    CommentArchive commentArchive;
-    TagArchive tagArchive;
+    private CommentArchive commentArchive;
+    private TagArchive tagArchive;
     
     public PostArchive(String puName){
         super(AbstractPost.class, puName);
@@ -48,6 +48,10 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         
          return em.createQuery("select p from AbstractPost p where p.tags = :tag",
                 AbstractPost.class).setParameter("tag", tag).getResultList();
+    }
+    
+    public List<Tag> getAllTags() {
+        return tagArchive.getRange(0, tagArchive.size());
     }
     
     public void addComment(Long postId, Comment comment) {

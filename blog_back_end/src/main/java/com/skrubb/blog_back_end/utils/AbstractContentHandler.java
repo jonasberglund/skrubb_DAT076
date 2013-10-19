@@ -132,6 +132,7 @@ public abstract class AbstractContentHandler<K, T> implements IContentHandler<K,
             cq.select(cq.from(classType));
             Query q = em.createQuery(cq);
             
+            
             q.setMaxResults(numOfItems);
             q.setFirstResult(firstItem);
             

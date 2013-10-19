@@ -39,7 +39,7 @@ public class AddPhotoPost extends ConversationalPost {
                 String newFileName = copyFile(file.getFileName(), file.getInputstream());
                 
                 if (!newFileName.isEmpty()) {
-                    Author a1= blog.getAuthorRegistry().getAuthorByLogin("admin", Author.generateHashedPassword("password"));
+                    Author a1= blog.getAuthorRegistry().find(loginbean.getAuthor().getId());
                     PhotoPost pp = new PhotoPost(a1, getTitle(), newFileName);        
                     blog.getPostArchive().add(pp);
                 }

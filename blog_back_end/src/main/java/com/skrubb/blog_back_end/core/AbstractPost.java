@@ -46,7 +46,7 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
     
     @ManyToMany
     @JoinColumn(name = "TAGS")
-    private Set<Tag> tags;
+    private List<Tag> tags;
     
     @OneToMany( cascade = CascadeType.REMOVE )
     @JoinColumn(name = "POST")
@@ -56,7 +56,7 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
         this.author = author;
         this.title = title;
         this.comments =  new ArrayList<Comment>();
-        this.tags = new TreeSet<Tag>(new TagComparator());
+        this.tags = new ArrayList<Tag>();
     }
 
     public AbstractPost(Long id, Author author, String title, List<Comment> comments) {
@@ -89,7 +89,7 @@ public abstract class AbstractPost extends AbstractEntity implements Serializabl
         return title;
     }
     
-    public Set<Tag> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
     

@@ -5,10 +5,13 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
+import java.util.Iterator;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -69,4 +72,5 @@ public class EditAuthorBB extends ConversationalAuthor{
     protected void execute() {
         
     }
+    
 }

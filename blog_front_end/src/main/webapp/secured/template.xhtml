@@ -45,7 +45,7 @@
 			<li><a href="text_post.xhtml">Textinlägg</a></li>
 			<li><a href="image_post.xhtml">Bildinlägg</a></li>
                         <li><a href="manage_authors.xhtml">Hantera användare</a></li>
-                        <li><a href="../index.xhtml">Logout</a></li>                       
+                        <h:form><li><h:commandLink value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
 		</ul></nav>
 	</header>
         
@@ -53,19 +53,7 @@
 		<div id="content" class="content">
                     
                         <ui:insert name="content">
-                            <article class="topcontent">
-                                <header>
-                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Second article</a></h2>
-                                </header>
-
-                                <footer>
-                                        <p class="post-info">This was posted on the 2nd of March 2013 by Christian Vasile</p>
-                                </footer>
-
-                                <content>
-                                        Here goes your content
-                                </content>	
-                            </article>
+                            
                         </ui:insert> 
                     </div>
             

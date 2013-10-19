@@ -5,17 +5,19 @@
 package com.skrubb.blog_front_end;
 
 import java.io.Serializable;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Named;
+
  
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+
  
 /**
  * Simple navigation bean
  * @author itcuties
  *
  */
-@ManagedBean
-@SessionScoped
+@Named("navigation")
+@RequestScoped
 public class NavigationBean implements Serializable {
  
     private static final long serialVersionUID = 1520318172495977648L;
@@ -66,6 +68,13 @@ public class NavigationBean implements Serializable {
      */
     public String toWelcome() {
         return "/secured/welcome.xhtml";
+    }
+    /**
+     * Go to welcome page.
+     * @return Welcome page name.
+     */
+    public String toTag(String tag) {
+        return "/secured/tag/welcome.xhtml?tag=tag";
     }
      
 }

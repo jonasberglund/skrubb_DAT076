@@ -6,10 +6,9 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
-import com.skrubb.blog_back_end.core.Comment;
 import com.skrubb.blog_back_end.core.Tag;
 import java.util.List;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,7 +17,7 @@ import javax.inject.Named;
  * @author jonasberglund
  */
 @Named("posts")
-@SessionScoped
+@RequestScoped
 public class PostsBB {
     private Blog blog;
     
@@ -30,6 +29,7 @@ public class PostsBB {
     
     public List<AbstractPost> getRange(){
         return blog.getPostArchive().getRange(0, blog.getPostArchive().size());
+        
     }
     
     public void deletePost(Long id){
@@ -46,6 +46,10 @@ public class PostsBB {
     
     public List<AbstractPost> getPostsFromAuthor(Author author){
         return blog.getPostArchive().getByAuthor(author);
+    }
+    public List<AbstractPost> getByTag(String tag){
+    
+        return blog.getPostArchive().getByTag(blog.getPostArchive().findTag(tag));
     }
     
 }

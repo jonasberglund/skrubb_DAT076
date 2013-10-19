@@ -16,11 +16,12 @@
             <ui:define name="content"> 
                 <h:form>
                     <h3>Welcome #{loginBean.username}</h3>
+                        
                     
                     <h:outputText value="This is a secured welcome page!"/>
                     <br/>
                      <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
-                    <ui:repeat value="#{posts.range}" var="t">
+                     <ui:repeat value="#{tag_con.byTag}" var="t">
                                 <article class="topcontent">
                                     
                                     
@@ -32,7 +33,9 @@
 
                                                 <footer>
                                                     <h4><h:outputText value="Posted by #{s.author.name}"></h:outputText></h4>
-                                                </footer>                                                <content>
+                                                </footer>
+
+                                                <content>
 
                                                     <h:panelGrid columns="1" cellpadding="10">
                                                         <p:graphicImage rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{s.data}" />
@@ -42,36 +45,27 @@
                                                  </content>
                                             
                                             <ui:repeat value="#{s.tags}" var="tag">
-                                                <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
-                                                               action="tag">
-                                        	
+                                                <h:commandLink action="#{navigation.toTag(tag.value)}" value="#{tag.value}">
+                                        	<f:param name="tag" value="#{tag.value}" />
                                                 </h:commandLink>
                                                 
-                                                                                               
-                                                
-                                                </ui:repeat>
+                                            
+                                            </ui:repeat>
                                                  
                                             <!-- Comments-->
                                                  <header>
-                           
+                                                    <a href="#" id="comments">Comments</a>
                                                 </header>
                                                 <content>
-                                                    <p>
-<!--                                                        ...This is all visible content... -->
+                                                    <p>...This is all visible content... 
                                                     <a href="#" id="#{s.id}-show" class="showLink" 
-                                                    onclick="showHide(#{s.id});return false;">Visa kommentarer</a>
+                                                    onclick="showHide(#{s.id});return false;">See more.</a>
                                                     </p>
 
                                                     <div id="#{s.id}" class="more">
-<!--                                                            <p>...This content is hidden by default...</p>-->
-                                                            <ui:repeat value="#{s.comments}" var="c">
-                                                               <h:outputText value="Kommentar by: #{c.commenter}"/>
-                                                               <br></br>
-                                                               <h:outputText value="Says: #{c.text}"/> 
-                                                               <br></br>
-                                                            </ui:repeat>
+                                                            <p>...This content is hidden by default...</p>
                                                             <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                                            onclick="showHide(#{s.id});return false;">Göm kommentarer</a></p>
+                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
                                                     </div>
                                                </content>
                                         </ui:repeat>     

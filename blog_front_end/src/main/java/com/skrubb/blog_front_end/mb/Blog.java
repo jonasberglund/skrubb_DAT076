@@ -5,9 +5,9 @@
 package com.skrubb.blog_front_end.mb;
 
 import com.skrubb.blog_back_end.core.Author;
-import com.skrubb.blog_back_end.core.AuthorRegistry;
 import com.skrubb.blog_back_end.core.BlogFactory;
-import com.skrubb.blog_back_end.core.PostArchive;
+import com.skrubb.blog_back_end.core.IAuthorRegistry;
+import com.skrubb.blog_back_end.core.IPostArchive;
 import java.io.Serializable;
 import javax.inject.Singleton;
 
@@ -19,8 +19,8 @@ import javax.inject.Singleton;
 public class Blog implements Serializable{
     private static final long serialVersionUID = 10056297720136998L;
     
-    private static String pu_name = "blog";
-    private final com.skrubb.blog_back_end.core.Blog blog;
+    private static String pu_name="blog";
+    private final com.skrubb.blog_back_end.core.IBlog blog;
     
     public Blog(){ 
         blog= BlogFactory.getBlog(pu_name);
@@ -30,11 +30,11 @@ public class Blog implements Serializable{
         }
     }
     
-    public PostArchive getPostArchive(){
+    public IPostArchive getPostArchive(){
         return blog.getPostArchive();
     }
     
-    public AuthorRegistry getAuthorRegistry(){
+    public IAuthorRegistry getAuthorRegistry(){
         return blog.getAuthorRegistry();
     }
     

@@ -19,29 +19,31 @@ import javax.inject.Singleton;
 
 @Singleton
 public class Blog implements Serializable{
-     
+    
     private static String pu_name="blog";
     private final com.skrubb.blog_back_end.core.Blog blog;
     
-        
     public Blog(){
-    
-       blog= BlogFactory.getBlog(pu_name);
-//       createAdmin();
+        
+        blog= BlogFactory.getBlog(pu_name);
+        
+        if (blog.getAuthorRegistry().size() == 0) {
+            createAdmin();
+        }
     }
     
     public PostArchive getPostArchive(){
-    
+        
         return blog.getPostArchive();
     }
     
     public AuthorRegistry getAuthorRegistry(){
-    
+        
         return blog.getAuthorRegistry();
     }
     
     private void createAdmin(){
         Author admin = new Author("admin","password",Author.AccessLevel.ADMIN);
         getAuthorRegistry().add(admin);
-    }    
+    }
 }

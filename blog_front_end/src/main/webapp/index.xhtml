@@ -83,9 +83,9 @@ and open the template in the editor.
                     </ui:repeat>
                         
                     <p:commandButton actionListener="#{posts.prev()}" 
-                                     action="#{navigation.toIndex()}" value="Previous" />
+                                     action="#{navigation.toIndexRedirect()}" value="Previous" />
                     <p:commandButton actionListener="#{posts.next()}" 
-                                     action="#{navigation.toIndex()}" value="Next" />
+                                     action="#{navigation.toIndexRedirect()}" value="Next" />
                                          
                 </h:form>
                </ui:define>
@@ -94,7 +94,7 @@ and open the template in the editor.
                         <aside class="top-sidebar">
                            <article>
                                <h2>This is Skrubb</h2>
-                               <p>Vi som bloggar här är</p>
+                               <p>Authors:</p>
 
                                <ui:repeat value="#{authors.range}" var="author">
                                    #{author.name} <br />

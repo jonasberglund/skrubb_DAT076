@@ -53,7 +53,7 @@ public class LoginBean implements Serializable {
         loggedIn = false;
         author=null;
          
-        return navigationBean.toIndex();
+        return navigationBean.toIndexRedirect();
     }
      
     public String getUsername() {

@@ -29,8 +29,8 @@
                         <h:outputText value="New Password" />
                         <h:inputText id="newPassword" value="#{editAuthor.newPassword}"/>
                         <h:message for="password" />
-                        <h:outputText value="Access level" />
-                        <h:selectOneMenu id="al" value="#{editAuthor.AL}">
+                        <h:outputText rendered="#{loginBean.author.accessLevel eq 'ADMIN'}" value="Access level" />
+                        <h:selectOneMenu rendered="#{loginBean.author.accessLevel eq 'ADMIN'}" id="al" value="#{editAuthor.AL}">
                             <f:selectItem itemValue="ADMIN" itemLabel="Admin" />
                             <f:selectItem itemValue="AUTHOR" itemLabel="Author" />
                         </h:selectOneMenu>

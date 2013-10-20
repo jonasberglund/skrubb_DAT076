@@ -23,6 +23,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "AUTHOR")
 public class Author extends AbstractEntity implements Serializable {
+    private static final long serialVersionUID = 100560897028890438L;
     
     @Column(name = "NAME")
     private String name;

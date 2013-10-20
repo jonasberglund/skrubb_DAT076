@@ -122,13 +122,19 @@ and open the template in the editor.
                            </article>
                        </aside>				
 
-                       <aside class="bottom-sidebar">
-                           <article>
-                               <h2>Chat</h2>
-                               <p>Vill du chatta med författarna?</p>
-                               <p>Anders är ONLINE</p>
-                           </article>
-                       </aside>
+                       <aside class="middle-sidebar">
+                                <article>
+                                <h2>Chat</h2>
+                                
+                            <h:form>
+                                <h:inputText rendered="#{loginBean.loggedIn eq false}" value="#{con_Reader.name}"/>
+                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="chat" 
+                                                 actionListener="#{con_Reader.actSelected()}" />
+                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat" action="chat" 
+                                                 actionListener="#{con_Reader.actSelectedAuth()}" />
+                            </h:form>    
+                            </article>
+                        </aside>
                      </h:form>
                  </ui:define>
             

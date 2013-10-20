@@ -146,6 +146,7 @@ a:hover, a:active {
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;	
 	padding: 3% 5%;
+        margin-bottom: 3%;
 }
 
 .content {

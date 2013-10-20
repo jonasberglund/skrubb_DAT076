@@ -10,58 +10,128 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Skrubb</title>
+            
     </h:head>
     <h:body>
         <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content">
-                 
-                
-                
-                <ui:repeat value="#{posts.range}" var="t">
-                      <h:form>           
+                <h:form id="addCommentForm">
+                    <h:inputHidden id="commenter" value="#{addComment.commenter}" />
+                    <h:inputHidden id="value" value="#{addComment.value}" />
+                    <h:inputHidden id="postId" value="#{addComment.id}" />
+                  
+                    <ui:repeat value="#{posts.range}" var="postlist" varStatus="status">
+                        
                         <article class="topcontent">
+                            
+                            
+                            <ui:repeat value="#{postlist}" var="post">
+                                <header>
+                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
+                                </header>
                                     
+                                <footer>
+                                    <h:outputText value="Posted by #{post.author.name}"></h:outputText>
+                                    <br /><h:outputText value="#{post.date}"></h:outputText>
+                                </footer>
                                     
-                                        <ui:repeat value="#{t}" var="s">
-                                                <header>
-                                                        <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
-                                                </header>
-
-                                                <footer>
-                                                    <h:outputText value="Posted by #{s.author.name}"></h:outputText>
-                                                </footer>
-
-                                                <content>
-
-                                                    <h:panelGrid columns="1" cellpadding="10">
-                                                        <p:graphicImage rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{s.data}" />
-                                                        <h:outputText rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{s.data}" />
-                                                    </h:panelGrid>
-                                                 
-                                                 </content>
-                                                 
-                                            <!-- Comments-->
-                                                 <header>
-                                                    <a href="#" id="comments">Comments</a>
-                                                </header>
-                                                <content>
-                                                    <p>...This is all visible content... 
-                                                    <a href="#" id="#{s.id}-show" class="showLink" 
-                                                    onclick="showHide(#{s.id});return false;">See more.</a>
-                                                    </p>
-
-                                                    <div id="#{s.id}" class="more">
-                                                            <p>...This content is hidden by default...</p>
-                                                            <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                                            onclick="showHide(#{s.id});return false;">Hide this content.</a></p>
-                                                    </div>
-                                               </content>
-                                        </ui:repeat>     
-                                    </article>
+                                <content>
+                                    
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <p:graphicImage rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{post.data}" />
+                                        <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{post.data}" />
+                                    </h:panelGrid>
+                                        
+                                </content>
+                                    
+                                <ui:repeat value="#{post.tags}" var="tag">
+                                    <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
+                                                   action="#{navigation.toTag()}">   
+                                    </h:commandLink>         
+                                </ui:repeat>
+                                    
+                                <!-- Comments-->
+                                <content>
+                                    <p>
+                                        <a href="#" id="#{post.id}-show" class="showLink" 
+                                           onclick="showHide(#{post.id});return false;">Show comments</a>
+                                    </p>
+                                        
+                                    <div id="#{post.id}" class="more">
+                                        
+                                        <ui:repeat value="#{post.comments}" var="comment">
+                                            <h:outputText value="Namn: #{comment.commenter}"/>
+                                            <br></br>
+                                            <h:outputText value="Kommentar: #{comment.text}"/> 
+                                            <br></br>
+                                        </ui:repeat>
+                                        <p>Add comment:</p>
+                                        <input type="text" placeholder="Name" onchange="setCommenter('#{post.id}');" id="commenter#{post.id}" /><br />
+                                        <textArea type="text" placeholder="Comment" onchange="setCommentValue('#{post.id}');" id="value#{post.id}" ></textArea>
+                                        <br />
+                                        <h:commandButton value="Post" action="#{addComment.actOnSelected()}"/>  
                                             
-                            </h:form>
-                        </ui:repeat>
+                                        <p><a href="#" id="#{post.id}-hide" class="hideLink" 
+                                              onclick="showHide(#{post.id});return false;">Hide comments</a></p>
+                                    </div>
+                                </content>
+                                    
+                                 
+                                
+                            </ui:repeat>     
+                        </article>
+                    </ui:repeat>
+                        
+                    <p:commandButton actionListener="#{posts.prev()}" 
+                                     action="#{navigation.toIndex()}" value="Previous" />
+                    <p:commandButton actionListener="#{posts.next()}" 
+                                     action="#{navigation.toIndex()}" value="Next" />
+                                         
+                </h:form>
                </ui:define>
+                 <ui:define name="sidebars">
+                     <h:form>
+                        <aside class="top-sidebar">
+                           <article>
+                               <h2>This is Skrubb</h2>
+                               <p>Vi som bloggar här är</p>
+
+                               <ui:repeat value="#{authors.range}" var="author">
+                                   #{author.name} <br />
+
+
+
+                                                   </ui:repeat>
+                               
+                           </article>
+                       </aside>
+
+                       <aside class="middle-sidebar">
+                           <article>
+                               <h2>Taggar</h2>
+
+                                 <ui:repeat value="#{posts.allTags}" var="tag">
+                                                   <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
+                                                                  action="#{navigation.toTag()}">
+
+                                                   </h:commandLink><br />
+
+
+
+                                                   </ui:repeat>
+                           </article>
+                       </aside>				
+
+                       <aside class="bottom-sidebar">
+                           <article>
+                               <h2>Chat</h2>
+                               <p>Vill du chatta med författarna?</p>
+                               <p>Anders är ONLINE</p>
+                           </article>
+                       </aside>
+                     </h:form>
+                 </ui:define>
+            
         </ui:composition>
      </h:body>
 </html>

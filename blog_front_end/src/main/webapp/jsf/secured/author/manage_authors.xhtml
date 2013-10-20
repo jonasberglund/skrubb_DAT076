@@ -11,14 +11,13 @@
         <title>Manage author page</title>
     </h:head>
     <h:body>
-        <ui:composition template="/secured/template.xhtml">
+        <ui:composition template="/WEB-INF/template.xhtml">
             <ui:define name="content"> 
                 
                 <h:form>  
                     <div>
-                        <h:commandButton actionListener="#{products.prev}" value="Prev" class="small-button"/>
-                        <h:commandButton actionListener="#{products.next}" value="Next" class="small-button"/>
-                        <h:button outcome="add_author" value="Add Author" class="small-button"/>
+                        <h:commandButton action="#{navigation.toAddAuthor()}" value="Add Author" class="small-button"
+                                         rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>
                         <h:commandButton action="#{loginBean.doLogout}" value="Logout" class="small-button"/>
                         <h:outputText value="Logged in as #{loginBean.username}" />                       
                         <br/>
@@ -53,11 +52,15 @@
                                 <f:facet name="header">
                                     <h:outputText  value="Action"/>
                                 </f:facet>
+                                 <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{post.data}" />
+                                
                                 <h:commandButton  actionListener="#{editAuthor.setSelected(p.id)}"
-                                                  action="edit_author" value="Edit"/>
+                                                  action="#{navigation.toEditAuthor()}" value="Edit"
+                                                  rendered="#{(loginBean.author.accessLevel eq 'ADMIN') or (loginBean.author.id eq p.id ) }" />
                                  
                                  <h:commandButton actionListener="#{delAuthor.setSelected(p.id)}"      
-                                                 action="delete_author" value="Delete" />
+                                                  action="#{navigation.toDeleteAuthor()}" value="Delete" 
+                                                   rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>
                                  
                             </p:column>
                         </p:dataTable>

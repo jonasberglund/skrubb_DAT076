@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "htth://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:f="http://java.sun.com/jsf/core"     
+<html xmlns="http://www.w3.org/1999/xhtml"   
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
@@ -18,7 +17,7 @@
                 
                     <h:form id="form">  
                     <p:panel header="Login">  
-                        <p:messages id="messages" showDetail="true" autoUpdate="true"/>  
+                        <p:messages id="messages" showDetail="true" autoUpdate="true"/>
 
                         <h:panelGrid columns="2" id="matchGrid">                     
                             <h:outputLabel for="usrn" value="Username: " />  
@@ -28,9 +27,7 @@
                             <p:password id="password" value="#{loginBean.password}" label="Password" required="true"/>  
                         </h:panelGrid>  
 
-                        <p:commandButton id="button" action="#{loginBean.doLogin}" value="Login" /> 
-                        
-                        <h:commandLink action="#{navigationBean.redirectToInfo}" value="Info page"/>
+                        <p:commandButton id="button" action="#{loginBean.doLogin}" value="Login" />
                     </p:panel>  
 
                 </h:form>           

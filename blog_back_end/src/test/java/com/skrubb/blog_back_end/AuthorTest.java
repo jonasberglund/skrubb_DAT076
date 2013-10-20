@@ -63,7 +63,7 @@ public class AuthorTest {
         
         assertTrue(ar.size() == 1);
         
-        Author b = new Author(a.getId(), "updated", "updated_pass", AccessLevel.AUTHOR);
+        Author b = new Author(a.getId(), "updated", "updated_pass", AccessLevel.AUTHOR, true);
         
         a = ar.update(b);
         

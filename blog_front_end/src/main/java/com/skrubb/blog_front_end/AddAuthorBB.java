@@ -6,7 +6,6 @@ package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
 import javax.enterprise.context.ConversationScoped;
-
 import javax.inject.Named;
 
 /**

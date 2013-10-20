@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"     
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+          
+    <h:head>
+        <title>Admin page</title>
+            
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+                <h:form id="addCommentForm">
+                    <h:inputHidden id="commenter" value="#{addComment.commenter}" />
+                    <h:inputHidden id="value" value="#{addComment.value}" />
+                    <h:inputHidden id="postId" value="#{addComment.id}" />
+                        
+                    <h3>Welcome #{loginBean.username}</h3>
+                        
+                    <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
+                    <ui:repeat value="#{tag_con.byTag}" var="postlist">
+                        <article class="topcontent">
+                            
+                            
+                            <ui:repeat value="#{postlist}" var="post">
+                                <div><h:commandLink action="#{posts.deletePost(post.id)}" value="Delete post"/></div>
+                                <header>
+                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
+                                </header>
+                                    
+                                <footer>
+                                    <h4><h:outputText value="Posted by #{post.author.name}"></h:outputText></h4>
+                                </footer>
+                                    
+                                <content>
+                                    
+                                    <h:panelGrid columns="1" cellpadding="10">
+                                        <p:graphicImage rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{post.data}" />
+                                        <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{post.data}" />
+                                    </h:panelGrid>
+                                        
+                                </content>
+                                    
+                                <ui:repeat value="#{post.tags}" var="tag">
+                                    <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
+                                                   action="#{navigation.toTag()}">   
+                                    </h:commandLink>
+                                        
+                                        
+                                </ui:repeat>
+                                
+                                <!-- Comments-->
+                            <content>
+                                <p>
+                                    <a href="#" id="#{post.id}-show" class="showLink" 
+                                       onclick="showHide(#{post.id});return false;">Show comments</a>
+                                </p>
+                                    
+                                <div id="#{post.id}" class="more">
+                                    
+                                    <ui:repeat value="#{post.comments}" var="comment">
+                                        <h:outputText value="Comment by: #{comment.commenter}"/>
+                                        <br></br>
+                                        <h:outputText value="Says: #{comment.text}"/> 
+                                        <br></br>
+                                    </ui:repeat>
+                                    <p>Add comment:</p>
+                                    <input type="text" placeholder="Name" onchange="setCommenter('#{post.id}');" id="commenter#{post.id}" /><br />
+                                    <textArea type="text" placeholder="Comment" onchange="setCommentValue('#{post.id}');" id="value#{post.id}" ></textArea>
+                                        <br />
+                                        <h:commandButton value="Post" actionListener="#{addComment.actOnSelected()}"/>  
+                                            
+                                        <p><a href="#" id="#{post.id}-hide" class="hideLink" 
+                                              onclick="showHide(#{post.id});return false;">Hide comments</a></p>
+                                    </div>
+                                </content>
+                            
+                            </ui:repeat>
+                        </article>
+                        
+                    </ui:repeat>
+                        
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+            
+    </h:body>
+</html>

@@ -7,6 +7,8 @@ package com.skrubb.blog_front_end;
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,13 +49,12 @@ public class LoginBean implements Serializable {
         author = blog.getAuthorRegistry().getAuthorByLogin(username, Author.generateHashedPassword(password));
         
         if (author != null) {
-                loggedIn = true;
-                return navigationBean.redirectToWelcome();
-            }
+            loggedIn = true;
+            return navigationBean.toWelcome();
+        }
         
-        return navigationBean.toLogin();
-        
-         
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error", "Wrong password or username!"));
+        return navigationBean.toLogin(); 
     }
      
     /**
@@ -66,7 +67,7 @@ public class LoginBean implements Serializable {
         author=null;
          
          
-        return navigationBean.redirectToWelcome();
+        return navigationBean.toWelcome();
     }
  
     // ------------------------------

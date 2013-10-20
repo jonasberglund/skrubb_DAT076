@@ -6,4 +6,78 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
     version="2.0">
 
+<navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>welcome</from-outcome>
+            <to-view-id>/jsf/secured/welcome.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>text-post</from-outcome>
+            <to-view-id>/jsf/secured/post/text_post.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>photo-post</from-outcome>
+            <to-view-id>/jsf/secured/post/image_post.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>edit-post</from-outcome>
+            <to-view-id>/jsf/secured/post/edit_post.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>authors</from-outcome>
+            <to-view-id>/jsf/secured/author/manage_authors.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>add-author</from-outcome>
+            <to-view-id>/jsf/secured/author/add_author.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit-author</from-outcome>
+            <to-view-id>/jsf/secured/author/edit_author.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit-author-redirect</from-outcome>
+            <to-view-id>/jsf/secured/author/edit_author.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>delete-author</from-outcome>
+            <to-view-id>/jsf/secured/author/delete_author.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login-redirect</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        
+        <navigation-case>
+            <from-outcome>posts-by-tag</from-outcome>
+            <to-view-id>/jsf/tag.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>

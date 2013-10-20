@@ -4,6 +4,7 @@
  */
 package com.skrubb.blog_front_end;
 
+import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
 import java.util.Date;
@@ -25,9 +26,13 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     private String title;
     private String value;
     protected String tags;
+    private String commenter;
     
     @Inject
     protected LoginBean loginbean;
+    
+    @Inject
+    protected NavigationBean navigationBean;
     
     
     
@@ -42,7 +47,12 @@ public abstract class ConversationalPost extends ConversationalBase implements S
             conversation.begin();
         }
         
+        AbstractPost p = blog.getPostArchive().find(id);
         this.id=id;
+        this.title = p.getTitle();
+        this.value = p.getData();
+        this.date = p.getDate();
+        this.author = p.getAuthor();
         
     }
 
@@ -58,7 +68,7 @@ public abstract class ConversationalPost extends ConversationalBase implements S
             conversation.end();
         }
         execute();
-        return "welcome";
+        return navigationBean.toWelcome();
     }
 
 
@@ -99,4 +109,17 @@ public abstract class ConversationalPost extends ConversationalBase implements S
     public Author getAuthor(){
         return author;
     }
+    
+     public void setCommenter(String commenter){
+        this.commenter = commenter;
+    }
+    
+    public String getCommenter(){
+            return commenter;
+    }
+    
+    public AbstractPost showSinglePost(Long id){
+        return blog.getPostArchive().find(id);
+    }
+
 }

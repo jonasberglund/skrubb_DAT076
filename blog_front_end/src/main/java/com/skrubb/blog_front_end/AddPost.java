@@ -4,10 +4,8 @@
  */
 package com.skrubb.blog_front_end;
 
-import com.skrubb.blog_back_end.core.Author;
 import com.skrubb.blog_back_end.core.Tag;
 import com.skrubb.blog_back_end.core.TextPost;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.enterprise.context.ConversationScoped;

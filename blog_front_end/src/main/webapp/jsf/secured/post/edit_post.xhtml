@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"     
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width"/>
+    </head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+                
+                <h:form id="form">  
+                        <h3>Edit your post</h3>  
+                        <h4> #{editPost.title} </h4>
+                 
+                    <p:editor id="editor" value="#{editPost.value}" width="600"/>  
+                
+                    <h:panelGrid columns="2" style="margin-top:10px">  
+                    <p:commandButton value="Post" action="#{editPost.actOnSelected()}"/>
+                        
+                    </h:panelGrid>  
+                </h:form>  
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

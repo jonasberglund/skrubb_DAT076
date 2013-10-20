@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"    
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+          
+    <h:head>
+        <title>Admin page</title>
+            
+    </h:head>
+    <h:body>
+        <ui:composition template="/WEB-INF/template.xhtml">
+            <ui:define name="content"> 
+                <h:form>
+                    <h3>Welcome #{loginBean.username}</h3>
+                        
+                    <ui:repeat value="#{posts.getPostsFromAuthor(loginBean.author)}" var="postlist">
+                        <article class="bottomcontent">
+                            <ui:repeat value="#{postlist}" var="post">
+                                
+                                <header>
+                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
+                                </header>
+                                <div><h:commandButton action="#{posts.deletePost(post.id)}" value="Delete post"/>
+                                    <h:commandButton rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}"
+                                                     action="edit-post" actionListener="#{editPost.setSelected(post.id)}"
+                                                     value="Edit post"/><br />
+                                    <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}"
+                                                  value="Photo posts can not be edited" />
+                                </div>
+                            </ui:repeat>     
+                        </article>
+                            
+                            
+                    </ui:repeat>
+                        
+                </h:form>    
+            </ui:define>
+        </ui:composition>
+            
+    </h:body>
+</html>

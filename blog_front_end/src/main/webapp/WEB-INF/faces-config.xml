@@ -52,6 +52,10 @@
         <navigation-case>
             <from-outcome>edit-author</from-outcome>
             <to-view-id>/jsf/secured/author/edit_author.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>edit-author-redirect</from-outcome>
+            <to-view-id>/jsf/secured/author/edit_author.xhtml</to-view-id>
             <redirect />
         </navigation-case>
         <navigation-case>
@@ -62,6 +66,10 @@
         
         <navigation-case>
             <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>login-redirect</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
             <redirect />
         </navigation-case>

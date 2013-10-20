@@ -29,6 +29,13 @@ public class NavigationBean implements Serializable {
     public String toLogin() {
         return "login";
     }
+    /**
+     * Go to login page.
+     * @return Login page name.
+     */
+    public String toLoginRedirect() {
+        return "login-redirect";
+    }
     
     /**
      * Go to index page.
@@ -99,6 +106,14 @@ public class NavigationBean implements Serializable {
      */
     public String toEditAuthor() {
         return "edit-author";
+    }
+    
+    /**
+     * Go to edit author page.
+     * @return Edit author page name.
+     */
+    public String toEditAuthorRedirect() {
+        return "edit-author-redirect";
     }
     
     /**

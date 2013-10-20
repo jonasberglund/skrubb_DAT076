@@ -6,6 +6,7 @@ package com.skrubb.blog_front_end.mb;
 
 import com.skrubb.blog_back_end.core.AbstractPost;
 import com.skrubb.blog_back_end.core.Author;
+import com.skrubb.blog_back_end.core.IBlog;
 import com.skrubb.blog_back_end.core.Tag;
 import com.skrubb.blog_front_end.utils.ContainerNavigator;
 import java.io.Serializable;

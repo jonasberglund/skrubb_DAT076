@@ -14,10 +14,9 @@ public class BlogFactory {
     
     }
     
-    public static Blog getBlog(String puName)
+    public static IBlog getBlog(String puName)
     {
-        Blog blog=new Blog(puName);
-        return blog;
+        return new Blog(puName);
     }
     
     

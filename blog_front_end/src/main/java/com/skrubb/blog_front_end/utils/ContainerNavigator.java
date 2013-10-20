@@ -4,8 +4,8 @@
  */
 package com.skrubb.blog_front_end.utils;
 
-import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 import com.skrubb.blog_back_end.utils.AbstractEntity;
+import com.skrubb.blog_back_end.utils.IContentHandler;
 import java.util.List;
 
 /**
@@ -16,11 +16,11 @@ import java.util.List;
  */
 public class ContainerNavigator<T extends AbstractEntity> {
 
-    private final AbstractContentHandler<Long, T> container;
+    private final IContentHandler<Long, T> container;
     private int first;  // Fist item in table
     private int nItems;  // Number of items in table
 
-    public ContainerNavigator(int first, int nItems, AbstractContentHandler<Long, T> container) {
+    public ContainerNavigator(int first, int nItems, IContentHandler<Long, T> container) {
         this.first = first;
         this.nItems = nItems;
         this.container = container;

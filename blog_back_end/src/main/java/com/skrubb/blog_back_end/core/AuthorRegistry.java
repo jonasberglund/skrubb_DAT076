@@ -12,7 +12,7 @@ import javax.persistence.EntityManager;
  * @author ollesvensson
  * @author robintornquist
  */
-public class AuthorRegistry extends AbstractContentHandler<Long, Author> {
+public class AuthorRegistry extends AbstractContentHandler<Long, Author> implements IAuthorRegistry {
     
     public AuthorRegistry(String puName){
         super(Author.class, puName);

@@ -9,21 +9,21 @@ package com.skrubb.blog_back_end.core;
  * @author robin
  * @author ollesvensson
  */
-public class Blog {
+public class Blog implements IBlog {
     
-    private PostArchive postArchive;
-    private AuthorRegistry authorRegistry;
+    private IPostArchive postArchive;
+    private IAuthorRegistry authorRegistry;
     
     public Blog(String puName) {
         postArchive = new PostArchive(puName);
         authorRegistry = new AuthorRegistry(puName);
     }
     
-    public PostArchive getPostArchive() {
+    public IPostArchive getPostArchive() {
         return postArchive;
     }
     
-    public AuthorRegistry getAuthorRegistry() {
+    public IAuthorRegistry getAuthorRegistry() {
         return authorRegistry;
     }
     

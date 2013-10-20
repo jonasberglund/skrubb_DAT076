@@ -6,7 +6,6 @@ package com.skrubb.blog_back_end.core;
 
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import javax.persistence.criteria.Root;
  * @author robin
  * @author ollesvensson
  */
-public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
+public class PostArchive extends AbstractContentHandler<Long, AbstractPost> implements IPostArchive {
     
     private CommentArchive commentArchive;
     private TagArchive tagArchive;
@@ -47,6 +46,10 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         post.addTag(tag);
         
         super.update(post);
+    }
+    
+    public Tag findTag(String tag) {
+        return tagArchive.find(tag);
     }
     
     public List<AbstractPost> getByTag(Tag tag) {
@@ -76,10 +79,6 @@ public class PostArchive extends AbstractContentHandler<Long, AbstractPost> {
         post.removeComment(commentArchive.find(commentId));
         commentArchive.remove(commentId);
         super.update(post);
-    }
-    
-    public Tag findTag(String tag) {
-        return tagArchive.find(tag);
     }
     
     @Override

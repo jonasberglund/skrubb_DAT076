@@ -15,6 +15,7 @@ import javax.inject.Inject;
  */
 public abstract class ConversationalBase {
     
+    @Inject
     protected Blog blog;
     
     @Inject
@@ -22,12 +23,6 @@ public abstract class ConversationalBase {
     
     @Inject
     protected Conversation conversation;
-    
-    @Inject
-    public void Blog(Blog blog)
-    {
-        this.blog=blog;
-    }
     
     protected abstract void execute();
 }

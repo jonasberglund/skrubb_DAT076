@@ -23,6 +23,8 @@ import org.primefaces.model.UploadedFile;
 @ConversationScoped
 public class AddPhotoPostBB extends ConversationalPost {
     
+    private static final long serialVersionUID = 10056297720999998L;
+    
     private String destination="git/skrubb_DAT076/blog_front_end/target/blog_front_end-1.0-SNAPSHOT/resources/img/";
     private UploadedFile file;
     
@@ -57,22 +59,24 @@ public class AddPhotoPostBB extends ConversationalPost {
                     
                 }
                 
-            } catch (Exception e) {
+            } catch (IOException e) {
                 
             }
         }
     }
     
     private String copyFile(String fileName, InputStream in) {
+        OutputStream out;
+        
         try {
             // write the inputStream to a FileOutputStream
             
             fileName = System.currentTimeMillis() + fileName;
             String fileDestination = destination + fileName;
             
-            OutputStream out = new FileOutputStream(new File(fileDestination));
+            out = new FileOutputStream(new File(fileDestination));
             
-            int read = 0;
+            int read;
             byte[] bytes = new byte[1024];
             
             while ((read = in.read(bytes)) != -1) {

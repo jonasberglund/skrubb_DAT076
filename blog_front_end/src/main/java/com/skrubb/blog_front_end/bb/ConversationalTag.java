@@ -21,6 +21,8 @@ import javax.inject.Named;
 @ConversationScoped
 public class ConversationalTag extends ConversationalBase implements Serializable{
     
+    private static final long serialVersionUID = 100562977208890438L;
+    
     private String tag;
     
     @Inject

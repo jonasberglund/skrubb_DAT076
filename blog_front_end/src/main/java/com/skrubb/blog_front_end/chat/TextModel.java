@@ -6,6 +6,7 @@ import java.io.Serializable;
  * @author Anders
  */
 public class TextModel implements Serializable {
+    private static final long serialVersionUID = 90056297720999998L;
 
     private String text;
     private String name;

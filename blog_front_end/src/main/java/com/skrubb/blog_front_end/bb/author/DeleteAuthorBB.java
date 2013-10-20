@@ -14,6 +14,8 @@ import javax.inject.Named;
 @Named("delAuthor")
 @ConversationScoped
 public class DeleteAuthorBB extends ConversationalAuthor{
+    
+    private static final long serialVersionUID = 100562111208890438L;
    
     public DeleteAuthorBB(){
     

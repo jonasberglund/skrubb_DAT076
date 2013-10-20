@@ -11,7 +11,8 @@ import javax.inject.Named;
 @Named("messageBeanX")
 @ApplicationScoped
 public class MessageBeanX implements Serializable {
-
+    private static final long serialVersionUID = 10011297720999998L;
+    
     Boolean authorPresent=false;
     
     private static final int MAX_SIZE = 25;

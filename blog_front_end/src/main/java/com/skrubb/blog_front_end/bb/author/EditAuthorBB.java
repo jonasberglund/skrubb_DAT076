@@ -18,6 +18,8 @@ import javax.inject.Named;
 @ConversationScoped
 public class EditAuthorBB extends ConversationalAuthor{
     
+    private static final long serialVersionUID = 100560987208890438L;
+    
     private String oldPassword;
     private String newPassword;
     

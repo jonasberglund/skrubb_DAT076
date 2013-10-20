@@ -14,6 +14,8 @@ import javax.inject.Named;
 @Named("addAuthor")
 @ConversationScoped
 public class AddAuthorBB extends ConversationalAuthor {
+    
+    private static final long serialVersionUID = 100562977263890438L;
         
     public AddAuthorBB(){
     

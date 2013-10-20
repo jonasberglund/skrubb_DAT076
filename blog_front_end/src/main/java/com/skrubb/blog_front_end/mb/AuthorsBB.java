@@ -6,6 +6,7 @@ package com.skrubb.blog_front_end.mb;
 
 import com.skrubb.blog_back_end.core.Author;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -18,15 +19,15 @@ import javax.inject.Named;
 @Named("authors")
 @RequestScoped
 public class AuthorsBB implements Serializable {
-    private Blog blog;
+    private static final long serialVersionUID = 15556297720999998L;
     
     @Inject
-    public void Blog(Blog blog)
-    {
-        this.blog=blog;
-    }
+    private Blog blog;
     
     public List<Author> getRange(){
-        return blog.getAuthorRegistry().getRange(0, blog.getAuthorRegistry().size());
+        if (blog != null) {
+            return blog.getAuthorRegistry().getRange(0, blog.getAuthorRegistry().size());
+        }
+        return new ArrayList<Author>();
     }
 }

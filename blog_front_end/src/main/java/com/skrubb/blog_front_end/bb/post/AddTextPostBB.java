@@ -18,6 +18,7 @@ import javax.inject.Named;
 @Named("addPost")
 @ConversationScoped
 public class AddTextPostBB extends ConversationalPost {
+    private static final long serialVersionUID = 10056297270999998L;
     
     public AddTextPostBB(){
     

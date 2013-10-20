@@ -22,23 +22,18 @@ import javax.inject.Named;
 @Named("loginBean")
 @SessionScoped
 public class LoginBean implements Serializable {
+    private static final long serialVersionUID = 10056297720911198L;
     
+    @Inject
     private Blog blog;
-    private Author author;
     
+    private Author author;
     private String username;
     private String password;
-     
     private boolean loggedIn;
  
     @Inject
     private NavigationBean navigationBean;
-    
-    @Inject
-    private void Blog(Blog blog)
-    {
-        this.blog=blog;
-    }
      
     public String doLogin() {
           

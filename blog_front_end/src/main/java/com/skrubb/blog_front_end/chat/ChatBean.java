@@ -14,6 +14,7 @@ import com.skrubb.blog_front_end.mb.LoginBean;
 @Named("chatBean")
 @RequestScoped
 public class ChatBean implements Serializable {
+    private static final long serialVersionUID = 13456797720999998L;
 
     private static final String PUSH_GROUP = "colorPage";
     @Inject

@@ -22,14 +22,12 @@ import javax.inject.Named;
 @Named("posts")
 @SessionScoped
 public class PostsBB implements Serializable {
-    private Blog blog;
-    private ContainerNavigator cn;
+    private static final long serialVersionUID = 10056297720911122L;
     
     @Inject
-    public void Blog(Blog blog)
-    {
-        this.blog=blog;
-    }
+    private Blog blog;
+    
+    private ContainerNavigator cn;
     
     @PostConstruct
     public void post() {

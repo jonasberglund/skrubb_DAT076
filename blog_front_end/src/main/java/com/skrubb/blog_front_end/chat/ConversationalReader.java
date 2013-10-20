@@ -19,6 +19,7 @@ import javax.inject.Named;
 @Named("con_Reader")
 @ConversationScoped
 public class ConversationalReader extends ConversationalBase implements Serializable{
+    private static final long serialVersionUID = 10056297720999777L;
     
     private String name;
     

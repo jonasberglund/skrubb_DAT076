@@ -16,6 +16,8 @@ import javax.inject.Named;
 @ConversationScoped
 public class AddCommentBB extends ConversationalPost {
 
+    private static final long serialVersionUID = 209562977208890438L;
+    
     public AddCommentBB(){
         
     }

@@ -17,8 +17,9 @@ import javax.inject.Singleton;
  */
 @Singleton
 public class Blog implements Serializable{
+    private static final long serialVersionUID = 10056297720136998L;
     
-    private static String pu_name="blog";
+    private static String pu_name = "blog";
     private final com.skrubb.blog_back_end.core.Blog blog;
     
     public Blog(){ 

@@ -16,6 +16,7 @@ import javax.inject.Named;
 @Named("editPost")
 @ConversationScoped
 public class EditPostBB extends ConversationalPost{
+    private static final long serialVersionUID = 10006297720999998L;
 
     public EditPostBB(){
         

@@ -16,7 +16,8 @@
                 
                 <h:form>  
                     <div>
-                        <h:commandButton action="#{navigation.toAddAuthor()}" value="Add Author" class="small-button"/>
+                        <h:commandButton action="#{navigation.toAddAuthor()}" value="Add Author" class="small-button"
+                                         rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>
                         <h:commandButton action="#{loginBean.doLogout}" value="Logout" class="small-button"/>
                         <h:outputText value="Logged in as #{loginBean.username}" />                       
                         <br/>
@@ -51,11 +52,15 @@
                                 <f:facet name="header">
                                     <h:outputText  value="Action"/>
                                 </f:facet>
+                                 <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{post.data}" />
+                                
                                 <h:commandButton  actionListener="#{editAuthor.setSelected(p.id)}"
-                                                  action="#{navigation.toEditAuthor()}" value="Edit"/>
+                                                  action="#{navigation.toEditAuthor()}" value="Edit"
+                                                  rendered="#{(loginBean.author.accessLevel eq 'ADMIN') or (loginBean.author.id eq p.id ) }" />
                                  
                                  <h:commandButton actionListener="#{delAuthor.setSelected(p.id)}"      
-                                                  action="#{navigation.toDeleteAuthor()}" value="Delete" />
+                                                  action="#{navigation.toDeleteAuthor()}" value="Delete" 
+                                                   rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>
                                  
                             </p:column>
                         </p:dataTable>

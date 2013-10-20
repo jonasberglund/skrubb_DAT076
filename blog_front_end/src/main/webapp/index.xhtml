@@ -19,36 +19,32 @@ and open the template in the editor.
                     <h:inputHidden id="commenter" value="#{addComment.commenter}" />
                     <h:inputHidden id="value" value="#{addComment.value}" />
                     <h:inputHidden id="postId" value="#{addComment.id}" />
-                        
-                        
-                    <p:commandButton actionListener="#{posts.prev()}" 
-                                     action="#{navigation.toIndex()}" value="Previous" />
-                    <p:commandButton actionListener="#{posts.next()}" 
-                                     action="#{navigation.toIndex()}" value="Next" />
-                    <ui:repeat value="#{posts.range}" var="t" varStatus="status">
+                  
+                    <ui:repeat value="#{posts.range}" var="postlist" varStatus="status">
                         
                         <article class="topcontent">
                             
                             
-                            <ui:repeat value="#{t}" var="s">
+                            <ui:repeat value="#{postlist}" var="post">
                                 <header>
-                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{s.title}"/></a></h2>
+                                    <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
                                 </header>
                                     
                                 <footer>
-                                    <h:outputText value="Posted by #{s.author.name}"></h:outputText>
+                                    <h:outputText value="Posted by #{post.author.name}"></h:outputText>
+                                    <br /><h:outputText value="#{post.date}"></h:outputText>
                                 </footer>
                                     
                                 <content>
                                     
                                     <h:panelGrid columns="1" cellpadding="10">
-                                        <p:graphicImage rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{s.data}" />
-                                        <h:outputText rendered="#{s.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{s.data}" />
+                                        <p:graphicImage rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}" value="/resources/img/#{post.data}" />
+                                        <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}" value="#{post.data}" />
                                     </h:panelGrid>
                                         
                                 </content>
                                     
-                                <ui:repeat value="#{s.tags}" var="tag">
+                                <ui:repeat value="#{post.tags}" var="tag">
                                     <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
                                                    action="#{navigation.toTag()}">   
                                     </h:commandLink>         
@@ -57,29 +53,31 @@ and open the template in the editor.
                                 <!-- Comments-->
                                 <content>
                                     <p>
-                                        <a href="#" id="#{s.id}-show" class="showLink" 
-                                           onclick="showHide(#{s.id});return false;">Show comments</a>
+                                        <a href="#" id="#{post.id}-show" class="showLink" 
+                                           onclick="showHide(#{post.id});return false;">Show comments</a>
                                     </p>
                                         
-                                    <div id="#{s.id}" class="more">
+                                    <div id="#{post.id}" class="more">
                                         
-                                        <ui:repeat value="#{s.comments}" var="c">
-                                            <h:outputText value="Comment by: #{c.commenter}"/>
+                                        <ui:repeat value="#{post.comments}" var="comment">
+                                            <h:outputText value="Namn: #{comment.commenter}"/>
                                             <br></br>
-                                            <h:outputText value="Says: #{c.text}"/> 
+                                            <h:outputText value="Kommentar: #{comment.text}"/> 
                                             <br></br>
                                         </ui:repeat>
                                         <p>Add comment:</p>
-                                        <input type="text" placeholder="Name" onchange="setCommenter('#{s.id}');" id="commenter#{s.id}" /><br />
-                                        <textArea type="text" placeholder="Comment" onchange="setCommentValue('#{s.id}');" id="value#{s.id}" ></textArea>
+                                        <input type="text" placeholder="Name" onchange="setCommenter('#{post.id}');" id="commenter#{post.id}" /><br />
+                                        <textArea type="text" placeholder="Comment" onchange="setCommentValue('#{post.id}');" id="value#{post.id}" ></textArea>
                                         <br />
                                         <h:commandButton value="Post" action="#{addComment.actOnSelected()}"/>  
                                             
-                                        <p><a href="#" id="#{s.id}-hide" class="hideLink" 
-                                              onclick="showHide(#{s.id});return false;">Hide comments</a></p>
+                                        <p><a href="#" id="#{post.id}-hide" class="hideLink" 
+                                              onclick="showHide(#{post.id});return false;">Hide comments</a></p>
                                     </div>
                                 </content>
                                     
+                                 
+                                
                             </ui:repeat>     
                         </article>
                     </ui:repeat>
@@ -98,7 +96,13 @@ and open the template in the editor.
                                <h2>This is Skrubb</h2>
                                <p>Vi som bloggar här är</p>
 
-                               <p>Jonas Berglund <br /> Olle Svensson <br /> Anders Johansson <br /> Robin Törnquist <br /></p>
+                               <ui:repeat value="#{authors.range}" var="author">
+                                   #{author.name} <br />
+
+
+
+                                                   </ui:repeat>
+                               
                            </article>
                        </aside>
 

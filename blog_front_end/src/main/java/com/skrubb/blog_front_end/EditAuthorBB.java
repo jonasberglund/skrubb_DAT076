@@ -5,13 +5,10 @@
 package com.skrubb.blog_front_end;
 
 import com.skrubb.blog_back_end.core.Author;
-import java.util.Iterator;
 import javax.enterprise.context.ConversationScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 /**
  *
@@ -57,7 +54,7 @@ public class EditAuthorBB extends ConversationalAuthor{
             else {
                 //message
                 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Felaktigt lösenord", "Fyll i rätt"));
-                return "edit_author";
+                return navigationBean.toEditAuthor();
                 
             }
         }
@@ -65,7 +62,10 @@ public class EditAuthorBB extends ConversationalAuthor{
         
         Author authorUpdated = new Author(getId(),getName(), getPassword(), getAL(), updatedPassword);
         blog.getAuthorRegistry().update(authorUpdated);
-        return "manage_authors";
+        
+        destroy();
+        
+        return navigationBean.toAuthors();
     }
 
     @Override

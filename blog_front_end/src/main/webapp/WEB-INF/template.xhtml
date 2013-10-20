@@ -74,8 +74,15 @@
 
                         <aside class="middle-sidebar">
                                 <article>
-                                <h2>Middle Sidebar</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <h2>Chat</h2>
+                                
+                            <h:form>
+                                <h:inputText rendered="#{loginBean.loggedIn eq false}" value="#{con_Reader.name}"/>
+                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="chat" 
+                                                 actionListener="#{con_Reader.actSelected()}" />
+                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat" action="chat" 
+                                                 actionListener="#{con_Reader.actSelectedAuth()}" />
+                            </h:form>    
                             </article>
                         </aside>				
 

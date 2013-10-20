@@ -32,12 +32,12 @@
         </dependency>
         <dependency>
             <groupId>org.icefaces</groupId>
-            <artifactId>icefaces-ace</artifactId>
+            <artifactId>icepush</artifactId>
             <version>3.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.icefaces</groupId>
-            <artifactId>icepush</artifactId>
+            <artifactId>icefaces</artifactId>
             <version>3.0.1</version>
         </dependency>
         <dependency>

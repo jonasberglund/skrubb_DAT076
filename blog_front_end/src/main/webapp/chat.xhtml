@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Easy Ajax Push - Color</title>
+    </h:head>
+    <h:body>
+        <h:dataTable value="#{messageBeanX.list}" var="current">
+            <h:column>
+                <h:outputText value="#{current.name}"/>
+                <h:outputText value=": "/>
+                <h:outputText value="#{current.text}" />
+            </h:column>
+        </h:dataTable>
+
+        <hr width="100%"/>
+
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputText value="#{con_Reader.name}"/>
+                <h:inputText size="20" value="#{chatBean.text}"/>
+                <h:commandButton value="Send" action="#{chatBean.push}"/>
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>

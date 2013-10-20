@@ -43,8 +43,8 @@
 		<nav><ul>
 			<li class="active"><a href="welcome.xhtml">Home</a></li>
 			<li><a href="text_post.xhtml">Textinlägg</a></li>
-			<li><a href="image_post.xhtml">Bildinlägg</a></li>
-                        <li><a href="manage_authors.xhtml">Hantera användare</a></li>
+		<li><a href="manage_authors.xhtml">Hantera användare</a></li>
+                        	<li><a href="image_post.xhtml">Bildinlägg</a></li>
                         <li><a href="chat.xhtml">Chat</a></li>
                         <h:form><li><h:commandLink value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
 		</ul></nav>
@@ -58,9 +58,6 @@
                         </ui:insert> 
                     </div>
             
-<!--             Sidebars 
-            
-
                         <aside class="top-sidebar">
                                 <article>
                                 <h2>This is Skrubb</h2>
@@ -70,8 +67,15 @@
 
                         <aside class="middle-sidebar">
                                 <article>
-                                <h2>Middle Sidebar</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <h2>Chat</h2>
+                                
+                            <h:form>
+                                <h:inputText rendered="#{loginBean.loggedIn eq false}" value="#{con_Reader.name}"/>
+                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="../chat" 
+                                                 actionListener="#{con_Reader.actSelected()}" />
+                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat - Author" action="../chat" 
+                                                 actionListener="#{con_Reader.actSelectedAuth()}" />
+                            </h:form>    
                             </article>
                         </aside>				
 
@@ -80,7 +84,7 @@
                                 <h2>Bottom Sidebar</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod expedita distinctio.</p>
                             </article>
-                        </aside>	-->
+                        </aside>	
             </div>
 		
 	<footer class="mainFooter">

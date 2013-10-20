@@ -1,4 +1,4 @@
-package com.skrubb.blog_front_end;
+package com.skrubb.blog_front_end.chat;
 
 import java.io.Serializable;
 /**

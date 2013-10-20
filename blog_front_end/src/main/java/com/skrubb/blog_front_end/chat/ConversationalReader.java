@@ -2,8 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.skrubb.blog_front_end;
+package com.skrubb.blog_front_end.chat;
 
+import com.skrubb.blog_front_end.bb.ConversationalBase;
+import com.skrubb.blog_front_end.mb.LoginBean;
 import java.io.Serializable;
 import javax.annotation.PreDestroy;
 import javax.enterprise.context.ConversationScoped;

@@ -44,52 +44,11 @@
             </div>
             
             <!-- Sidebars -->
-            <ui:insert name="sidebars">
-                </ui:insert> 
-            
-<<<<<<< HEAD
-           
+            <ui:insert name="sidebars"></ui:insert>
         </div>
         
         <footer class="mainFooter">
             <p>Copyright &copy; 2013 <a href="http://skrubbgruppen.se">Skrubbgruppen</a>  <h:link outcome="login-redirect" value="Login" /></p>
         </footer>
-        
-=======
-
-                        <aside class="top-sidebar">
-                                <article>
-                                <h2>This is Skrubb</h2>
-                                <p>Discover how to use new skrubb techniques to achieve an outstanding, cross-browser HTML5.</p>
-                            </article>
-                        </aside>
-
-                        <aside class="middle-sidebar">
-                                <article>
-                                <h2>Chat</h2>
-                                
-                            <h:form>
-                                <h:inputText rendered="#{loginBean.loggedIn eq false}" value="#{con_Reader.name}"/>
-                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="chat" 
-                                                 actionListener="#{con_Reader.actSelected()}" />
-                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat" action="chat" 
-                                                 actionListener="#{con_Reader.actSelectedAuth()}" />
-                            </h:form>    
-                            </article>
-                        </aside>				
-
-                        <aside class="bottom-sidebar">
-                                <article>
-                                <h2>Bottom Sidebar</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod expedita distinctio.</p>
-                            </article>
-                        </aside>	
-            </div>
-		
-	<footer class="mainFooter">
-		<p>Copyright &copy; 2013 <a href="http://skrubbgruppen.se">Skrubbgruppen</a>  <a href="login.xhtml">Login</a></p>
-	</footer>
-    
->>>>>>> fixed chat
     </body>   
 </html>

@@ -1,13 +1,12 @@
-package com.skrubb.blog_front_end;
+package com.skrubb.blog_front_end.chat;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.servlet.http.HttpSession;
 import org.icefaces.application.PushRenderer;
+import com.skrubb.blog_front_end.mb.LoginBean;
 
 /*
  *@Author Anders
@@ -29,7 +28,7 @@ public class ChatBean implements Serializable {
     
     @Inject
     LoginBean loginBean;
-        
+    
     @PostConstruct
     public void postConstruct(){
         PushRenderer.addCurrentSession(PUSH_GROUP);

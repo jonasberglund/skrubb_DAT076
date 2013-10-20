@@ -91,6 +91,43 @@ and open the template in the editor.
                                          
                 </h:form>
                </ui:define>
+                 <ui:define name="sidebars">
+                     <h:form>
+                        <aside class="top-sidebar">
+                           <article>
+                               <h2>This is Skrubb</h2>
+                               <p>Vi som bloggar här är</p>
+
+                               <p>Jonas Berglund <br /> Olle Svensson <br /> Anders Johansson <br /> Robin Törnquist <br /></p>
+                           </article>
+                       </aside>
+
+                       <aside class="middle-sidebar">
+                           <article>
+                               <h2>Taggar</h2>
+
+                                 <ui:repeat value="#{posts.allTags}" var="tag">
+                                                   <h:commandLink actionListener="#{tag_con.setSelected(tag.value)}" value="#{tag.value}"
+                                                                  action="#{navigation.toTag()}">
+
+                                                   </h:commandLink><br />
+
+
+
+                                                   </ui:repeat>
+                           </article>
+                       </aside>				
+
+                       <aside class="bottom-sidebar">
+                           <article>
+                               <h2>Chat</h2>
+                               <p>Vill du chatta med författarna?</p>
+                               <p>Anders är ONLINE</p>
+                           </article>
+                       </aside>
+                     </h:form>
+                 </ui:define>
+            
         </ui:composition>
      </h:body>
 </html>

@@ -70,6 +70,14 @@ public class NavigationBean implements Serializable {
     }
     
     /**
+     * Go to edit post page.
+     * @return Edit post page name.
+     */
+    public String toEditPost() {
+        return "edit-post";
+    }
+    
+    /**
      * Go to authors page.
      * @return Authors page name.
      */

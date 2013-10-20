@@ -69,4 +69,8 @@ public class PostsBB implements Serializable {
         return blog.getPostArchive().getByTag(blog.getPostArchive().findTag(tag));
     }
     
+    public List<Tag> getAllTags(){
+        return blog.getPostArchive().getAllTags();
+    }
+    
 }

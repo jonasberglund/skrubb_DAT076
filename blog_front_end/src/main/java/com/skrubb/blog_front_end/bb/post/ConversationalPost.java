@@ -61,7 +61,7 @@ public abstract class ConversationalPost extends ConversationalBase implements S
             conversation.end();
         }
         execute();
-        return navigationBean.toWelcome();
+        return navigationBean.toIndexRedirect();
     }
 
     public AbstractPost showSinglePost(Long id){

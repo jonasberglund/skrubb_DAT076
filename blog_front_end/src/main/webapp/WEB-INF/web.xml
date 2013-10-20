@@ -13,9 +13,9 @@
         <url-pattern>/jsf/secured/*</url-pattern>
     </filter-mapping>
  
-    <!-- By default go to secured welcome page -->
+    <!-- By default go to index page -->
     <welcome-file-list>
-        <welcome-file>jsf/secured/welcome.xhtml</welcome-file>
+        <welcome-file>/index.xhtml</welcome-file>
     </welcome-file-list>
  
     <!-- Staring JSF -->

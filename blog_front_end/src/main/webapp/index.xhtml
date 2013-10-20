@@ -128,9 +128,9 @@ and open the template in the editor.
                                 
                             <h:form>
                                 <h:inputText rendered="#{loginBean.loggedIn eq false}" value="#{con_Reader.name}"/>
-                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="chat" 
+                                <h:commandButton rendered="#{loginBean.loggedIn eq false}" value="Start Chat" action="#{navigation.toChat()}" 
                                                  actionListener="#{con_Reader.actSelected()}" />
-                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat" action="chat" 
+                                <h:commandButton rendered="#{loginBean.loggedIn eq true}" value="Start Chat" action="#{navigation.toChat()}" 
                                                  actionListener="#{con_Reader.actSelectedAuth()}" />
                             </h:form>    
                             </article>

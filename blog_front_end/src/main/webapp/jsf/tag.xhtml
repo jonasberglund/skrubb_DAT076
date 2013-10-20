@@ -8,7 +8,7 @@
       xmlns:p="http://primefaces.org/ui">
           
     <h:head>
-        <title>Admin page</title>
+        <title>Skrubbbloggen</title>
             
     </h:head>
     <h:body>
@@ -18,16 +18,11 @@
                     <h:inputHidden id="commenter" value="#{addComment.commenter}" />
                     <h:inputHidden id="value" value="#{addComment.value}" />
                     <h:inputHidden id="postId" value="#{addComment.id}" />
-                        
-                    <h3>Welcome #{loginBean.username}</h3>
-                        
-                    <h:commandLink action="#{loginBean.doLogout}" value="Logout"/>
                     <ui:repeat value="#{tag_con.byTag}" var="postlist">
                         <article class="topcontent">
                             
                             
                             <ui:repeat value="#{postlist}" var="post">
-                                <div><h:commandLink action="#{posts.deletePost(post.id)}" value="Delete post"/></div>
                                 <header>
                                     <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
                                 </header>

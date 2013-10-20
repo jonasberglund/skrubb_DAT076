@@ -27,9 +27,9 @@
             <header class="mainHeader">
                     <nav><ul>
                             <h:form><li><h:commandLink action="#{navigation.toIndex}" value="Home" /></li>
-                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toWelcome}" value="Posts" /></li>
-                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toTextPost}" value="Text Post" /></li>
-                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toPhotoPost}" value="Photo Post" /></li>
+                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toWelcome}" value="My Posts" /></li>
+                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toTextPost}" value="New Text Post" /></li>
+                            <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toPhotoPost}" value="New Photo Post" /></li>
                             <li><h:commandLink rendered="#{loginBean.loggedIn}" action="#{navigation.toAuthors}" value="Manage authors" /></li>
                             <li><h:commandLink rendered="#{loginBean.loggedIn}" value="Logout" action="#{loginBean.doLogout()}" /></li></h:form>                       
                         </ul></nav>

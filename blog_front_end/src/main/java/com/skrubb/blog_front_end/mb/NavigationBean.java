@@ -38,11 +38,26 @@ public class NavigationBean implements Serializable {
     }
     
     /**
+     * Go to chat page.
+     * @return Chat page name.
+     */
+    public String toChat() {
+        return "chat";
+    }
+    
+    /**
      * Go to index page.
      * @return Index page name.
      */
     public String toIndex() {
         return "index";
+    }
+    /**
+     * Go to index page.
+     * @return Index page name.
+     */
+    public String toIndexRedirect() {
+        return "index-redirect";
     }
     
     /**

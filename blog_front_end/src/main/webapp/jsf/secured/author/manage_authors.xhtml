@@ -16,10 +16,9 @@
                 
                 <h:form>  
                     <div>
+                        <h:outputText value="Logged in as #{loginBean.username}" /><br />
                         <h:commandButton action="#{navigation.toAddAuthor()}" value="Add Author" class="small-button"
-                                         rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>
-                        <h:commandButton action="#{loginBean.doLogout}" value="Logout" class="small-button"/>
-                        <h:outputText value="Logged in as #{loginBean.username}" />                       
+                                         rendered="#{loginBean.author.accessLevel eq 'ADMIN'}"/>                      
                         <br/>
                     </div>
                     <div class="product-table">

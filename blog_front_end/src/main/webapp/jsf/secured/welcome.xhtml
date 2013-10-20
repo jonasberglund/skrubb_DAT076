@@ -24,7 +24,12 @@
                                     <h2><a href="#" rel="bookmark" title="Permalink to this POST TITLE"><h:outputText value="#{post.title}"/></a></h2>
                                 </header>
                                 <div><h:commandButton action="#{posts.deletePost(post.id)}" value="Delete post"/>
-                                    <h:commandButton action="#{navigation.toEditPost()}" actionListener="#{editPost.setSelected(post.id)}" value="Edit post"/></div>
+                                    <h:commandButton rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.TextPost'}"
+                                                     action="edit-post" actionListener="#{editPost.setSelected(post.id)}"
+                                                     value="Edit post"/><br />
+                                    <h:outputText rendered="#{post.class.name eq 'com.skrubb.blog_back_end.core.PhotoPost'}"
+                                                  value="Photo posts can not be edited" />
+                                </div>
                             </ui:repeat>     
                         </article>
                             

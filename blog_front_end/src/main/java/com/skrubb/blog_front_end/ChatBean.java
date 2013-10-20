@@ -1,81 +1,72 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.skrubb.blog_front_end;
 
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
-
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
-
+import javax.servlet.http.HttpSession;
 import org.icefaces.application.PushRenderer;
 
-/**
- *
- * @author Anders
+/*
+ *@Author Anders
  */
 @Named("chatBean")
 @RequestScoped
-public class ChatBean implements Serializable{
-    
-    private static String PUSH_GROUP= "SkruBBBloggen";
+public class ChatBean implements Serializable {
+
+    private static final String PUSH_GROUP = "colorPage";
     @Inject
-    private MessageBean messageBean;
-    
-    private String message;
+    private MessageBeanX messageBean;
+    //private String color = "black";
+    //private String sessionId;
+    private String text;
     private String name;
+    
     @Inject
-    private LoginBean loginBean;
+    ConversationalReader con_read;
     
-    public ChatBean(){
-    
-    }
-    
-    
+    @Inject
+    LoginBean loginBean;
+        
     @PostConstruct
     public void postConstruct(){
-        PushRenderer.addCurrentSession(PUSH_GROUP);        
+        PushRenderer.addCurrentSession(PUSH_GROUP);
     }
-    
-    public void setMessageBean(MessageBean messageBean) {
+
+    public void setMessageBean(MessageBeanX messageBean) {
         this.messageBean = messageBean;
     }
-    
-    public MessageBean getMessageBean(){
-        return messageBean;
+
+    public String getConName(){
+       return con_read.getName();
     }
-    
-    public String getMessage(){
-        return message;
+     
+    public String getText() {
+        return text;
     }
-    public void setMessage(String message){
-        this.message=message;
+
+    public void setText(String text) {
+        this.text = text;
     }
-    
-    public String getName(){
+    public String getName() {
         return name;
     }
-    public void setName(String name){
-        this.name=name;
+
+    public void setName(String name) {
+        this.name = name;
     }
-         
-    public String pushAuthor(){
-        String aName=loginBean.getUsername();
-        messageBean.addToList(message,aName);
-        //push to all
+    
+
+    public String push() {
+        if(loginBean.isLoggedIn())
+            messageBean.setAuthorPresent();
+        
+        messageBean.addToList(text, con_read.getName());
+        // Push to all in group
         PushRenderer.render(PUSH_GROUP);
-        return null;
-    }
-    
-    public String push(){
-        messageBean.addToList(message,name);
-        //push to all
-        PushRenderer.render(PUSH_GROUP);
-        return null;
-    }
-    
-    
+
+        return null; // Navigation stay on same page
+    } 
 }

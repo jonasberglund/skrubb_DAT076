@@ -7,6 +7,8 @@ package com.skrubb.blog_back_end.core;
 import com.skrubb.blog_back_end.utils.IContentHandler;
 
 /**
+ * IAuthorRegistry is an interface that makes sure that an author registry
+ * has all methods that are needed in an author registry.
  *
  * @author ollesvensson
  */

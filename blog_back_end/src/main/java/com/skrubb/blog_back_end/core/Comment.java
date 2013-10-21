@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.Temporal;
 
 /**
+ * Comment is a container class that holds comment data.
  *
  * @author ollesvensson
  * @author robintornquist

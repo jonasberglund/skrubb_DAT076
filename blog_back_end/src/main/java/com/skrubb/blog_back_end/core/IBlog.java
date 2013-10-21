@@ -5,6 +5,8 @@
 package com.skrubb.blog_back_end.core;
 
 /**
+ * IBlog is an interface that makes sure that a blog has all methods that
+ * are needed in a blog.
  *
  * @author ollesvensson
  */

@@ -7,6 +7,8 @@ package com.skrubb.blog_back_end.core;
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 
 /**
+ * CommentArchive extends AbstractContentHandler and is responsible for
+ * add, update and remove comments to the database.
  *
  * @author ollesvensson
  * @author robintornquist

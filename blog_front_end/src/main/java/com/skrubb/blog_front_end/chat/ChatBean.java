@@ -8,7 +8,8 @@ import javax.inject.Named;
 import org.icefaces.application.PushRenderer;
 import com.skrubb.blog_front_end.mb.LoginBean;
 
-/*
+/* 
+ * Register user to a chat session, uses push via AJAX to inform all users in chat of new message
  *@Author Anders Johansson, Jonas Berglund
  */
 @Named("chatBean")

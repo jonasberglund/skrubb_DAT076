@@ -11,7 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
- *
+ *  Edit a Author from database
  * @author jonasberglund, Anders Johansson
  */
 @Named("editAuthor")

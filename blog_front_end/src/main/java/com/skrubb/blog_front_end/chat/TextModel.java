@@ -2,7 +2,7 @@ package com.skrubb.blog_front_end.chat;
 
 import java.io.Serializable;
 /**
- *
+ *  Container class for a chat message
  * @author Anders Johansson, Jonas Berglund
  */
 public class TextModel implements Serializable {

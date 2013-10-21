@@ -5,10 +5,10 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 
 /**
- *
+ * Holds a List of chat messages and is accessible to all users of the chat.
  * @author Anders Johansson, Jonas Berglund
  */
-@Named("messageBeanX")
+@Named("messageBean")
 @ApplicationScoped
 public class MessageBean implements Serializable {
     private static final long serialVersionUID = 10011297720999998L;

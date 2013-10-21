@@ -8,7 +8,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
- *
+ * Delete a Author from database
  * @author jonasberglund, Anders Johansson
  */
 @Named("delAuthor")

@@ -14,7 +14,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
+ *  Temporarly hold a value of tag
  * @author Anders Johansson, Jonas Berglund
  */
 @Named("tag_con")

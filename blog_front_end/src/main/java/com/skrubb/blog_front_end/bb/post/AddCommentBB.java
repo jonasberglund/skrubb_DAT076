@@ -9,7 +9,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
- *
+ * Add a comment to database
  * @author jonasberglund, Anders Johansson
  */
 @Named("addComment")

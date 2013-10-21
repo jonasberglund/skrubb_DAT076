@@ -9,6 +9,7 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
+ * Adds a Author to database
  * @author anders, jonasberglund
  */
 @Named("addAuthor")

@@ -2,7 +2,7 @@ DAT076 Web Applikationer
 =============
 
 ####GitHub alias
-- Jonas Berglund - jonasberlund
+- Jonas Berglund - jonasberglund
 - Olle Svensson - olvert
 - Robin Törnquist - roffin
 - Anders Johansson - vispen

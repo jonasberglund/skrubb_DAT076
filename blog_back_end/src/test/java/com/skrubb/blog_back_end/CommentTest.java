@@ -35,25 +35,34 @@ public class CommentTest {
     }
     
     @Test
-    public void testRemoveComment() {
+    public void testAddAndRemoveComment() {
+        
+        //Create and add author
         Author a = new Author("Trobbe", "loesen", Author.AccessLevel.AUTHOR);
         ar.add(a);
         a = ar.find(a.getId());
         
+        //Create and add text post
         TextPost tp = new TextPost(a, "hello world", "hello world again");
-        
-        Comment c = new Comment("Olly", "Nedrans vad ballt!");
         pa.add(tp);
         
+        //Create comment
+        Comment c = new Comment("Olly", "Nedrans vad ballt!");
+        
+        //Get text post from archive
         tp = (TextPost) pa.find(tp.getId());
         
+        //Add comment to text post
         pa.addComment(tp.getId(), c);
         
+        //Check if comment has been added to both post and comment archive
         assertTrue(ca.size() == 1);
         assertTrue(tp.getComments().size() == 1);
         
+        //Remove comment
         pa.removeComment(tp.getId(), tp.getComments().get(0).getId());
         
+        //Check that comment has been removed from both post and comment archive
         assertTrue(ca.size() == 0);
         assertTrue(pa.find(tp.getId()).getComments().size() == 0);
         

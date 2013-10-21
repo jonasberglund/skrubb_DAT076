@@ -29,7 +29,7 @@ public class AuthorTest {
         ar = new AuthorRegistry(TEST_PU_EMBEDDED);
     }
     
-    //@Test
+    @Test
     public void testAddAndFindAndRemove() {
         
         //Create author
@@ -55,58 +55,77 @@ public class AuthorTest {
         assertTrue(a == null);
     }
     
-//    @Test
+    @Test
     public void testUpdate() {
+        
+        //Create author
         Author a = new Author("olle", "trobbe", AccessLevel.ADMIN);
         
+        //Add to registry
         ar.add(a);
         
+        //Check if author was added to registry
         assertTrue(ar.size() == 1);
         
+        //Create updated author
         Author b = new Author(a.getId(), "updated", "updated_pass", AccessLevel.AUTHOR, true);
         
+        //Update
         a = ar.update(b);
         
+        //Check if authors has been updated
         assertTrue(a.equals(b));
         
+        //Optional clean up if not using embedded db
         ar.remove(a.getId());
-        
         assertTrue(ar.size() == 0);
     }
     
-//    @Test
+    @Test
     public void testGetRange() {
         
+        //Add 5 auhtors to registry
         for (int i = 0; i < 5; i++) {
             ar.add(new Author("name" + i, "pass" + i, AccessLevel.AUTHOR));
         }
         
+        //Check that all authors have been added
         assertTrue(ar.size() == 5);
         
+        //Get 3 authors
         List<Author> list = ar.getRange(1, 3);
+        
+        //Check that 3 auhtors have been returned
         assertTrue(list.size() == 3);
         
-        
-        //assertTrue(list.get(0).getName().equals("name1"));
-        
+        //Optional cleanup if not using embedded db
         list = ar.getRange(0, 5);
-        
         for (Author a : list) {
             ar.remove(a.getId());
         }
-        
         assertTrue(ar.size() == 0);
     }
     
     @Test
     public void testGetByLogin() {
         
+        //Create author
         Author a = new Author("olle", "bulan", Author.AccessLevel.AUTHOR);
+        
+        //Add author to registry
         ar.add(a);
+        
+        //Get author from registry
         a = ar.find(a.getId());
         
+        //Try to get author by name and password
         Author b = ar.getAuthorByLogin("olle", Author.generateHashedPassword("bulan"));
         
+        //Check if get was successful
         assertTrue(a.equals(b));
+        
+        //Optional cleanup if not using embedded db
+        ar.remove(b.getId());
+        assertTrue(ar.size() == 0);
     }
 }

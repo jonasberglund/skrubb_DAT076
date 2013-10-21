@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- *
+ * Entityclass for storing photo_post in database
  * @author robin
  * @author ollesvensson
  */

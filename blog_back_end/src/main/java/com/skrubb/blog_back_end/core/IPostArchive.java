@@ -8,7 +8,7 @@ import com.skrubb.blog_back_end.utils.IContentHandler;
 import java.util.List;
 
 /**
- *
+ * Interface for the Blog and Postarchive
  * @author ollesvensson
  */
 public interface IPostArchive extends IContentHandler<Long, AbstractPost> {

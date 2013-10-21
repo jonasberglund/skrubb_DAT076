@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- *
+ * Entityclass for storing tag in the database
  * @author robin
  */
 @Entity

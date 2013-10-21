@@ -14,8 +14,8 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-/**
- *
+/**  
+ * Responsible for linking a tag and comment and getting a range of posts
  * @author robin
  * @author ollesvensson
  */

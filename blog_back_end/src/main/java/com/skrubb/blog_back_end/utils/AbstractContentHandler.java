@@ -16,7 +16,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 /**
- *
+ * Common code for TagArchive,PostArchive,commentArchive and AuthorRegistry.
+ * 
  * @author ollesvensson
  * @author robintornquist
  */

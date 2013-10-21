@@ -7,7 +7,7 @@ package com.skrubb.blog_back_end.core;
 import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 
 /**
- *
+ * Responsible for finding a Tag in the database
  * @author 
  */
 public class TagArchive extends AbstractContentHandler<String, Tag> {

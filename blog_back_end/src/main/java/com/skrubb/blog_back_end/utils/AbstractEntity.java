@@ -11,8 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
-/**
- *
+/** 
+ * Common code for Author,Comment,AbstractPost
  * @author ollesvensson
  * @author robintornquist
  */

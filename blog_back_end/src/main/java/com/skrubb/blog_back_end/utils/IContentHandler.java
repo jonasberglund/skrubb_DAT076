@@ -7,7 +7,7 @@ package com.skrubb.blog_back_end.utils;
 import java.util.List;
 
 /**
- *
+ * Interface for all classes working against the database 
  * @author ollesvensson
  * @author robintornquist
  */

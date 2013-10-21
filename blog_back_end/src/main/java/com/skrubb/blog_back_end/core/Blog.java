@@ -26,7 +26,4 @@ public class Blog implements IBlog {
     public IAuthorRegistry getAuthorRegistry() {
         return authorRegistry;
     }
-    
-  
-    
 }

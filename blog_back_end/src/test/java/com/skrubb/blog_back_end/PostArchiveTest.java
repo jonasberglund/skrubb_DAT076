@@ -14,8 +14,6 @@ import com.skrubb.blog_back_end.core.PostArchive;
 import com.skrubb.blog_back_end.core.Tag;
 import com.skrubb.blog_back_end.core.TagArchive;
 import com.skrubb.blog_back_end.core.TextPost;
-import com.skrubb.blog_back_end.utils.TagComparator;
-import java.util.TreeSet;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

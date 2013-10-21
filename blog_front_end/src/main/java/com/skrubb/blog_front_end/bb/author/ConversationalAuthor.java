@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 
 /**
  * Common code for delete and edit (which uses conversational scope) 
- * @author anders
+ * @author anders, Jonas Berglund
  */
 public abstract class ConversationalAuthor extends ConversationalBase implements Serializable {
 

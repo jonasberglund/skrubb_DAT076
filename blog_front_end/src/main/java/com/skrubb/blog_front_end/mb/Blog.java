@@ -13,7 +13,7 @@ import javax.inject.Singleton;
 
 /**
  *
- * @author Anders
+ * @author Anders Johansson, Jonas Berglund
  */
 @Singleton
 public class Blog implements Serializable{

@@ -15,7 +15,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author Anders
+ * @author Anders Johansson, Jonas Berglund
  */
 @Named("tag_con")
 @ConversationScoped

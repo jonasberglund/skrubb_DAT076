@@ -11,7 +11,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author jonasberglund
+ * @author jonasberglund, Anders Johansson
  */
 public abstract class ConversationalBase {
     

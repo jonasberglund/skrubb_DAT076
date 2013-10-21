@@ -18,7 +18,7 @@ import javax.inject.Named;
 
 /**
  *
- * @author jonasberglund
+ * @author jonasberglund,Anders Johansson
  */
 @Named("posts")
 @SessionScoped

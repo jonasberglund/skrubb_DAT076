@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 /**
  *
- * @author Anders
+ * @author Anders Johansson, Jonas Berglund
  */
 public abstract class ConversationalPost extends ConversationalBase implements Serializable{
     

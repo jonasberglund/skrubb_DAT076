@@ -3,7 +3,7 @@ package com.skrubb.blog_front_end.chat;
 import java.io.Serializable;
 /**
  *
- * @author Anders
+ * @author Anders Johansson, Jonas Berglund
  */
 public class TextModel implements Serializable {
     private static final long serialVersionUID = 90056297720999998L;

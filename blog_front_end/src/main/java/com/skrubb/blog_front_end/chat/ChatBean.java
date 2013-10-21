@@ -8,19 +8,18 @@ import javax.inject.Named;
 import org.icefaces.application.PushRenderer;
 import com.skrubb.blog_front_end.mb.LoginBean;
 
-/*
- *@Author Anders
+/* 
+ * Register user to a chat session, uses push via AJAX to inform all users in chat of new message
+ *@Author Anders Johansson, Jonas Berglund
  */
 @Named("chatBean")
 @RequestScoped
 public class ChatBean implements Serializable {
     private static final long serialVersionUID = 13456797720999998L;
 
-    private static final String PUSH_GROUP = "colorPage";
+    private static final String PUSH_GROUP = "skruBBBloggen";
     @Inject
-    private MessageBeanX messageBean;
-    //private String color = "black";
-    //private String sessionId;
+    private MessageBean messageBean;
     private String text;
     private String name;
     
@@ -35,7 +34,7 @@ public class ChatBean implements Serializable {
         PushRenderer.addCurrentSession(PUSH_GROUP);
     }
 
-    public void setMessageBean(MessageBeanX messageBean) {
+    public void setMessageBean(MessageBean messageBean) {
         this.messageBean = messageBean;
     }
 

@@ -11,8 +11,8 @@ import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
- *
- * @author jonasberglund
+ *  Edit a Author from database
+ * @author jonasberglund, Anders Johansson
  */
 @Named("editAuthor")
 @ConversationScoped

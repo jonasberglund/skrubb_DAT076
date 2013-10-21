@@ -1,24 +1,24 @@
-skrubb_DAT076
+DAT076 Web Applikationer
 =============
 
-DAT076 Web Applikationer!
+####GitHub alias
+- Jonas Berglund - jonasberlund
+- Olle Svensson - olvert
+- Robin Törnquist - roffin
+- Anders Johansson - vispen
 
-##Idéer
-###Olika typer av inlägg
-- Text
-- Video
-- Bild
-- Multi
-- Ljud
-- Med mera…
+####LoginFilter
+During the demonstration the filter didn’t worked as it should, this was due to a misleading pointing in the web.xml
 
-###Features
-- Kunna kommentera inlägg
-- Lösenordsskydda hela/delar
-- Flera användare till en blogg
-- Administrera bloggportalen/bloggen
-- Layout
-- Länkar till/dela inlägg
-- Chat?
-- sql injection
+	<filter-class>com.skrubb.blog_front_end.LoginFilter</filter-class>
+
+should have been
+
+	<filter-class>com.skrubb.blog_front_end.mb.LoginFilter</filter-class>´
+
+This was a result of us moving the classes into packages.
+
+
+
+
 

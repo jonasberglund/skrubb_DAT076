@@ -10,8 +10,8 @@ import com.skrubb.blog_back_end.core.TextPost;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 /**
- *
- * @author jonasberglund
+ * Edit a textpost save on database
+ * @author jonasberglund, Anders Johansson
  */
 @Named("editPost")
 @ConversationScoped

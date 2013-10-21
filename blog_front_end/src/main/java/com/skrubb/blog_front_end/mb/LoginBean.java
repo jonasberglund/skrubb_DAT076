@@ -17,7 +17,7 @@ import javax.inject.Named;
 /**
  * Simple login bean.
  *
- * @author anders, jonasberglund
+ * @author anders Johansson, jonasberglund
  */
 @Named("loginBean")
 @SessionScoped

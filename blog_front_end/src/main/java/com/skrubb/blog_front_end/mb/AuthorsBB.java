@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
- * @author Anders
+ * Resbonsible for accessing all authors
+ * @author Anders Johansson, Jonas Berglund
  */
 @Named("authors")
 @RequestScoped

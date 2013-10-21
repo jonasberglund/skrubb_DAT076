@@ -12,8 +12,8 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
- *
- * @author Anders
+ * Add a textpost to database
+ * @author Anders Johansson, Jonas Berglund
  */
 @Named("addPost")
 @ConversationScoped

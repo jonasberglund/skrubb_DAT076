@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- *
+ * Entityclass for storing text post in database
  * @author robin
  * @author ollesvensson
  */

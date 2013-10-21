@@ -19,6 +19,10 @@ import javax.inject.Named;
 
 import org.primefaces.model.UploadedFile;
 
+/**
+ * Add a photopost to database
+ * @author Anders Johansson, Jonas Berglund
+ */
 @Named("addPhotoPost")
 @ConversationScoped
 public class AddPhotoPostBB extends ConversationalPost {

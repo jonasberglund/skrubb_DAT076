@@ -15,8 +15,8 @@ import javax.annotation.PreDestroy;
 import javax.inject.Inject;
 
 /**
- *
- * @author Anders
+ * Common code for delete,add and edit (which uses conversational scope)
+ * @author Anders Johansson, Jonas Berglund
  */
 public abstract class ConversationalPost extends ConversationalBase implements Serializable{
     

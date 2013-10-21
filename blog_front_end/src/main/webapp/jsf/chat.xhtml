@@ -10,7 +10,7 @@
     
     <h:body>
         
-        <h:dataTable value="#{messageBeanX.list}" var="current">
+        <h:dataTable value="#{messageBean.list}" var="current">
             <h:column>
                 <h:outputText rendered="#{loginBean.loggedIn eq false}" value="#{current.name}" style="color : black"/>
                 <h:outputText rendered="#{loginBean.loggedIn eq true}" value="#{current.name}" style="color : red"/>

@@ -10,8 +10,8 @@ import javax.enterprise.context.Conversation;
 import javax.inject.Inject;
 
 /**
- *
- * @author jonasberglund
+ * Main class for all conversational classes. Common code for all clases which uses conversationalBase)
+ * @author jonasberglund, Anders Johansson
  */
 public abstract class ConversationalBase {
     

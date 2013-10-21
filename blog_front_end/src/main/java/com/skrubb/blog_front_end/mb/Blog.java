@@ -12,8 +12,8 @@ import java.io.Serializable;
 import javax.inject.Singleton;
 
 /**
- *
- * @author Anders
+ * Responsible for all connection to the back_end server
+ * @author Anders Johansson, Jonas Berglund
  */
 @Singleton
 public class Blog implements Serializable{

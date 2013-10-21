@@ -17,8 +17,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
- * @author jonasberglund
+ * Responsible for accesing all posts.
+ * @author jonasberglund,Anders Johansson
  */
 @Named("posts")
 @SessionScoped

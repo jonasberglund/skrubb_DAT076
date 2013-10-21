@@ -13,8 +13,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
- *
- * @author Anders
+ * Holds the name of a reader while in chat
+ * @author Anders Johansson, Jonas Berglund
  */
 @Named("con_Reader")
 @ConversationScoped

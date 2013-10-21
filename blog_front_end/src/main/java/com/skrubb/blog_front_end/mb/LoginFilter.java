@@ -21,7 +21,7 @@ import javax.inject.Inject;
  * Filter checks if LoginBean has loginIn property set to true.
  * If it is not set then request is being redirected to the login.xhtml page.
  *
- * @author itcuties
+ * @author Anders Johansson, Jonas Berglund
  *
  */
 

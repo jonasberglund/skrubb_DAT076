@@ -9,8 +9,8 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Named;
 
 /**
- *
- * @author jonasberglund
+ * Add a comment to database
+ * @author jonasberglund, Anders Johansson
  */
 @Named("addComment")
 @ConversationScoped

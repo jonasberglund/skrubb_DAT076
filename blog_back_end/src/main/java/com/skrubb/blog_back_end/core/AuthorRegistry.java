@@ -8,6 +8,9 @@ import com.skrubb.blog_back_end.utils.AbstractContentHandler;
 import javax.persistence.EntityManager;
 
 /**
+ * AuthorRegistry extends AbstractContentHanlder and is responsible for
+ * add, update and delete authors. AuthorRegistry is also used to find an
+ * author when logging in.
  *
  * @author ollesvensson
  * @author robintornquist
@@ -24,7 +27,7 @@ public class AuthorRegistry extends AbstractContentHandler<Long, Author> impleme
         try{
             return em.createQuery("select a from Author a where a.name = :name AND a.hashedPassword = :hashedPassword",
                 Author.class).setParameter("name", name).setParameter("hashedPassword", hashedPassword).getSingleResult();
-        }catch(Exception e){
+        }catch(RuntimeException e){
             return null;
         }
     }

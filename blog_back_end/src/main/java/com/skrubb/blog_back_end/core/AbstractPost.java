@@ -22,7 +22,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 /**
- *
+ * AbstractPost is an abstract class that holds the common data for a post. 
+ * AbstractPost is extended by Text- and PhotoPost. The class uses the
+ * Author class, the Comment class and the Tag class. AbstractPost is used by
+ * PostArchive. If an AbstractPost is removed from the database
+ * (via PostArchive), also all comments are removed.
+ * 
  * @author ollesvensson
  * @author robintornquist
  */

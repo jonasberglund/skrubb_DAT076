@@ -17,7 +17,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TEXT_POST")
-public class TextPost extends AbstractPost implements Serializable {
+public class TextPost extends AbstractPost {
+    private static final long serialVersionUID = 100560000028890438L;
     
     @Column(name = "TEXT")
     private String text;

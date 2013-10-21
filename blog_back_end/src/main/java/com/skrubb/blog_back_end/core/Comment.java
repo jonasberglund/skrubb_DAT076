@@ -17,7 +17,8 @@ import javax.persistence.Temporal;
  * @author robintornquist
  */
 @Entity
-public class Comment extends AbstractEntity implements Serializable{
+public class Comment extends AbstractEntity implements Serializable {
+    private static final long serialVersionUID = 199560897017780438L;
     
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date = new Date();

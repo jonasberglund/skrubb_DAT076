@@ -5,6 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 /**
+ * BlogFactory returns an IBlog. Takes a persistence unit name as parameter.
  *
  * @author Anders
  */

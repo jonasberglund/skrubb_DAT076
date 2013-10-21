@@ -5,6 +5,7 @@
 package com.skrubb.blog_back_end.core;
 
 /**
+ * Blog is responsible to provide a PostArchive and an AuthorRegistry.
  *
  * @author robin
  * @author ollesvensson

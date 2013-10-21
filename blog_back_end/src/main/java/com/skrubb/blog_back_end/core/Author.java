@@ -8,6 +8,7 @@ import com.skrubb.blog_back_end.utils.AbstractEntity;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
+ * The Author class holds information about an author.
  *
  * @author ollesvensson
  * @author robintornquist
@@ -86,7 +88,7 @@ public class Author extends AbstractEntity implements Serializable {
             digest.update(s.getBytes(), 0, s.length());
             md5 = new BigInteger(1, digest.digest()).toString(16);
             
-        } catch (Exception e) {
+        } catch (NoSuchAlgorithmException e) {
             Logger.getAnonymousLogger().log(Level.SEVERE, "Hashing password failed");
         }
         

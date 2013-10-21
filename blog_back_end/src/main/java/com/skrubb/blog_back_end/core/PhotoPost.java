@@ -4,7 +4,6 @@
  */
 package com.skrubb.blog_back_end.core;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -16,7 +15,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "PHOTO_POST")
-public class PhotoPost extends AbstractPost implements Serializable {
+public class PhotoPost extends AbstractPost {
+    private static final long serialVersionUID = 100560897028890159L;
     
     @Column(name = "PHOTO_URL")
     private String photoUrl;

@@ -16,7 +16,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="TAGS")
-public class Tag implements Serializable {  
+public class Tag implements Serializable {
+    private static final long serialVersionUID = 101591597028890438L;
 
     @Id
     @Column(name = "TAG_VALUE")
